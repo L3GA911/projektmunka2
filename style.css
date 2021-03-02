@@ -1,0 +1,182 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+}
+.container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;  
+    position: relative;
+}
+.information{
+    display: flex;
+    flex-direction: row;
+    background-color:#595b83;
+    padding: 0 1rem;
+    height: 3rem;
+    font-size: 1rem;
+    color: burlywood;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+.information-left{
+    flex-grow: 3;
+    display: flex;
+    align-items: center;
+}
+.information-right{
+    flex-grow: 1;
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+}
+.information-right svg{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.information-right a,
+.information-right a:visited{
+    color: #fff;
+}
+.information-right a:hover{
+    color:crimson;
+}
+.maincontent{
+    display: flex;
+    font-size: 1rem;
+}
+.navigation{
+    background-color: #595b83;
+    height: 65rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #A7A8BD;
+}
+.content{
+    background-color: #fff;
+    z-index: -2;
+}
+.pagename,.navname{
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #595b83;
+    padding-bottom: 2rem;
+}
+.navigation ul{
+    list-style-type: none;
+    padding-top: 2rem;
+}
+.content p{
+    margin-top: 2rem;
+    color: #595b83;
+}
+.navigation ul li{
+    padding-bottom: 0.5rem;
+}
+.navigation svg{
+    width: 2rem;
+    height: 2rem;
+}
+.navigation a{
+    color: #A7A8BD;
+}
+.navigation a:visited{
+    color: #A7A8BD;
+}
+.navigation a:hover{
+    color:burlywood;
+}
+
+.navigation2{
+    width:12rem;
+    background-color: #A7A8BD;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navigation2, .content{
+    padding: 2rem 0.5rem 0 0.5rem;
+}
+.content{
+    padding-left: 2rem;
+}
+.navigation2 ul{
+    list-style-type: none;
+    cursor: pointer;
+    color: #595b83;
+}
+.navigation2 ul li{
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    font-weight: 300;
+}
+.navigation2 ul li:hover{
+    color: #292B58;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+footer{
+    background-color: #595b83;
+    height: 2.5rem;
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    width: 100%;
+    z-index: -1;
+}
+
+/*----------Tooltip----------*/
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 20rem;
+    background-color: #292B58;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 10%;
+    left: 310%;
+    margin-left: -60px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    transform: rotate(90deg);
+    position: absolute;
+    top: 35%;
+    left: -1.5%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #292B58 transparent transparent transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  /*-----------------------------------*/
