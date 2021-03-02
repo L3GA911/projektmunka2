@@ -60,7 +60,6 @@ html{
 }
 .content{
     background-color: #fff;
-    z-index: -2;
 }
 .pagename,.navname{
     font-size: 1.5rem;
@@ -128,7 +127,6 @@ footer{
     bottom: 0px;
     left:0px;
     width: 100%;
-    z-index: -1;
 }
 .login_style{
    background-color: #A7A8BD; 
