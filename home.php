@@ -9,6 +9,7 @@
         A program használatához kérem válasszon a bal oldali menüpontok közül.
     </p>
 </div>
+
 <?php
     include_once ('bottom.php');
 ?>
