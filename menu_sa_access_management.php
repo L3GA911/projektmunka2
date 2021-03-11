@@ -1,0 +1,1 @@
+<span class="navname">Jogosultságok kezelése - SuperAdmin</span>

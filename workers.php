@@ -10,11 +10,11 @@
         </ul>
 </div>
 <div id="content" class="content">
-    <span class="navname">Szabadságok kezelése - Munkavállaló</span>
-    <p>
+    <span class="navname">Szabadságok kezelése - Munkavállaló</span><br>
+    <span>
         Ebben a menüpontban a munkavállalók végezhetnek szabadságukkal kapcsolatos műveleteket.<br><br>
         Ehhez kérem használja a bal oldali menüpontokat.
-    </p>
+</span>
 </div>
 <?php
     include_once ('bottom.php');

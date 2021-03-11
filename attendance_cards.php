@@ -9,10 +9,8 @@
         </ul>
 </div>
 <div id="content" class="content">
-    <span class="navname">Jelenléti ívek generálása</span>
-    <p>
-        A dolgozók hivatalos jelenléti íveinek létrehozásához használja a bal oldali menüpontokat.
-    </p>
+    <span class="navname">Jelenléti ívek generálása</span><br>
+    <span>A dolgozók hivatalos jelenléti íveinek létrehozásához használja a bal oldali menüpontokat.</span>
 </div>
 <?php
     include_once ('bottom.php');

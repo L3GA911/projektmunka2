@@ -66,6 +66,7 @@ html{
     font-weight: 300;
     color: #595b83;
     padding-bottom: 2rem;
+    display: inline-block;
 }
 .navigation ul{
     list-style-type: none;
@@ -99,11 +100,30 @@ html{
     flex-direction: column;
     align-items: center;
 }
-.navigation2, .content{
+.navigation2{
     padding: 2rem 0.5rem 0 0.5rem;
 }
 .content{
     padding-left: 2rem;
+    width: 100%;
+    padding: 2rem 0.5rem 0 0.5rem;
+}
+.content_container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.form_content{
+    height: auto;
+    width: auto;
+    position: relative;
+}
+.button_center{
+    position:absolute;
+    left:50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 .navigation2 ul{
     list-style-type: none;
@@ -116,7 +136,7 @@ html{
     font-weight: 300;
 }
 .navigation2 ul li:hover{
-    color: #292B58;
+    color: burlywood;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 }
@@ -133,6 +153,83 @@ footer{
    height: 10rem;
    width: 10rem;
 }
+label{
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+    color: #595b83;
+}
+input[type=text], 
+input[type=password], 
+input[type=email], 
+input[type=date]{
+    width: 15rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #595b83;
+    color: #595b83;
+}
+input[type=text]:focus, 
+input[type=password]:focus, 
+input[type=email]:focus, 
+input[type=date]:focus {
+    border-left: 4px solid #595b83;
+    background: #A7A8BD;
+    outline: none;
+    color: #fff;
+  }
+input[type=text]:active, 
+input[type=password]:active, 
+input[type=email]:active, 
+input[type=date]:active {
+    border-left: 4px solid #595b83;
+    background: #A7A8BD;
+    outline: none;
+    color: #fff;
+  }
+select{
+    width: 10rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #595b83;
+    color: #595b83;
+  }
+select:active{
+    border: 1px solid #595b83;
+    color: #595b83;
+  }
+select:hover{
+    border: 1px solid #595b83;
+    color: #595b83;
+  }
+::placeholder {
+    color: #595b83;
+    opacity: 0.7; 
+  }
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #595b83;
+   opacity: 0.7; 
+  }
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #595b83;
+  opacity: 0.7; 
+}
+
+.button {
+    background-color: #595b83;
+    color: burlywood;
+    padding: 0.5rem 0.8rem;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 2rem 0.3rem;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: 1px solid burlywood;
+  }
+  .button:hover {
+    background-color: #2c3071;
+    font-style: bold;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24),0 17px 30px 0 rgba(0,0,0,0.19);
+  }
 
 /*----------Tooltip----------*/
 

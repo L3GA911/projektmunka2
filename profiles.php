@@ -12,10 +12,8 @@
         </ul>
 </div>
 <div id="content" class="content">
-    <span class="navname">Dolgozói profilok szerkesztése</span>
-    <p>
-        A munkavállalók profiljának szerkesztése válasszon a baloldalon található menüpontok közül.
-    </p>
+    <span class="navname">Dolgozói profilok szerkesztése</span><br>
+    <span>A munkavállalók profiljának szerkesztése válasszon a baloldalon található menüpontok közül.</span>
 </div>
 <?php
     include_once ('bottom.php');

@@ -11,10 +11,10 @@
         </ul>
 </div>
 <div id="content" class="content">
-    <span class="navname">Statisztikák</span>
-    <p>
+    <span class="navname">Statisztikák</span><br>
+    <span>
         A dolgozók munkaidejével kapcsolatos statisztikák lekérdezéséhez használja a bal oldali menüpontokat.
-    </p>
+    </span>
 </div>
 <?php
     include_once ('bottom.php');
