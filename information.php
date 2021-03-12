@@ -8,34 +8,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">    
         <link rel="stylesheet" href="styles/style.css">
-        <script type="text/javascript">
-
-            var http;
-
-            if (window.XMLHttpRequest) {
-
-            http = new XMLHttpRequest();
-            }
-            else {
-
-            http = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-
-            function pageLoad(page) {
-            var time = new Date().getTime();
-            
-            http.open("GET", "menu_" + page + ".php?time=" + time, true);
-            
-            http.onreadystatechange = function() {
-                if(http.readyState == 4) {
-                document.getElementById('content').innerHTML = http.responseText;
-                }
-            }
-            
-            http.send(null);
-            }
-        </script>    
-    </head>
+        <script type="text/javascript" src="js/js.js"></script>
+</head>
 
     <body>
         <div class="container">

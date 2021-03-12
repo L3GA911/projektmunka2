@@ -25,7 +25,7 @@
             <label for="email">E-mail:</label><br>
             <input type="email" id="email" name="email" required placeholder="Felelős személy e-mail címe..."><br>
             <div class="button_center">
-                <button class="button">Regisztrálása</button>
+                <button id="button" class="button">Regisztrálása</button>
             </div>
         </form>
     </div>

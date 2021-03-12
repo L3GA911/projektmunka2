@@ -7,9 +7,14 @@ html{
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-size: 16px;
+    height: 100%;
+}
+body{
+    height: 100%;
 }
 .container{
     width: 100%;
+    height: 100%;
     margin-right: auto;
     margin-left: auto;  
     position: relative;
@@ -49,10 +54,10 @@ html{
 .maincontent{
     display: flex;
     font-size: 1rem;
+    height: 91.3vh;
 }
 .navigation{
     background-color: #595b83;
-    height: 65rem;
     width: 3rem;
     display: flex;
     justify-content: center;
@@ -106,7 +111,9 @@ html{
 .content{
     padding-left: 2rem;
     width: 100%;
+    height: auto;
     padding: 2rem 0.5rem 0 0.5rem;
+    overflow: auto;
 }
 .content_container{
     width: 100%;
@@ -143,7 +150,6 @@ html{
 footer{
     background-color: #595b83;
     height: 2.5rem;
-    position: absolute;
     bottom: 0px;
     left:0px;
     width: 100%;
@@ -231,7 +237,7 @@ select:hover{
     box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24),0 17px 30px 0 rgba(0,0,0,0.19);
   }
 
-/*----------Tooltip----------*/
+  /*----------Tooltip----------*/
 
 /* Tooltip container */
 .tooltip {
