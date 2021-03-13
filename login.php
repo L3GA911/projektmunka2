@@ -2,9 +2,13 @@
 <html lang="hu">
     <head>
         <title>Online munkaidő nyilvántartó rendszer - Bejelentkezés</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">    
-        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="styles/login_styles.css">
 </head>
 <body>
@@ -42,7 +46,14 @@ if ($rows != 0) {
 					<br>
 					<input type="password" id="password" name="password" placeholder="Jelszó"><br>
 					<button class="button">Bejelentkezés</button>
-					<?php if ($hiba) {echo ' </br> Hibás felhasználónév vagy a jelszó!';} ?>
+					<?php 
+						if ($hiba) {
+							echo '<div class="alert alert-danger alert-dismissible">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								Hibás felhasználónév vagy jelszó!
+							</div>';
+						} 
+					?>
 				</form>
 		</main>
 	</div>

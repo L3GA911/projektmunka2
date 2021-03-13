@@ -5,9 +5,12 @@
 <html lang="hu">
     <head>
         <title>Online munkaidő nyilvántartó rendszer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="/css/bootstrap.css">   
         <link rel="stylesheet" href="styles/style.css">
+        <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/js.js"></script>
 </head>
 
