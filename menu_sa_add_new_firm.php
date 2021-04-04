@@ -1,7 +1,7 @@
 <span class="navname">Új cég regisztrálása - SuperAdmin</span>
 <div class="content_container">
     <div class="form_content">
-        <form action="" method="" autocomplete="off">
+        <form id="new_firm" action="" method="" autocomplete="off">
             <label for="firmname">Cégnév:</label><br>
             <input type="text" id="firmname" name="firmname" required placeholder="Adja meg az új cég nevét..."><br>
             <label for="cform">Cégforma:</label><br>
@@ -25,7 +25,7 @@
             <label for="email">E-mail:</label><br>
             <input type="email" id="email" name="email" required placeholder="Felelős személy e-mail címe..."><br>
             <div class="button_center">
-                <button id="button" class="button">Regisztrálása</button>
+                <button id="button" class="button" type="submit" form="new_firm">Regisztrálása</button>
             </div>
         </form>
     </div>

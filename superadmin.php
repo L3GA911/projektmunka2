@@ -14,6 +14,9 @@
     <span class="navname">SuperAdmin</span><br>
     <span>A SuperAdmin korlátlan jogosultsággal rendelkezik a teljes rendszer felett.</span>
 </div>
+
+<script>
+
 <?php
     include_once ('bottom.php');
 ?>

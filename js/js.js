@@ -1,30 +1,6 @@
-var http;
-
-if (window.XMLHttpRequest) {
-
-    http = new XMLHttpRequest();
-}
-else {
-
-    http = new ActiveXObject("Microsoft.XMLHTTP");
-}
-
 function pageLoad(page) {
-    var time = new Date().getTime();
-
-    http.open("GET", "menu_" + page + ".php?time=" + time, true);
-
-    http.onreadystatechange = function () {
-        if (http.readyState == 4) {
-            document.getElementById('content').innerHTML = http.responseText;
-        }
-    }
-
-    http.send(null);
+	$("#content").load("menu_" + page + ".php");
 }
-
-
-
 
 function addInput() {
     let value = document.getElementById("numbersOfChildren").value;

@@ -4,13 +4,12 @@
     padding: 0;
 }
 html{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-    font-size: 16px;
     height: 100%;
 }
 body{
-    height: 100%;
+	font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 16px;
 }
 .container{
     width: 100%;
@@ -39,6 +38,12 @@ body{
     display: flex;
     align-items:center;
     justify-content: flex-end;
+}
+.information-right span:nth-child(2){
+	padding: 0 1rem;
+}
+.information-right span:nth-child(3){
+	padding-right: 1rem;
 }
 .information-right svg{
     width: 1.5rem;
@@ -289,40 +294,4 @@ select:hover{
     visibility: visible;
     opacity: 1;
   }
-  /*-----------------------------------*/
-
-  #calendar{
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      width: 18rem;
-  }
   
-  #calendar input[type=checkbox]{
-      display: none;
-  }
-
-  .day-class{
-      display: block;
-      width:2rem;
-      height: 2rem;
-      padding-top: 0.2rem;
-      margin-right: 0.5rem;
-      border: 1px solid #595b83;
-      text-align: center;
-      vertical-align: middle;
-      border-radius: 0.2rem;
-      -webkit-box-shadow: 0px 3px 7px 1px rgba(89,91,131,0.39); 
-      box-shadow: 0px 3px 7px 1px rgba(89,91,131,0.39);
-  
-  }
-  .day-class:hover{
-      background-color: #595b83;
-      color: burlywood;
-      border: 1px solid burlywood;
-  }
-  #calendar input[type=checkbox]:checked + label {
-      background-color: crimson;
-      font-weight: bold;
-      color:#292B58;
-  }
