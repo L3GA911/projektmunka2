@@ -15,6 +15,7 @@ function addInput() {
         let x = document.createElement("INPUT");
         x.setAttribute("type", "date");
         x.setAttribute("id", i);
+        x.setAttribute("name", "child"+i);
         x.setAttribute("class", "rem");
         document.getElementById("form").insertBefore(x, document.getElementById("button"));
 

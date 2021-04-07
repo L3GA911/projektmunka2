@@ -33,11 +33,17 @@
                     <span>
 						<?php 
 							echo $userinfo['lastname'] . ' ' . $userinfo['firstname'] . ' ';
-							if ($userinfo['superuser']) {echo '(admin)';} 
+							if ($userinfo['role'] == 2) {echo '(superadmin)';} 
+                            if ($userinfo['role'] == 1) {echo '(cégfelelős)';} 
+                            if ($userinfo['role'] == 0) {echo '(munkavállaló)';} 
 						?>
 					</span>
                     <span> - </span>
-                    <span>Fiktív Kft.</span>
+                    <span>
+                    <?php 
+                    if (($userinfo['role'] == 0) || ($userinfo['role'] == 1)) { echo $extendeduserinfo['name']; } else echo 'Nincs cég';
+					?>
+                    </span>
                     <span>
                         <a href="logout.php">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 -1.5 16 16">
