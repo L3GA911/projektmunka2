@@ -7,20 +7,42 @@
         <title>Online munkaidő nyilvántartó rendszer</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet"> 
+		<!--Bootstrap-->
+		<link href="styles/bootstrap.css" rel="stylesheet">
 		
+		<!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet"/>
+
+		<!--jQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<!--Weboldal működés JavaScript-->
 		<script type="text/javascript" src="js/js.js"></script>
-		<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+		
+		<!--Dátum választó JavaScript-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 		<script src="js/bootstrap-datepicker.hu.min.js"></script>
 		
-
-        <link rel="stylesheet" href="styles/bootstrap-table.css"> 
-        <link rel="stylesheet" href="styles/bootstrap-datepicker_min.css"> 
-        <link rel="stylesheet" href="styles/style.css">
+		<!--Dátumválasztó CSS-->
+        <link rel="stylesheet" href="styles/bootstrap-datepicker_min.css"/>
 		
+		<!--Weboldal design CSS-->
+        <link rel="stylesheet" href="styles/style.css"  type="text/css" />
+		<script>
+
+	$(document).ready(function () {
+		$('#dtBasicExample').DataTable({
+			"ordering": true,
+			"paging": true,
+			"searching": true
+		});
+		$('.dataTables_length').addClass('bs-select');
+	});
+	});
+</script>
+
+
 	</head>
 
     <body>
