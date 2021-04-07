@@ -12,6 +12,9 @@
                             </div>
                         </li>
                         <li>
+                        <?php
+                        if ($userinfo['role'] == 2) {
+                            echo '
                             <div class="tooltip">
                                 <a href="superadmin.php">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
@@ -21,6 +24,8 @@
                                 </a>
                                 <span class="tooltiptext">SuperAdmin</span>
                             </div>
+                        ';}
+                        ?>
                         </li>
                         <li>
                             <div class="tooltip">
