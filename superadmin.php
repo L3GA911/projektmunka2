@@ -99,16 +99,18 @@ switch ($hiba) {
     <span class="navname">Lehetőségek</span>
         <ul>
             <li onClick="pageLoad('sa_add_new_firm')">Új cég regisztrálása</li>
-            <li onClick="pageLoad('sa_access_management')">Jogosultságok kezelése</li>
-            <li onClick="pageLoad('sa_dayoff_management')">Szabadságok kezelése</li>
+            <li onClick="pageLoad('sa_firm_delete')">Cég törlése</li>
+            <li onClick="pageLoad('sa_user_delete')">Felhasználó törlése</li>
         </ul>
 </div>
 <div id="content" class="content">
     <span class="navname">SuperAdmin</span><br>
-    <span>A SuperAdmin korlátlan jogosultsággal rendelkezik a teljes rendszer felett.</span>
+    <span>A SuperAdmin cégek létrehozására, felhasználók és cégek törlésére jogosult.</span>
 </div>
 
 <script>
+	$(':root').css("--changeImage", "url('../svg/construction_black_24dp.svg')");
+</script>
 
 <?php
     include_once ('bottom.php');

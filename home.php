@@ -9,7 +9,10 @@
         A program használatához kérem válasszon a bal oldali menüpontok közül.
     </span>
 </div>
-
+<script>
+	$(':root').css("--changeImage", "url('../svg/maps_home_work_black_24dp.svg')");
+</script>
 <?php
     include_once ('bottom.php');
 ?>
+

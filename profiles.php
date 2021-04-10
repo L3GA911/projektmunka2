@@ -104,13 +104,17 @@ switch ($hiba) {
             <li onClick="pageLoad('p_add')">Dolgozó felvétele</li>
             <li onClick="pageLoad('p_delete')">Dolgozó törlése</li>
             <li onClick="pageLoad('p_list')">Dolgozók listája</li>
-            <li onClick="pageLoad('p_edit')">Dolgozói profilok szerkesztése</li>
         </ul>
 </div>
 <div id="content" class="content">
-    <span class="navname">Dolgozói profilok szerkesztése</span><br>
-    <span>A munkavállalók profiljának szerkesztése válasszon a baloldalon található menüpontok közül.</span>
+	<span class="navname">Dolgozói profilok szerkesztése</span><br>
+	<span>A munkavállalók profiljának szerkesztése válasszon a baloldalon található menüpontok közül.</span>
 </div>
+
+<script>
+	$(':root').css("--changeImage", "url('../svg/group_black_24dp.svg')");
+</script>
+
 <?php
     include_once ('bottom.php');
 ?>

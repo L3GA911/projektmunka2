@@ -1,10 +1,9 @@
-
-<span class="navname">Új cég regisztrálása - SuperAdmin</span>
+<span class="navname">Új cég rögzítése</span>
 <div class="content_container">
     <div class="form_content">
         <form action="" method="post" autocomplete="off">
             <label for="firmname">Cégnév:</label><br>
-            <input type="text" id="firmname" name="firmname" required placeholder="Adja meg az új cég nevét..."><br>
+            <input type="text" id="firmname" name="firmname" required placeholder="Cégnév"><br>
             <label for="cform">Cégforma:</label><br>
             <select id="cform" name="cform">
                 <option value="" selected disabled>Kérem válasszon...</option>
@@ -16,21 +15,21 @@
                 <option value="6">EV</option>
             </select><br>
             <label for="headquarters">Székhely</label><br>
-            <input type="text" id="headquarters" name="headquarters" required placeholder="Adja meg az új cég székhelyét..."><br>
+            <input type="text" id="headquarters" name="headquarters" required placeholder="Székhely"><br>
             <label for="fadminlastn">A cég felelős vezetékneve:</label><br>
-            <input type="text" id="fadminlastn" name="fadminlastn" required placeholder="Adja meg a cég felelős személyét..."><br>
+            <input type="text" id="fadminlastn" name="fadminlastn" required placeholder="Vezetéknév"><br>
 			<label for="fadminfirstn">A cég felelős keresztneve:</label><br>
-            <input type="text" id="fadminfirstn" name="fadminfirstn" required placeholder="Adja meg a cég felelős személyét..."><br>
+            <input type="text" id="fadminfirstn" name="fadminfirstn" required placeholder="Keresztnév"><br>
             <label for="username">Felhasználónév:</label><br>
-            <input type="text" id="username" name="username" required placeholder="Felelős személy felhasználóneve..."><br>
+            <input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>
             <label for="password">Jelszó:</label><br>
-            <input type="password" id="password" name="password" required placeholder="Felelős személy jelszava..."><br>
+            <input type="password" id="password" name="password" required placeholder="Jelszó"><br>
 		    <label for="password">Jelszó megerősítése:</label><br>
-            <input type="password" id="passwordc" name="passwordc" required placeholder="Jelsző megerősítése.."><br>
+            <input type="password" id="passwordc" name="passwordc" required placeholder="Jelsző megerősítése"><br>
             <label for="email">E-mail:</label><br>
-            <input type="email" id="email" name="email" required placeholder="Felelős személy e-mail címe..."><br>
+            <input type="email" id="email" name="email" required placeholder="E-mail"><br>
             <div class="button_center">
-                <button id="button" value="newfirm" name="newfirm" class="button">Regisztrálása</button>
+                <button id="button" value="newfirm" name="newfirm" class="button">Rögzítés</button>
             </div>
         </form>
     </div>

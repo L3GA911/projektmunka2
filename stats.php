@@ -16,6 +16,11 @@
         A dolgozók munkaidejével kapcsolatos statisztikák lekérdezéséhez használja a bal oldali menüpontokat.
     </span>
 </div>
+
+<script>
+	$(':root').css("--changeImage", "url('../svg/stacked_bar_chart_black_24dp.svg')");
+</script>
+
 <?php
     include_once ('bottom.php');
 ?>
