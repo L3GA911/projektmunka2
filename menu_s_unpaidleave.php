@@ -1,1 +1,0 @@
-<span class="navname">Statisztika - Fizetelen távollét</span>

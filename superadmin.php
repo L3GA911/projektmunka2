@@ -77,19 +77,34 @@ if (isset($_POST['newfirm'])) {
 //hibák kezelése
 switch ($hiba) {
 	case 0:
-		echo '<script>alert("Minden rendben!")</script>';
+		echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Sikeres regisztráció!
+			  </div>';
 		break;
 	case 1:
-		echo '<script>alert("Nincs kitöltve minden mező!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Nincs kitöltve minden mező!
+			  </div>';
 		break;
 	case 2:
-		echo '<script>alert("Már létezik ilyen felhasználónév vagy e-mail cím!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Már létező felhasználónév vagy e-mail cím!
+			  </div>';
 		break;
 	case 3:
-		echo '<script>alert("A két jelszó nem egyezik meg!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				A jelszók nem egyeznek!
+			  </div>';
 		break;
 	case 4:
-		echo '<script>alert("Már létezik ilyen cégnév!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Már regisztrált cégnév!
+			  </div>';
 		break;
 	}
 }

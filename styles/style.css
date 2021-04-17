@@ -139,17 +139,18 @@ body{
     padding: 2rem 0.5rem 0 0.5rem;
 }
 .content{
-    padding-left: 2rem;
     width: 100%;
     height: auto;
-    padding: 2rem 0.5rem 0 0.5rem;
+    padding: 2rem;
     overflow: auto;
 }
 .content_container{
     width: 100%;
     height: auto;
     display: flex;
+	flex-direction: column;
     justify-content: center;
+	align-items: center;
 }
 .content_container_stats{
     width: 100%;
@@ -218,6 +219,7 @@ label{
 input[type=text], 
 input[type=password], 
 input[type=email], 
+input[type=time], 
 input[type=date]{
     width: 15rem;
     padding: 0.4rem 0.8rem;
@@ -225,9 +227,13 @@ input[type=date]{
 	border-radius: 0.3rem;
     color: var(--purple-dark);
 }
+ input[type=time]{
+	 width:6.5rem;
+ }
 input[type=text]:focus, 
 input[type=password]:focus, 
 input[type=email]:focus, 
+input[type=time]:focus, 
 input[type=date]:focus {
     border-left: 4px solid var(--purple-dark);
     background: var(--purple-light);
@@ -237,7 +243,8 @@ input[type=date]:focus {
 input[type=text]:active, 
 input[type=password]:active, 
 input[type=email]:active, 
-input[type=date]:active {
+input[type=date]:active,
+input[type=time]:active {
     border-left: 4px solid var(--purple-dark);
     background: var(--purple-light);
     outline: none;
@@ -249,6 +256,9 @@ select{
     border: 1px solid #ced4da;
 	border-radius: 0.3rem;
     color: #000;
+  }
+.tform{
+    width: 7rem;
   }
 select:active{
     border: 1px solid #ced4da;
@@ -386,7 +396,13 @@ table#dayofflist tr td {
 div.dataTables_wrapper div.dataTables_filter input{
 	margin-left: -0.8rem;
 }
-
+.alert{
+	position: absolute;
+	top: 5rem; 
+	left: 50%;
+	transform: translate(-50%,-90%);
+	width: 22rem;
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */

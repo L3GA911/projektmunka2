@@ -20,14 +20,12 @@ body{
 	".		main	."
 	".		.		."
 }
-
 .alert{
 	position: absolute;
 	top: 0; 
 	left: 50%;
-  transform: translate(-50%,-90%);
+	transform: translate(-50%,-90%);
 	width: 22rem;
-
 }
 main{
 	display: flex;
