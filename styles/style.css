@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+
 :root{
 	/*színek*/
 	--purple-light: #A7A8BD;
 	--purple-dark: #595b83;
 	
-	/*háttér URL*/
+	/*háttér URL kép cseréléséhez*/
 	--changeImage: url('');
 }
 
@@ -12,9 +14,6 @@
     margin: 0;
     padding: 0;
 }
-html{
-    height: 100%;
-}
 body{
 	font-family: 'Poppins', sans-serif;
     font-weight: 200;
@@ -22,10 +21,8 @@ body{
 }
 .container{
     width: 100%;
-    height: 100%;
     margin-right: auto;
-    margin-left: auto;  
-    position: relative;
+    margin-left: auto;
 }
 .information{
     display: flex;
@@ -38,6 +35,7 @@ body{
     text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 	border-bottom: 0.3rem solid var(--purple-light);
 }
+
 .information-left{
     flex-grow: 3;
     display: flex;
@@ -69,7 +67,8 @@ body{
 .maincontent{
     display: flex;
     font-size: 1rem;
-    height: 91.3vh;
+	align-items: stretch;
+	height: calc(100vh - 3rem);
 }
 .navigation{
     background-color: var(--purple-dark);
@@ -80,7 +79,7 @@ body{
 }
 .content{
 	width:100%;
-	height:100%;
+	height: fit-content;
 }
 .content::after{
 	content: "";
@@ -393,9 +392,7 @@ table#dayofflist tr td {
 #table tr th.hidden::after, #table tr th.hidden::before{
 	content: "";
 }
-div.dataTables_wrapper div.dataTables_filter input{
-	margin-left: -0.8rem;
-}
+
 .alert{
 	position: absolute;
 	top: 5rem; 
@@ -509,4 +506,63 @@ div.dataTables_wrapper div.dataTables_filter input{
 	margin-left: 1rem;
 	background-color: crimson;
 	color: #fff;
+}
+@media screen and (max-width: 750px) {
+  .information {
+    flex-direction: column;
+	height: auto;
+  }
+  .information-left, .information-right{
+    flex-grow: 1;
+    align-items: center;
+	justify-content: center;
+  }
+  .information-right span:nth-child(4){
+	  display: block;
+	  position: absolute;
+	  right: 1rem;
+	  top: 0.8rem;
+	  color: var(--purple-light);
+  }
+  .information-right span{
+	  color: #fff;
+  } 
+  .content{
+	  padding: 1rem;
+  }
+  .content::after{
+	background-size: 20rem 20rem;
+	background-position: bottom right;
+}
+
+@media screen and (max-width: 600px) {
+  .maincontent{
+	  flex-direction: column;
+  }
+  .navigation, .navigation2{
+	  width: 100%
+  }
+  .navigation2{
+	  padding-top: 0.2rem;
+	  text-align: center;
+	  border-bottom: 5px solid var(--purple-dark);
+  }
+  .navigation ul {
+    padding-top: 0.5rem;
+	margin-bottom: 0;
+  }  
+  .navigation ul li {
+    float: left;
+	margin-right: 0.8rem;
+	padding-bottom: 0.6rem;
+  }
+  .navigation2 ul{
+	  margin-bottom: 0;
+  }
+  .tooltip span{
+	  display: none;
+  }
+  .navname{
+	  padding-bottom: 0.5rem;
+  }
 }

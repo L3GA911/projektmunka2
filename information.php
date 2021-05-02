@@ -13,10 +13,6 @@
 		<!--Bootstrap Datatable CSS-->
 		<link rel="stylesheet" type="text/css" href="styles/dataTables.bootstrap5.min.css">
 				
-		<!--Google Fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet"/>
-				
 		<!--jQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
