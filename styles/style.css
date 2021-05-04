@@ -507,6 +507,83 @@ table#dayofflist tr td {
 	background-color: crimson;
 	color: #fff;
 }
+
+/************* Lenyíló menü **************/
+
+.dropbtn {
+  background-color: var(--purple-dark);
+  color: white;
+  padding: 1rem 2.4rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: var(--purple-light);
+}
+
+input#dropdown_search {
+  box-sizing: border-box;
+  background-image: url('../img/outline_search_black_24dp.png');
+  background-position: 0.2rem;
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  font-size: 1rem;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 5px solid #ddd;
+  border-radius: 0;
+}
+
+input#dropdown_search:focus {outline: 3px solid #ddd;
+    border-left: none;
+    background: #fff;
+    outline: none;
+    color: #000;
+	background-image: url('../img/outline_search_black_24dp.png');
+	background-position: 0.2rem;
+	background-size: 2rem;
+	background-repeat: no-repeat;
+
+}
+
+input#dropdown_search:active {
+    border-left: none;
+    background-color: #fff;
+    outline: none;
+    color: #fff;
+  }
+  
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+  top: 5rem;
+  left:0;
+  transform: translateX(0);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+
 @media screen and (max-width: 750px) {
   .information {
     flex-direction: column;
