@@ -392,7 +392,9 @@ table#dayofflist tr td {
 #table tr th.hidden::after, #table tr th.hidden::before{
 	content: "";
 }
-
+#table tr td{
+	text-align: center;
+}
 .alert{
 	position: absolute;
 	top: 5rem; 
@@ -604,14 +606,68 @@ input#dropdown_search:active {
   .information-right span{
 	  color: #fff;
   } 
-  .content{
-	  padding: 1rem;
-  }
   .content::after{
 	background-size: 20rem 20rem;
-	background-position: bottom right;
+    background-position: bottom right;
+  }
 }
 
+@media screen and (max-width: 1050px) {
+	.modal-content{
+		width: 60%;
+	}
+}
+@media screen and (max-width: 950px) {
+	table.table2 thead{
+		display: none;
+	}
+	table.table2, table.table2 tbody, table.table2 tr, table.table2 td{
+		display: block;
+	}
+	table.table2{
+		width: 50vw;
+		border: none;
+		opacity: 0.7;
+		color: var(--purple-dark);
+	}
+	table.table2 tbody tr:nth-of-type(odd){
+		--bs-table-accent-bg: none;
+	}	
+	table.table2 tr{
+		margin-bottom: 4rem;
+		border: none;
+	}
+	table.table2 tr:last-of-type{
+		margin-bottom: 1rem;
+	}	
+	table.table2 tr td{
+		position: relative;
+		font-weight: 300;
+		border: none;
+	}
+	table#table tr td{
+		text-align: right;
+	}
+
+	table.table2 tr td:nth-of-type(odd){
+		background-color: #ced4da;
+	}
+	
+	table.table2 td:before{
+		content: attr(data-label);
+		position: absolute;
+		left:5px;
+		text-align: left;
+		vertical-align: middle;
+		font-weight: bold;
+		color: var(--purple-dark);
+	}
+}
+
+@media screen and (max-width: 700px) {
+  .modal-content{
+		width: 80%;
+	}
 @media screen and (max-width: 600px) {
   .maincontent{
 	  flex-direction: column;
@@ -642,4 +698,10 @@ input#dropdown_search:active {
   .navname{
 	  padding-bottom: 0.5rem;
   }
+  .content{
+	  padding: 1rem;
+  }
+   table.table2{
+	  width: 90vw;
+   }
 }

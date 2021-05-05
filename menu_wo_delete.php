@@ -1,17 +1,21 @@
 <span class="navname">Szabadsági kérelem törlése</span>
 <div class="content_container">
-  <table id="table" class="table table-striped table-bordered">
+<?php
+	$id = "ID";
+	$datum = "Kérv. szabadság napja";
+?>
+<table id="table" class="table table-striped table-bordered table2">
     <thead class="table-dark">
       <tr>
-        <th>ID</th>
-        <th>Kérvényezett szabadság napja</th>
+        <th><?=$id;?></</th>
+        <th><?=$datum;?></</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>12345</td>
-        <td>2015.04.26</td>
+        <td data-label="<?=$id;?>">12345</td>
+        <td data-label="<?=$datum;?>">2015.04.26</td>
         <td>
 			<button class="button_table">Törlés</button>
 		</td>

@@ -1,29 +1,52 @@
 <span class="navname">Dolgozó listája</span>
 <div class="content_container">
-  <table id="table" class="table table-striped table-bordered">
+<?php
+	$id = "ID";
+	$vez_nev = "Vezetéknév";
+	$ker_nev = "Keresztnév";
+	$felh_nev = "Felhasználónév";
+	$cim = "Cím";
+	$jelszo = "Jelszó";
+	$email = "E-mail";
+	$gyerekek = "Gyerekek száma";
+?>
+  <table id="table" class="table table-striped table-bordered table2">
     <thead class="table-dark">
       <tr>
-        <th>ID</th>
-        <th>Vezetéknév</th>
-        <th>Keresztnév</th>
-        <th>Felhasználónév</th>
-        <th>Cím</th>
-        <th>Jelszó</th>
-        <th>E-mail</th>
-        <th>Gyerekek száma</th>
+        <th><?=$id;?></th>
+        <th><?=$vez_nev;?></th>
+        <th><?=$ker_nev;?></th>
+        <th><?=$felh_nev;?></th>
+        <th><?=$cim;?></th>
+        <th><?=$jelszo;?></th>
+        <th><?=$email;?></th>
+        <th><?=$gyerekek;?></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>1</td>
-        <td>Valaki</td>
-        <td>Vagyok</td>
-        <td>HyperBolha1234</td>
-        <td>1234 Hely, Valami utca 46.</td>
-        <td>**********</td>
-        <td>HyperBolha1234@gmail.com</td>
-        <td>5</td>
+        <td data-label="<?=$id;?>">1</td>
+        <td data-label="<?=$vez_nev;?>">Valaki</td>
+        <td data-label="<?=$ker_nev;?>">Vagyok</td>
+        <td data-label="<?=$felh_nev;?>">HyperBolha1234</td>
+        <td data-label="<?=$cim;?>">1234 Hely, Valami utca 46.</td>
+        <td data-label="<?=$jelszo;?>">**********</td>
+        <td data-label="<?=$email;?>">HyperBolha1234@gmail.com</td>
+        <td data-label="<?=$gyerekek;?>">5</td>
+        <td>
+			<button id="edit" class="button_table">Szerkesztés</button>
+		</td>
+      </tr>      
+	  <tr>
+        <td data-label="<?=$id;?>">1</td>
+        <td data-label="<?=$vez_nev;?>">Valaki</td>
+        <td data-label="<?=$ker_nev;?>">Vagyok</td>
+        <td data-label="<?=$felh_nev;?>">HyperBolha1234</td>
+        <td data-label="<?=$cim;?>">1234 Hely, Valami utca 46.</td>
+        <td data-label="<?=$jelszo;?>">**********</td>
+        <td data-label="<?=$email;?>">HyperBolha1234@gmail.com</td>
+        <td data-label="<?=$gyerekek;?>">5</td>
         <td>
 			<button id="edit" class="button_table">Szerkesztés</button>
 		</td>
