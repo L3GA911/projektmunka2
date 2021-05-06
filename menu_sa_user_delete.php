@@ -7,7 +7,7 @@
 	$ceg_azon = "Céges azonosító";
 	$ceg = "Cég";
 ?>
-	  <table id="table" class="table table-striped table-bordered table2">
+	  <table id="table" class="table table-striped table-bordered table2 user_delete_size">
 		<thead class="table-dark">
 		  <tr>
 			<th><?=$id;?></th>

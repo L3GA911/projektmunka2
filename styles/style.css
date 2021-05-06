@@ -14,11 +14,13 @@
     margin: 0;
     padding: 0;
 }
+
 body{
 	font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-size: 16px;
 }
+
 .container{
     width: 100%;
     margin-right: auto;
@@ -331,6 +333,7 @@ table#dayofflist tr:last-of-type {
 table#dayofflist tr td {
 	padding: 0.5rem 2rem;
 }
+
   /*----------Tooltip----------*/
 
 /* Tooltip container */
@@ -585,31 +588,184 @@ input#dropdown_search:active {
 
 .show {display:block;}
 
+.firm_delete_size, 
+.wo_delete_size {
+	width: 42rem;
+}
+.firm_delete_size thead tr th:first-child, 
+.wo_delete_size thead tr th:first-child{
+	width: 1rem;
+}
 
-@media screen and (max-width: 750px) {
-  .information {
-    flex-direction: column;
-	height: auto;
-  }
-  .information-left, .information-right{
-    flex-grow: 1;
-    align-items: center;
-	justify-content: center;
-  }
-  .information-right span:nth-child(4){
-	  display: block;
-	  position: absolute;
-	  right: 1rem;
-	  top: 0.8rem;
-	  color: var(--purple-light);
-  }
-  .information-right span{
-	  color: #fff;
-  } 
-  .content::after{
-	background-size: 20rem 20rem;
-    background-position: bottom right;
-  }
+.firm_delete_size thead tr th:last-child, 
+.wo_delete_size thead tr th:last-child{
+	width: 1rem;
+}
+.user_delete_size {
+	width: 60rem;
+}
+.user_delete_size thead tr th:first-child{
+	width: 1rem;
+}
+.user_delete_size thead tr th:last-child{
+	width: 1rem;
+}
+
+.profiles_delete {
+	width: 60rem;
+}
+.profiles_delete thead tr th:first-child{
+	width: 1rem;
+}
+
+.profiles_delete thead tr th:last-child{
+	width: 1rem;
+}
+
+	.profiles_list_size thead{
+		display: none;
+	}
+	.profiles_list_size, .profiles_list_size tbody, .profiles_list_size tr, .profiles_list_size td{
+		display: block;
+	}
+	.profiles_list_size{
+		width: 32rem;
+		border: none;
+		opacity: 0.7;
+		color: var(--purple-dark);
+	}
+	.profiles_list_size tbody tr:nth-of-type(odd){
+		--bs-table-accent-bg: none;
+	}	
+	.profiles_list_size tr{
+		margin-bottom: 4rem;
+		border: none;
+	}
+	.profiles_list_size tr:last-of-type{
+		margin-bottom: 1rem;
+	}	
+	.profiles_list_size tr td{
+		position: relative;
+		font-weight: 300;
+		border: none;
+	}
+	.profiles_list_size tr td{
+		text-align: right !important;
+	}
+
+	.profiles_list_size tr td:nth-of-type(odd){
+		background-color: #ced4da;
+	}
+	
+	.profiles_list_size td:before{
+		content: attr(data-label);
+		position: absolute;
+		left:5px;
+		text-align: left;
+		vertical-align: middle;
+		font-weight: bold;
+		color: var(--purple-dark);
+	}
+	.working_hours_size {
+		width: auto;
+	}
+	
+
+@media screen and (max-width: 1500px) {
+	.profiles_list_size{
+		width: 40vw;
+	}
+}
+@media screen and (max-width: 1230px) {
+	.user_delete_size thead{
+		display: none;
+	}
+	.user_delete_size, .user_delete_size tbody, .user_delete_size tr, .user_delete_size td{
+		display: block;
+	}
+	.user_delete_size{
+		width: 40vw;
+		border: none;
+		opacity: 0.7;
+		color: var(--purple-dark);
+	}
+	.user_delete_size tbody tr:nth-of-type(odd){
+		--bs-table-accent-bg: none;
+	}	
+	.user_delete_size tr{
+		margin-bottom: 4rem;
+		border: none;
+	}
+	.user_delete_size tr:last-of-type{
+		margin-bottom: 1rem;
+	}	
+	.user_delete_size tr td{
+		position: relative;
+		font-weight: 300;
+		border: none;
+	}
+	.user_delete_size tr td{
+		text-align: right !important;
+	}
+
+	.user_delete_size tr td:nth-of-type(odd){
+		background-color: #ced4da;
+	}
+	
+	.user_delete_size td:before{
+		content: attr(data-label);
+		position: absolute;
+		left:5px;
+		text-align: left;
+		vertical-align: middle;
+		font-weight: bold;
+		color: var(--purple-dark);
+	}
+	
+	.profiles_delete thead{
+		display: none;
+	}
+	.profiles_delete, .profiles_delete tbody, .profiles_delete tr, .profiles_delete td{
+		display: block;
+	}
+	.profiles_delete{
+		width: 40vw;
+		border: none;
+		opacity: 0.7;
+		color: var(--purple-dark);
+	}
+	.profiles_delete tbody tr:nth-of-type(odd){
+		--bs-table-accent-bg: none;
+	}	
+	.profiles_delete tr{
+		margin-bottom: 4rem;
+		border: none;
+	}
+	.profiles_delete tr:last-of-type{
+		margin-bottom: 1rem;
+	}	
+	.profiles_delete tr td{
+		position: relative;
+		font-weight: 300;
+		border: none;
+	}
+	.profiles_delete tr td{
+		text-align: right !important;
+	}
+
+	.profiles_delete tr td:nth-of-type(odd){
+		background-color: #ced4da;
+	}
+	
+	.profiles_delete td:before{
+		content: attr(data-label);
+		position: absolute;
+		left:5px;
+		text-align: left;
+		vertical-align: middle;
+		font-weight: bold;
+		color: var(--purple-dark);
+	}
 }
 
 @media screen and (max-width: 1050px) {
@@ -617,6 +773,7 @@ input#dropdown_search:active {
 		width: 60%;
 	}
 }
+
 @media screen and (max-width: 950px) {
 	table.table2 thead{
 		display: none;
@@ -664,11 +821,7 @@ input#dropdown_search:active {
 	}
 }
 
-@media screen and (max-width: 700px) {
-  .modal-content{
-		width: 80%;
-	}
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   .maincontent{
 	  flex-direction: column;
   }
@@ -704,4 +857,84 @@ input#dropdown_search:active {
    table.table2{
 	  width: 90vw;
    }
+}
+
+
+@media screen and (max-width: 750px) {
+  .information {
+    flex-direction: column;
+	height: auto;
+  }
+  .information-left, .information-right{
+    flex-grow: 1;
+    align-items: center;
+	justify-content: center;
+  }
+  .information-right span:nth-child(4){
+	  display: block;
+	  position: absolute;
+	  right: 1rem;
+	  top: 0.8rem;
+	  color: var(--purple-light);
+  }
+  .information-right span{
+	  color: #fff;
+  } 
+  .content::after{
+	background-size: 20rem 20rem;
+    background-position: bottom right;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .modal-content{
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.working_hours_size thead{
+		display: none;
+	}
+	.working_hours_size, .working_hours_size tbody, .working_hours_size tr, .working_hours_size td{
+		display: block;
+	}
+	.working_hours_size{
+		width: 90vw;
+		border: none;
+		opacity: 0.7;
+		color: var(--purple-dark);
+	}
+	.working_hours_size tbody tr:nth-of-type(odd){
+		--bs-table-accent-bg: none;
+	}	
+	.working_hours_size tr{
+		margin-bottom: 4rem;
+		border: none;
+	}
+	.working_hours_size tr:last-of-type{
+		margin-bottom: 1rem;
+	}	
+	.working_hours_size tr td{
+		position: relative;
+		font-weight: 300;
+		border: none;
+	}
+	.working_hours_size tr td{
+		text-align: right !important;
+	}
+
+	.working_hours_size tr td:nth-of-type(odd){
+		background-color: #ced4da;
+	}
+	
+	.working_hours_size td:before{
+		content: attr(data-label);
+		position: absolute;
+		left:5px;
+		text-align: left;
+		vertical-align: middle;
+		font-weight: bold;
+		color: var(--purple-dark);
+	}
 }

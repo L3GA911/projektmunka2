@@ -15,13 +15,19 @@
 			</select>
         </form>
     </div>
-  <table id="table" class="table table-striped">
+<?php
+	$nap = "Nap";
+	$kezdes = "Kezdés";
+	$befejezes = "Befejezés";
+	$tipus = "Típus";
+?>
+  <table id="table" class="table table-striped working_hours_size">
     <thead class="table-dark">
       <tr>
-        <th>Nap</th>
-        <th>Kezdés</th>
-        <th>Befejezés</th>
-        <th>Típus</th>
+        <th><?=$nap;?></th>
+        <th><?=$kezdes;?></th>
+        <th><?=$befejezes;?></th>
+        <th><?=$tipus;?></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -31,14 +37,14 @@
 	for ($i=1; $i<=31; $i++){
 		echo '
 			  <tr>
-				<td>'.$i.'</td>
-				<td>            
+				<td data-label="'.$nap.'">'.$i.'</td>
+				<td data-label="'.$kezdes.'">            
 					<input type="time" id="startwork" name="startwork" value="06:00"><br>
 				</td>
-				<td>            
+				<td data-label="'.$befejezes.'">            
 					<input type="time" id="endwork" name="endwork" value="14:00"><br>
 				</td>
-				<td>
+				<td data-label="'.$tipus.'">
 					<select id="tform" class="tform" name="tform">
 						<option value="1">MUN</option>
 						<option value="2">SZA</option>

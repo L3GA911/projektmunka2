@@ -10,7 +10,7 @@
 	$email = "E-mail";
 	$gyerekek = "Gyerekek száma";
 ?>
-  <table id="table" class="table table-striped table-bordered table2">
+  <table id="table" class="table table-striped table-bordered table2 profiles_list_size">
     <thead class="table-dark">
       <tr>
         <th><?=$id;?></th>
@@ -38,6 +38,32 @@
 			<button id="edit" class="button_table">Szerkesztés</button>
 		</td>
       </tr>      
+	  <tr>
+        <td data-label="<?=$id;?>">1</td>
+        <td data-label="<?=$vez_nev;?>">Valaki</td>
+        <td data-label="<?=$ker_nev;?>">Vagyok</td>
+        <td data-label="<?=$felh_nev;?>">HyperBolha1234</td>
+        <td data-label="<?=$cim;?>">1234 Hely, Valami utca 46.</td>
+        <td data-label="<?=$jelszo;?>">**********</td>
+        <td data-label="<?=$email;?>">HyperBolha1234@gmail.com</td>
+        <td data-label="<?=$gyerekek;?>">5</td>
+        <td>
+			<button id="edit" class="button_table">Szerkesztés</button>
+		</td>
+      </tr>
+	  <tr>
+        <td data-label="<?=$id;?>">1</td>
+        <td data-label="<?=$vez_nev;?>">Valaki</td>
+        <td data-label="<?=$ker_nev;?>">Vagyok</td>
+        <td data-label="<?=$felh_nev;?>">HyperBolha1234</td>
+        <td data-label="<?=$cim;?>">1234 Hely, Valami utca 46.</td>
+        <td data-label="<?=$jelszo;?>">**********</td>
+        <td data-label="<?=$email;?>">HyperBolha1234@gmail.com</td>
+        <td data-label="<?=$gyerekek;?>">5</td>
+        <td>
+			<button id="edit" class="button_table">Szerkesztés</button>
+		</td>
+      </tr>
 	  <tr>
         <td data-label="<?=$id;?>">1</td>
         <td data-label="<?=$vez_nev;?>">Valaki</td>

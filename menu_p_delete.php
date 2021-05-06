@@ -7,7 +7,7 @@
 	$felh_nev = "Felhasználónév";
 ?>
 
-  <table id="table" class="table table-striped table-bordered table2">
+  <table id="table" class="table table-striped table-bordered table2 profiles_delete">
     <thead class="table-dark">
       <tr>
         <th><?=$id;?></th>
@@ -27,6 +27,15 @@
 			<button class="button_table">Törlés</button>
 		</td>
       </tr>      
+	  <tr>
+        <td data-label="<?=$id;?>">1</td>
+        <td data-label="<?=$vez_nev;?>">Valaki</td>
+        <td data-label="<?=$ker_nev;?>">Vagyok</td>
+        <td data-label="<?=$felh_nev;?>">HyperBolha1234</td>
+        <td>
+			<button class="button_table">Törlés</button>
+		</td>
+      </tr>
 	  <tr>
         <td data-label="<?=$id;?>">1</td>
         <td data-label="<?=$vez_nev;?>">Valaki</td>

@@ -6,7 +6,7 @@
 			$cegnev = "Cégnév";
 			$vezeto = "Vezető";
 		?>
-	  <table id="table" class="table table-striped table-bordered table2">
+	  <table id="table" class="table table-striped table-bordered table2 firm_delete_size">
 		<thead class="table-dark">
 		  <tr>
 			<th><?=$id;?></th>
@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 		  <tr>
-			<td data-label="<?=$id;?>">1</td>
+			<td data-label="<?=$id;?>">133</td>
 			<td data-label="<?=$cegnev;?>">Fantázia Kft.</td>
 			<td data-label="<?=$vezeto;?>">Valaki Vagyok</td>
 			<td>
