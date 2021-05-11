@@ -98,7 +98,11 @@ switch ($hiba) {
 	case 3:
 		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+<<<<<<< HEAD
 				A jelszavak nem egyeznek!
+=======
+				A jelszók nem egyeznek!
+>>>>>>> 69c4f844fff9b10ae66bef404b04f568cea1202e
 			  </div>';
 		break;
 	case 4:

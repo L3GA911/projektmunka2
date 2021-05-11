@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 function firm_delete(firm_id) {
 		   $.ajax({url:"superadmin.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
@@ -79,6 +80,45 @@ echo '
   </div>';
 ?>
 </div>
+=======
+<span class="navname">Cég törlése</span>
+<div class="content_container">
+	<div class="table-responsive">
+		<?php
+			$id = "ID";
+			$cegnev = "Cégnév";
+			$vezeto = "Vezető";
+		?>
+	  <table id="table" class="table table-striped table-bordered table2 firm_delete_size">
+		<thead class="table-dark">
+		  <tr>
+			<th><?=$id;?></th>
+			<th><?=$cegnev;?></th>
+			<th><?=$vezeto;?></th>
+			<th></th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td data-label="<?=$id;?>">133</td>
+			<td data-label="<?=$cegnev;?>">Fantázia Kft.</td>
+			<td data-label="<?=$vezeto;?>">Valaki Vagyok</td>
+			<td>
+				<button class="button_table">Törlés</button>
+			</td>
+		  </tr>
+		  <tr>
+			<td data-label="<?=$id;?>">1</td>
+			<td data-label="<?=$cegnev;?>">Fantázia Kft.</td>
+			<td data-label="<?=$vezeto;?>">Valaki Vagyok</td>
+			<td>
+				<button class="button_table">Törlés</button>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+>>>>>>> 69c4f844fff9b10ae66bef404b04f568cea1202e
 </div>
 
 <script type="text/javascript">
@@ -102,5 +142,8 @@ echo '
 			}
 		});
 	});
+<<<<<<< HEAD
 
+=======
+>>>>>>> 69c4f844fff9b10ae66bef404b04f568cea1202e
 </script>
