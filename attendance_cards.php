@@ -12,6 +12,11 @@
     <span class="navname">Jelenléti ívek generálása</span><br>
     <span>A dolgozók hivatalos jelenléti íveinek létrehozásához használja a bal oldali menüpontokat.</span>
 </div>
+
+<script>
+	$(':root').css("--changeImage", "url('../svg/auto_stories_black_24dp.svg')");
+</script>
+
 <?php
     include_once ('bottom.php');
 ?>

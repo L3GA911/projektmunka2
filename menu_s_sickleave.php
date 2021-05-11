@@ -1,1 +1,0 @@
-<span class="navname">Statisztika - Betegszabadság</span>

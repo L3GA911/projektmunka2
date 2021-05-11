@@ -1,6 +1,6 @@
 <?php
-    include_once ('information.php');
-    include_once ('menu.php');
+    require ('information.php');
+    require ('menu.php');
 ?>
 
 <?php
@@ -20,13 +20,19 @@ if (isset($_POST['newperson'])) {
 			//Ha minden ki van töltve
 			$username = stripslashes($_REQUEST['username']);
 			$username = mysqli_real_escape_string($con, $username);
-			$query = "SELECT * FROM users WHERE username='".$username."' AND email='".$email."'";
+			$email = stripslashes($_REQUEST['email']);
+			$email = mysqli_real_escape_string($con, $email);
+			$query = "SELECT * FROM users WHERE username='".$username."' OR email='".$email."'";
 			$result = mysqli_query($con, $query) or die(mysql_error());
 			$rows = mysqli_num_rows($result);
 			if ($rows != 0) {
 				//Már létezik ilyen felhasználónév vagy e-mail
 				$hiba = 2;
 			} else {
+				$password = stripslashes($_REQUEST['password']);
+				$password = mysqli_real_escape_string($con, $password);
+				$passwordc = stripslashes($_REQUEST['passwordc']);
+				$passwordc = mysqli_real_escape_string($con, $passwordc);
                 if ($password != $passwordc) {
                     //Nem egyezik a két jelszó
                     $hiba = 3;
@@ -39,18 +45,12 @@ if (isset($_POST['newperson'])) {
                     $address = mysqli_real_escape_string($con, $address);
                     $username = stripslashes($_REQUEST['username']);
                     $username = mysqli_real_escape_string($con, $username);
-                    $password = stripslashes($_REQUEST['password']);
-                    $password = mysqli_real_escape_string($con, $password);
-                    $passwordc = stripslashes($_REQUEST['passwordc']);
-                    $passwordc = mysqli_real_escape_string($con, $passwordc);
-                    $email = stripslashes($_REQUEST['email']);
-                    $email = mysqli_real_escape_string($con, $email);
                     $numbersOfChildren = stripslashes($_REQUEST['numbersOfChildren']);
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
                     $query = "INSERT INTO users (username, password, firstname, lastname, role, email) 
-                              VALUES ('$username', '".md5($password)."', '$fadminfirstn', '$fadminlastn', '0', '$email' )"; //új felhasználó
+                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '0', '$email' )"; //új felhasználó
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                     
                     $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
@@ -80,19 +80,34 @@ if (isset($_POST['newperson'])) {
 //hibák kezelése
 switch ($hiba) {
 	case 0:
-		echo '<script>alert("Minden rendben!")</script>';
+		echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Sikeres regisztráció!
+			  </div>';
 		break;
 	case 1:
-		echo '<script>alert("Nincs kitöltve minden mező!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Nincs kitöltve minden mező!
+			  </div>';
 		break;
 	case 2:
-		echo '<script>alert("Már létezik ilyen felhasználónév vagy e-mail cím!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Már létező felhasználónév vagy e-mail cím!
+			  </div>';
 		break;
 	case 3:
-		echo '<script>alert("A két jelszó nem egyezik meg!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				A jelszók nem egyeznek!
+			  </div>';
 		break;
 	case 4:
-		echo '<script>alert("Már létezik ilyen cégnév!")</script>';
+		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
+				Már regisztrált felhasználói profil!
+			  </div>';
 		break;
 	}
 }
@@ -104,13 +119,17 @@ switch ($hiba) {
             <li onClick="pageLoad('p_add')">Dolgozó felvétele</li>
             <li onClick="pageLoad('p_delete')">Dolgozó törlése</li>
             <li onClick="pageLoad('p_list')">Dolgozók listája</li>
-            <li onClick="pageLoad('p_edit')">Dolgozói profilok szerkesztése</li>
         </ul>
 </div>
 <div id="content" class="content">
-    <span class="navname">Dolgozói profilok szerkesztése</span><br>
-    <span>A munkavállalók profiljának szerkesztése válasszon a baloldalon található menüpontok közül.</span>
+	<span class="navname">Dolgozói profilok szerkesztése</span><br>
+	<span>A munkavállalók profiljának szerkesztése válasszon a baloldalon található menüpontok közül.</span>
 </div>
+
+<script>
+	$(':root').css("--changeImage", "url('../svg/group_black_24dp.svg')");
+</script>
+
 <?php
     include_once ('bottom.php');
 ?>

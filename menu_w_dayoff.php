@@ -1,31 +1,53 @@
 <span class="navname">Szabadságok kezelése</span>
-
-<div class="content_container">
-    <div class="form_content">
-        <form id="date_picker" action="" method="" autocomplete="off">
-			<div id="datepicker"></div>
-			<input type="hidden" id="my_hidden_input">	
-			<div class="button_center">
-				<button id="button" class="button" type="submit" form="date_picker">Mentés</button>
+	<div class="content_container">
+		<div class="cc">
+			<button class="accordion">Valaki Vagyok - HyperBolha1234 - Fiktív Kft</button>
+			<div class="panel">
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
 			</div>
-        </form>
-    </div>
-</div>
+			<button class="accordion">Valaki Vagyok - HyperBolha1234 - Fiktív Kft</button>
+			<div class="panel">
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+				<div class="panel_list">
+					<span>2021.04.25</span>
+					<button class="button_table">Elfogadás</button>
+					<button class="button_table">Elutasítás</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-
-<script>
-	$('#datepicker').datepicker({
-		format: "yyyy/mm/dd",
-		language: "hu",
-		multidate: true,
-		calendarWeeks: true,
-		todayHighlight: true,
-		clearBtn: true,
-	});
-	
-	$('#datepicker').on('changeDate', function() {
-    $('#my_hidden_input').val(
-        $('#datepicker').datepicker('getFormattedDate')
-    );
-});
-</script>
+<script type="text/javascript" src="js/accordion.js"></script>
