@@ -10,10 +10,7 @@
             <input type="text" id="address" name="address" required placeholder="Lakhely címe"><br>
             <label for="username">A dolgozó felhasználóneve:</label><br>
             <input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>
-<<<<<<< HEAD
             <button class="button" type="button" onclick="getPW()">Véletlenszerű jelszó generálás</button></br>
-=======
->>>>>>> 69c4f844fff9b10ae66bef404b04f568cea1202e
             <label for="password">A dolgozó jelszava:</label><br>
             <input type="password" id="password" name="password" required placeholder="Jelszó"><br>
 		    <label for="passwordc">Jelszó megerősítése:</label><br>
