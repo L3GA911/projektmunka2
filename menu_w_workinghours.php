@@ -2,17 +2,19 @@
 <div class="content_container">
     <div class="form_content">
         <form action="" method="post" autocomplete="off">
-			<select id="" class="" name="">
-				<option value="" disabled selected>Hónap</option>
-				<option value="1">március</option>
-				<option value="2">április</option>
-				<option value="3">május</option>
-			</select>
-			<select id="" class="" name="">
-				<option value="" disabled selected>Dolgozó</option>
-				<option value="1">Valaki Vagyok</option>
-				<option value="2">Tatai Zoli</option>
-			</select>
+			<div>
+				<select id="" class="" name="">
+					<option value="" disabled selected>Hónap</option>
+					<option value="1">március</option>
+					<option value="2">április</option>
+					<option value="3">május</option>
+				</select>
+				<select id="" class="" name="">
+					<option value="" disabled selected>Dolgozó</option>
+					<option value="1">Valaki Vagyok</option>
+					<option value="2">Tatai Zoli</option>
+				</select>
+			</div>
         </form>
     </div>
 <?php

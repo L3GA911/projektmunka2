@@ -1,17 +1,3 @@
-<script>
-function list_firm_users(firm_id) {
-		   $.ajax({url:"query_handler.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
-		{
-			$("#list").html(result);
-		}});
-}
-function user_delete(user_id, firm_id) {
-		   $.ajax({url:"superadmin.php", type:"POST", data: ({user_id: user_id}), async:true, cache:false, success:function(result)
-		{
-			list_firm_users(firm_id); //a törlés után meghívjuk a függvényt
-		}});
-}
-</script>
 <?php
 require ('inc/auth_session.php');
 //Jogosultság ellenőrzése
@@ -26,12 +12,12 @@ $query = "SELECT * FROM companys";
 $result = mysqli_query($con, $query) or die(mysql_error());
 echo '
 <span class="navname">Felhasználó törlése</span>
-<ui>
-    <li>A cégfelelős törlésével a cég is törlésre kerül minden hozzátartozó adattal együtt.</li>
-	<li>A cégfelelős nem törölhető, amíg vannak egyéb dolgozók a cégnél.</li>
-</ui>
-
 <div class="content_container">
+<div class="information_text">
+    <span>Fontos információk</span><br><br>
+    <span>A cégfelelős törlésével a cég is törlésre kerül minden hozzátartozó adattal együtt.</span><br><br>
+	<span>A cégfelelős nem törölhető, amíg vannak egyéb dolgozók a cégnél.</span>
+</div>
 <div class="dropdown">
 		  <button onclick="open_list()" class="dropbtn">Cég kiválasztása</button>
 		  <div id="dropdown_list" class="dropdown-content">

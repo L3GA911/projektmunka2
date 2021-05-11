@@ -1,13 +1,3 @@
-<script>
-function firm_delete(firm_id) {
-		   $.ajax({url:"superadmin.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
-		{
-			// $("#content").html(result);
-			pageLoad('sa_firm_delete');
-		}});
-}
-</script>
-
 <!-- Cégek lekérdezése -->
 <?php
 require ('inc/auth_session.php');
@@ -25,14 +15,17 @@ if ($userinfo['role'] != 2) {
 <div id="content">
 <?php echo '<script type="text/javascript">foglalasaim()</script>'; ?>
 <?php
+	$firmid = "ID";
+	$firmname = "Cégnév";
+	$firmowner = "Vezető";
 echo '
     <div class="table-responsive">
     <table id="table" class="table table-striped table-bordered table2 firm_delete_size">
       <thead class="table-dark">
         <tr>
-          <th>ID</th>
-          <th>Cégnév</th>
-          <th>Cégfelelős</th>
+          <th>'.$firmid.'</th>
+          <th>'.$firmname.'</th>
+          <th>'.$firmowner.'</th>
           <th></th>
         </tr>
       </thead>
@@ -64,9 +57,9 @@ echo '
 		$firm_owner = $row["lastname"]." ".$row["firstname"];
       echo '
           <tr>
-              <td data-label="">'.$firm_id.'</td>
-              <td data-label="">'.$firm_name.'</td>
-              <td data-label="">'.$firm_owner.'</td>
+              <td data-label="'.$firmid.'">'.$firm_id.'</td>
+              <td data-label="'.$firmname.'">'.$firm_name.'</td>
+              <td data-label="'.$firmowner.'">'.$firm_owner.'</td>
               <td>
               <button onclick="firm_delete('.$firm_id.')" class="button_table">Törlés</button>
               </td>

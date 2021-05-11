@@ -5,9 +5,7 @@
         <form id="date_picker" action="" method="" autocomplete="off">
 			<div id="datepicker"></div>
 			<input type="hidden" id="my_hidden_input">	
-			<div class="button_center">
 				<button id="button" class="button" type="submit" form="date_picker">Mentés</button>
-			</div>
         </form>
     </div>
 </div>

@@ -1,3 +1,11 @@
+function firm_delete(firm_id) {
+		   $.ajax({url:"superadmin.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
+		{
+			// $("#content").html(result);
+			pageLoad('sa_firm_delete');
+		}});
+}
+
 function pageLoad(page) {
 	$("#content").load("menu_" + page + ".php");
 }
