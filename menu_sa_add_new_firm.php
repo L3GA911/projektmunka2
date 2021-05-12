@@ -7,6 +7,7 @@ if ($userinfo['role'] != 2) {
 }
 ?>
 <span class="navname">Új cég rögzítése</span>
+<?php  echo $extendeduserinfo['firm_id']?>
 <div class="content_container">
     <div class="form_content">
         <form action="" method="post" autocomplete="off">
@@ -29,7 +30,7 @@ if ($userinfo['role'] != 2) {
 				<img src="svg/info_black_24dp.svg" 
 					 tabindex="0" class="btninfo" role="button" data-bs-toggle="popover" data-bs-trigger="focus" 
 					 title="Információ" data-bs-content="A cégfelelős az a személy, aki a dolgozók felvételéhez, törléséhez, 
-					 valamint szabadságuk elfogadásához, elutasításához szükséges jogosultságokkal rendelkezik.
+					 valamint szabadságuk elfogadásához, elutasításához, továbbá a jelenlétiív elfogadásához, módosításához szükséges jogosultságokkal rendelkezik.
 					 A cégfelelős a dolgozók felvétele során képes másik személy számára is 'cégfelelős' státuszt adni.">
 				</img>
 				<br>

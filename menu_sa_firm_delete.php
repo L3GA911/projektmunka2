@@ -12,6 +12,10 @@ if ($userinfo['role'] != 2) {
 ?>
 <span class="navname">Cég törlése</span>
 <div class="content_container">
+<div class="information_text">
+    <span>Fontos információk</span><br><br>
+    <span>A cég törlése minden hozzátartozó adat törlését is maga után vonja!</span>
+</div>
 <div id="content">
 <?php echo '<script type="text/javascript">foglalasaim()</script>'; ?>
 <?php

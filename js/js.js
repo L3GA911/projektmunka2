@@ -1,3 +1,4 @@
+//--------------------AJAX--------------------
 function firm_delete(firm_id) {
 		   $.ajax({url:"superadmin.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
 		{
@@ -6,6 +7,27 @@ function firm_delete(firm_id) {
 		}});
 }
 
+function list_firm_users(firm_id) {
+		   $.ajax({url:"query_handler.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
+		{
+			$("#list").html(result);
+		}});
+}
+
+function user_delete_sa(user_id, firm_id) {
+		   $.ajax({url:"superadmin.php", type:"POST", data: ({user_id: user_id}), async:true, cache:false, success:function(result)
+		{
+			list_firm_users(firm_id); //a törlés után meghívjuk a függvényt
+		}});
+}
+
+function user_delete_p(user_id) {
+       $.ajax({url:"profiles.php", type:"POST", data: ({user_id: user_id}), async:true, cache:false, success:function(result)
+    {		
+      	pageLoad('p_delete');
+    }});
+}
+//----------------------------------------------
 function pageLoad(page) {
 	$("#content").load("menu_" + page + ".php");
 }

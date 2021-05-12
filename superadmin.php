@@ -56,8 +56,8 @@ if (isset($_POST['newfirm'])) {
 						$fadminlastn = stripslashes($_REQUEST['fadminlastn']);
 						$fadminlastn = mysqli_real_escape_string($con, $fadminlastn);
 						//Mehetnek az értékek az adatbázisba
-						$query = "INSERT INTO users (username, password, firstname, lastname, role, email) 
-								VALUES ('$username', '".md5($password)."', '$fadminfirstn', '$fadminlastn', '1', '$email' )"; //új felhasználó
+						$query = "INSERT INTO users (username, password, firstname, lastname, role, email, status) 
+								VALUES ('$username', '".md5($password)."', '$fadminfirstn', '$fadminlastn', '1', '$email', 'Cégfelelős' )"; //új felhasználó
 						$execute = mysqli_query($con, $query) or die(mysql_error());
 						
 						$query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz

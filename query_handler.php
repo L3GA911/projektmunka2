@@ -18,6 +18,7 @@ JOIN c_members ON c_id = companys.id
 JOIN users ON u_id = users.id
 WHERE companys.id = '$firm_id'";
 $result = mysqli_query($con, $query) or die(mysql_error());
+$users_count = $result->num_rows;
 
 //Cégfelelős felhasználók lekérdezése
 $query2 = "SELECT *, companys.id as firm_id FROM companys 
@@ -79,8 +80,9 @@ while ($row = $result2->fetch_assoc()) {
 		<td data-label="">'.$person_firstname.'</td>
 		<td data-label="">'.$person_status.'</td>
 		<td data-label="">'.$person_firm.'</td>
-		<td>
-		<button onclick="user_delete('.$user_id.')" class="button_table">Törlés</button>
+		<td>';
+		if ($users_count == 0) {echo '<button onclick="user_delete_sa('.$user_id.')" class="button_table">Törlés</button>';} else {echo '<button style="color: grey;" disabled class="button_table">Törlés</button>';}
+		echo'
 		</td>
 	</tr>';}
 //Normál felhasználók

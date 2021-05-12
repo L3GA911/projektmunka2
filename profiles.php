@@ -111,6 +111,16 @@ switch ($hiba) {
 		break;
 	}
 }
+
+//Felhasználó törlése
+@$user_id = $_REQUEST['user_id']; //user_delete
+if (isset($user_id)) {
+	//SQL kapcsolat létrehozása
+	$query = "DELETE FROM users WHERE id='$user_id'";
+	$result = mysqli_query($con, $query) or die(mysql_error());
+}
+
+
 ?>
 
 <div class="navigation2">
