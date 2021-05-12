@@ -129,6 +129,7 @@ if (isset($user_id)) {
             <li onClick="pageLoad('p_add')">Dolgozó felvétele</li>
             <li onClick="pageLoad('p_delete')">Dolgozó törlése</li>
             <li onClick="pageLoad('p_list')">Dolgozók listája</li>
+            <li onClick="pageLoad('p_positions')">Beosztások kezelése</li>
         </ul>
 </div>
 <div id="content" class="content">
