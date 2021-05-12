@@ -1,15 +1,5 @@
 <span class="navname">Beosztások kezelése</span>
 <div class="content_container">
-<?php
-	$id = "ID";
-	$vez_nev = "Vezetéknév";
-	$ker_nev = "Keresztnév";
-	$felh_nev = "Felhasználónév";
-	$cim = "Cím";
-	$jelszo = "Jelszó";
-	$email = "E-mail";
-	$gyerekek = "Gyerekek száma";
-?>
     <div id="makepos" class="form_content">
         <form action="" method="post" autocomplete="off">
 			<div>
