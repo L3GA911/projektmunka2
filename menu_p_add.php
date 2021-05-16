@@ -1,3 +1,25 @@
+<?php
+require ('inc/auth_session.php');
+//Jogosultság ellenőrzése
+if ($userinfo['role'] != 1) {
+	echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
+	exit();
+}
+
+//Céghez tartozó pozíciók lekérdezése
+$firm_id = $extendeduserinfo['firm_id'];
+$query = "SELECT * FROM companys 
+JOIN positions ON c_id = companys.id
+WHERE companys.id = '$firm_id' AND positions.id <> -1";
+$result = mysqli_query($con, $query) or die(mysql_error());
+$pos_count = $result->num_rows;
+
+if ($pos_count == 0) {
+    echo"<script type='text/javascript'>alert('A továbblépéshez először vegyél fel pozíciókat a rendszerbe!')</script>";
+    echo"<script type='text/javascript'>pageLoad('p_positions')</script>";
+    exit();
+}
+?>
 <span class="navname">Dolgozó felvétele</span>
 <div class="content_container">
     <div class="form_content">
@@ -7,7 +29,20 @@
 				<input type="text" id="lastname" name="lastname" required placeholder="Vezetéknév"><br>
 				<label for="firstname">A dolgozó keresztneve:</label><br>
 				<input type="text" id="firstname" name="firstname" required placeholder="Keresztnév"><br>
-				<label for="address">A dolgozó  lakhely</label><br>
+				<label for="position">A dolgozó pozíciója</label><br>
+                <select id="position" name="position">
+
+                    <option selected disabled value="">Kérem válasszon...</option>
+                    <?php
+                    while ($row = $result->fetch_assoc()) {
+                    $pos_id = $row["id"];
+                    $pos_name = $row["name"];
+                    echo'
+                    <option value="'.$pos_id.'">'.$pos_name.'</option>';
+                    }?>
+                </select>
+                <br>
+				<label for="address">A dolgozó  lakhelye</label><br>
 				<input type="text" id="address" name="address" required placeholder="Lakhely címe"><br>
 				<label for="username">A dolgozó felhasználóneve:</label><br>
             <input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>

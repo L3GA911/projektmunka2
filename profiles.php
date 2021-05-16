@@ -11,6 +11,7 @@ if (isset($_POST['newperson'])) {
 	if (($userinfo['role']==1) && 
 	(isset($_POST['lastname'])) && 
 	(isset($_POST['firstname'])) && 
+	(isset($_POST['position'])) && 
 	(isset($_POST['address'])) && 
 	(isset($_POST['username'])) && 
 	(isset($_POST['password'])) && 
@@ -41,6 +42,8 @@ if (isset($_POST['newperson'])) {
                     $lastname = mysqli_real_escape_string($con, $lastname);
                     $firstname = stripslashes($_REQUEST['firstname']);
                     $firstname = mysqli_real_escape_string($con, $firstname);
+					$position = stripslashes($_REQUEST['position']);
+                    $position = mysqli_real_escape_string($con, $position);
                     $address = stripslashes($_REQUEST['address']);
                     $address = mysqli_real_escape_string($con, $address);
                     $username = stripslashes($_REQUEST['username']);
@@ -49,8 +52,8 @@ if (isset($_POST['newperson'])) {
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
-                    $query = "INSERT INTO users (username, password, firstname, lastname, role, email) 
-                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '0', '$email' )"; //új felhasználó
+                    $query = "INSERT INTO users (username, password, firstname, lastname, role, email, status) 
+                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '0', '$email', $position)"; //új felhasználó
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                     
                     $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
@@ -62,6 +65,8 @@ if (isset($_POST['newperson'])) {
                     $query = "INSERT INTO c_members (c_id, u_id)
                     VALUES ('$companyid', '$userid')"; // új felhasználó kapcsolása a céghez (c_members)
                     $execute = mysqli_query($con, $query) or die(mysql_error());
+
+					
 
                     //annyiszor fut le a kód, ahány gyermek van
                     for($i=1; $i<=$numbersOfChildren; $i++){ 
@@ -113,12 +118,46 @@ switch ($hiba) {
 }
 
 //Felhasználó törlése
-@$user_id = $_REQUEST['user_id']; //user_delete
+@$user_id = $_REQUEST['user_id'];
 if (isset($user_id)) {
+	$user_id = stripslashes($user_id); 
 	//SQL kapcsolat létrehozása
+	$user_id = mysqli_real_escape_string($con, $user_id);
 	$query = "DELETE FROM users WHERE id='$user_id'";
 	$result = mysqli_query($con, $query) or die(mysql_error());
 }
+
+//Pozíció létrehozása
+@$pos_name = $_REQUEST['pos_name'];
+if (isset($pos_name)) {
+	$pos_name = stripslashes($pos_name); 
+	//SQL kapcsolat létrehozása
+	$firm_id = $extendeduserinfo['firm_id'];
+	$pos_name = mysqli_real_escape_string($con, $pos_name);
+	//Pozíció létezésének ellenőrzése
+	$query = "SELECT * FROM positions WHERE c_id = '$firm_id' AND name = '$pos_name'";
+	$result  = mysqli_query($con, $query);
+	$rows = mysqli_num_rows($result);
+	if ($rows == 0 && $pos_name != "") {
+		//Pozíció beírása az adatbázisba
+		$query = "INSERT INTO positions (name, c_id)
+		VALUES ('$pos_name',  '$firm_id')";
+		$execute = mysqli_query($con, $query) or die(mysql_error());
+	} 
+}
+
+
+//Pozíció törlése
+@$pos_id = $_REQUEST['pos_id']; 
+if (isset($pos_id)) {
+	$pos_id = stripslashes($pos_id); 
+	//SQL kapcsolat létrehozása
+	$pos_id = mysqli_real_escape_string($con, $pos_id);
+	$query = "DELETE FROM positions WHERE id='$pos_id'";
+	$execute = mysqli_query($con, $query) or die(mysql_error());
+}
+
+
 
 
 ?>

@@ -7,7 +7,6 @@ if ($userinfo['role'] != 2) {
 }
 ?>
 <span class="navname">Új cég rögzítése</span>
-<?php  echo $extendeduserinfo['firm_id']?>
 <div class="content_container">
     <div class="form_content">
         <form action="" method="post" autocomplete="off">

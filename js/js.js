@@ -27,6 +27,22 @@ function user_delete_p(user_id) {
       	pageLoad('p_delete');
     }});
 }
+
+function new_pos() {
+  pos_name = $("#position").val();
+  $.ajax({url:"profiles.php", type:"POST", data: ({pos_name: pos_name}), async:true, cache:false, success:function(result)
+{		
+   pageLoad('p_positions');
+}});
+}
+
+function pos_delete_p(pos_id) {
+  $.ajax({url:"profiles.php", type:"POST", data: ({pos_id: pos_id}), async:true, cache:false, success:function(result)
+{		
+   pageLoad('p_positions');
+}});
+}
+
 //----------------------------------------------
 function pageLoad(page) {
 	$("#content").load("menu_" + page + ".php");

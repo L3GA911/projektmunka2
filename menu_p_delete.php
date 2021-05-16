@@ -11,9 +11,12 @@ $firm_id = $extendeduserinfo['firm_id'];
 $query = "SELECT *, companys.id as firm_id FROM companys 
 JOIN c_members ON c_id = companys.id
 JOIN users ON u_id = users.id
+JOIN positions ON positions.id = users.status
 WHERE companys.id = '$firm_id'";
 $result = mysqli_query($con, $query) or die(mysql_error());
 $users_count = $result->num_rows;
+
+
 
 ?>
 <span class="navname">Dolgozó törlése</span>
@@ -45,7 +48,7 @@ $users_count = $result->num_rows;
 	$person_firstname = $row["firstname"];
 	$person_lastname = $row["lastname"];
   $person_username = $row["username"];
-	$person_status = $row["status"];
+  $person_status = $row["name"];
 
   echo'
   <tr>

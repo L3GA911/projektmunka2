@@ -1,14 +1,32 @@
+<?php
+require ('inc/auth_session.php');
+//Jogosultság ellenőrzése
+if ($userinfo['role'] != 1) {
+	echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
+	exit();
+}
+
+//Céghez tartozó pozíciók lekérdezése
+$firm_id = $extendeduserinfo['firm_id'];
+$query = "SELECT * FROM companys 
+JOIN positions ON c_id = companys.id
+WHERE companys.id = '$firm_id'";
+$result = mysqli_query($con, $query) or die(mysql_error());
+$users_count = $result->num_rows;
+
+
+?>
 <span class="navname">Beosztások kezelése</span>
 <div class="content_container">
     <div id="makepos" class="form_content">
-        <form action="" method="post" autocomplete="off">
+	<form>
 			<div>
 				<label for="position">Beosztás:</label><br>
 				<input type="text" id="position" name="position" required placeholder="Beosztás">
 			</div>
 			<br>
-			<button id="button" value="newpos" name="newpos" class="button">Létrehozás</button>
-        </form>
+			<button type="button" onclick="new_pos()" id="button" value="newpos" name="newpos" class="button">Létrehozás</button>
+	</form>
     </div>
 	<div class="table-responsive line">
 		<?php
@@ -25,13 +43,17 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-			  <td data-label="<?=$id;?>">1</td>
-			  <td data-label="<?=$position;?>">Üzemvezető</td>
-			  <td>
-				  <button class="button_table">Törlés</button>
-			  </td>
-		    </tr>
+<?php
+		while ($row = $result->fetch_assoc()) {
+		$pos_id = $row["id"];
+		$pos_name = $row["name"];
+		echo'
+		<tr>
+			<td data-label="'.$id.'">'.$pos_id.'</td>
+			<td data-label="'.$position.'">'.$pos_name.'</td>
+			<td><button onclick="pos_delete_p('.$pos_id.')" class="button_table">Törlés</button></td>
+		</tr>';}  
+?> 
 		  </tbody>
 	    </table>
 	</div>  
