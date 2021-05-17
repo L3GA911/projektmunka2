@@ -13,14 +13,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-	color: black !important;
 }
 
 body{
 	font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-size: 16px;
-	color: black !important;
 }
 
 .container{
@@ -176,10 +174,6 @@ body{
     display: flex;
 	flex-direction:column;
 	align-items: center;
-}
-.cc{
-	width: 100%;
-	margin-bottom: 0.8rem;
 }
 .form_content{
     height: auto;
