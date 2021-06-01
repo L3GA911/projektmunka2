@@ -15,7 +15,7 @@
 <?php
 require('inc/db.php');
 session_start();
-
+$hiba = false; //hiba alapvetően hamis
 //Form elküldés után
 if (isset($_POST['username'])) {
 $username = stripslashes($_REQUEST['username']);

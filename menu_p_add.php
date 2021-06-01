@@ -59,7 +59,7 @@ if ($pos_count == 0) {
 				<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
 					<option value="" selected disabled>Kérem válasszon...</option>
 					<?php
-						for($i=1; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
+						for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
 					?>
 				</select><br>
 			</div>

@@ -23,8 +23,6 @@ if ($userinfo['role'] != 2) {
 					<option value="5">Kkt.</option>
 					<option value="6">EV.</option>
 				</select><br>
-				<label for="headquarters">Székhely</label><br>
-				<input type="text" id="headquarters" name="headquarters" required placeholder="Székhely"><br>
 				<label for="fadminlastn">Cégfelelős vezetékneve:</label>
 				<img src="svg/info_black_24dp.svg" 
 					 tabindex="0" class="btninfo" role="button" data-bs-toggle="popover" data-bs-trigger="focus" 
