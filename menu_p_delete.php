@@ -8,7 +8,7 @@ if ($userinfo['role'] != 1) {
 
 //Normál felhasználók lekérdezése
 $firm_id = $extendeduserinfo['firm_id'];
-$query = "SELECT *, companys.id as firm_id FROM companys 
+$query = "SELECT *, companys.id as firm_id, users.id as person_id FROM companys 
 JOIN c_members ON c_id = companys.id
 JOIN users ON u_id = users.id
 JOIN positions ON positions.id = users.status
@@ -44,7 +44,7 @@ $users_count = $result->num_rows;
 <?php
       
   while ($row = $result->fetch_assoc()) {
-	$user_id = $row["id"];
+	$user_id = $row["person_id"];
 	$person_firstname = $row["firstname"];
 	$person_lastname = $row["lastname"];
   $person_username = $row["username"];

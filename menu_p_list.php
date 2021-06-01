@@ -8,7 +8,7 @@ if ($userinfo['role'] != 1) {
 
 //Normál felhasználók lekérdezése
 $firm_id = $extendeduserinfo['firm_id'];
-$query = "SELECT *, companys.id as firm_id FROM companys 
+$query = "SELECT *, companys.id as firm_id, users.id as person_id FROM companys 
 JOIN c_members ON c_id = companys.id
 JOIN users ON u_id = users.id
 JOIN positions ON positions.id = users.status
@@ -55,7 +55,7 @@ $pos_count = $result2->num_rows;
 <?php
   while ($row = $result->fetch_assoc()) {
 
-	$person_id = $row["id"];
+	$person_id = $row["person_id"];
 	$person_firstname = $row["firstname"];
 	$person_lastname = $row["lastname"];
   $person_username = $row["username"];
@@ -114,10 +114,10 @@ echo '
                 <input type="password" id="passwordc" name="passwordc" required placeholder="Jelszó megerősítése"><br>
                 <label for="email">A dolgozó e-mail címe:</label><br>
                 <input type="email" id="email" name="email" value="'.$person_email.'" required placeholder="E-mail"><br>
-                <label for="numbersOfChildren">Új gyermek felvétele:</label><br>
+                <label for="numbersOfChildren">Új gyermek felvitele:</label><br>
                 <select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
                   <option value="" selected disabled>Kérem válasszon...</option>';
-                    for($i=1; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
+                    for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
                 echo'
                 </select><br>
               </div>
