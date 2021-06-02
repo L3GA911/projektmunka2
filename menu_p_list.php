@@ -58,83 +58,94 @@ $pos_count = $result2->num_rows;
 	$person_id = $row["person_id"];
 	$person_firstname = $row["firstname"];
 	$person_lastname = $row["lastname"];
-  $person_username = $row["username"];
-  $person_status = $row["name"];
-  $person_email = $row["email"];
-  $person_address = $row["address"];
+	$person_username = $row["username"];
+	$person_status = $row["name"];
+	$person_email = $row["email"];
+	$person_address = $row["address"];
 
-echo '
-      <tr>
-        <td data-label="'.$id.'">'.$person_id.'</td>
-        <td data-label="'.$vez_nev.'">'.$person_lastname.'</td>
-        <td data-label="'.$ker_nev.'">'.$person_firstname.'</td>
-        <td data-label="'.$felh_nev.'">'.$person_username.'</td>
-        <td data-label="'.$cim.'">'.$person_address.'</td>
-        <td data-label="'.$email.'">'.$person_email.'</td>
-        <td data-label="'.$gyerekek.'">5</td>
-        <td>
-			<button id="edit" class="button_table">Szerkesztés</button>
-		</td>
-      </tr> 
+	echo '
+		  <tr>
+			<td data-label="'.$id.'">'.$person_id.'</td>
+			<td data-label="'.$vez_nev.'">'.$person_lastname.'</td>
+			<td data-label="'.$ker_nev.'">'.$person_firstname.'</td>
+			<td data-label="'.$felh_nev.'">'.$person_username.'</td>
+			<td data-label="'.$cim.'">'.$person_address.'</td>
+			<td data-label="'.$email.'">'.$person_email.'</td>
+			<td data-label="'.$gyerekek.'">5</td>
+			<td>
+				<button id="openmodal_'.$person_id.'" class="button_table">Szerkesztés</button>
+			</td>
+		  </tr>
+		  
+		  <div id="editWindow_'.$person_id.'" class="modal">
+		  <div class="modal-content">		  
+			<span class="close_'.$person_id.' close">&times;</span>
+			<span class="navname">'.$person_lastname.' '.$person_firstname.'</span>
+			<div class="content_container">
+			  <div class="form_content">
+				<form id="form" action="" method="post" autocomplete="off">
+				  <div>
+					<label for="lastname">A dolgozó vezetékneve:</label><br>
+					<input type="text" id="lastname" name="lastname" value="'.$person_lastname.'" required placeholder="Vezetéknév"><br>
+					<label for="firstname">A dolgozó keresztneve:</label><br>
+					<input type="text" id="firstname" name="firstname" value="'.$person_firstname.'" required placeholder="Keresztnév"><br>
+					<label for="address">A dolgozó  lakhely</label><br>
+					<input type="text" id="address" name="address" value="'.$person_address.'" required placeholder="Lakhely címe"><br>
+					<label for="username">A dolgozó felhasználóneve:</label><br>
+					<input type="text" id="username" name="username" value="'.$person_username.'" required placeholder="Felhasználónév"><br>
+					<label for="username">A dolgozó beosztása:</label><br>
+					<select value="'.$person_status.'" id="position" name="position">
+					  ';
 
+					  while ($row = $result2->fetch_assoc()) {
+					  $pos_id = $row["id"];
+					  $pos_name = $row["name"];
+					  echo'
+					  <option value="'.$pos_id.'">'.$pos_name.'</option>';
+					  }
 
-      <div id="editWindow" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <span class="navname">'.$person_lastname." ".$person_firstname.'</span>
-        <div class="content_container">
-          <div class="form_content">
-            <form id="form" action="" method="post" autocomplete="off">
-              <div>
+					echo'
+					</select><br>
+					<label for="password">A dolgozó jelszava:</label><br>
+					<input type="password" id="password" name="password" required placeholder="Jelszó"><br>
+					<label for="passwordc">Jelszó megerősítése:</label><br>
+					<input type="password" id="passwordc" name="passwordc" required placeholder="Jelszó megerősítése"><br>
+					<label for="email">A dolgozó e-mail címe:</label><br>
+					<input type="email" id="email" name="email" value="'.$person_email.'" required placeholder="E-mail"><br>
+					<label for="numbersOfChildren">Új gyermek felvitele:</label><br>
+					<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
+					  <option value="" selected disabled>Kérem válasszon...</option>';
+						for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
+					echo'
+					</select><br>
+				  </div>
+				  <button type="submit" id="modifyPerson" name="modifyPerson" form="form" class="button">Módosítás</button>
+				</form>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<script type="text/javascript">
+			document.getElementById("openmodal_'.$person_id.'").onclick = function() {
+			  document.getElementById("editWindow_'.$person_id.'").style.display = "block";
+			}
 
-                <label for="lastname">A dolgozó vezetékneve:</label><br>
-                <input type="text" id="lastname" name="lastname" value="'.$person_lastname.'" required placeholder="Vezetéknév"><br>
-                <label for="firstname">A dolgozó keresztneve:</label><br>
-                <input type="text" id="firstname" name="firstname" value="'.$person_firstname.'" required placeholder="Keresztnév"><br>
-                <label for="address">A dolgozó  lakhely</label><br>
-                <input type="text" id="address" name="address" value="'.$person_address.'" required placeholder="Lakhely címe"><br>
-                <label for="username">A dolgozó felhasználóneve:</label><br>
-                <input type="text" id="username" name="username" value="'.$person_username.'" required placeholder="Felhasználónév"><br>
-                <label for="username">A dolgozó beosztása:</label><br>
-                <select value="'.$person_status.'" id="position" name="position">
-                  ';
+			document.getElementsByClassName("close_'.$person_id.'")[0].onclick = function() {
+			  document.getElementById("editWindow_'.$person_id.'").style.display = "none";
+			}
 
-                  while ($row = $result2->fetch_assoc()) {
-                  $pos_id = $row["id"];
-                  $pos_name = $row["name"];
-                  echo'
-                  <option value="'.$pos_id.'">'.$pos_name.'</option>';
-                  }
-
-                echo'
-                </select><br>
-                <label for="password">A dolgozó jelszava:</label><br>
-                <input type="password" id="password" name="password" required placeholder="Jelszó"><br>
-                <label for="passwordc">Jelszó megerősítése:</label><br>
-                <input type="password" id="passwordc" name="passwordc" required placeholder="Jelszó megerősítése"><br>
-                <label for="email">A dolgozó e-mail címe:</label><br>
-                <input type="email" id="email" name="email" value="'.$person_email.'" required placeholder="E-mail"><br>
-                <label for="numbersOfChildren">Új gyermek felvitele:</label><br>
-                <select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
-                  <option value="" selected disabled>Kérem válasszon...</option>';
-                    for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
-                echo'
-                </select><br>
-              </div>
-              <button type="submit" id="modifyPerson" name="modifyPerson" form="form" class="button">Módosítás</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-';
-    } 
+			window.onclick = function(event) {
+			  if (event.target == document.getElementById("editWindow_'.$person_id.'")) {
+				document.getElementById("editWindow_'.$person_id.'").style.display = "none";
+			  }
+			}
+		</script>
+	';
+  } 
 ?>     
     </tbody>
   </table>
 </div>
-
-
-
+		
 <script type="text/javascript" src="js/editDataTable.js"></script>
 <script type="text/javascript" src="js/Modal.js"></script>
