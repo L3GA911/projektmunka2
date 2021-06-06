@@ -44,8 +44,7 @@ $users_count = $result->num_rows;
       </tr>
     </thead>
     <tbody>
-<?php
-  while ($row = $result->fetch_assoc()) {
+<?php while ($row = $result->fetch_assoc()) { 
 
 	//Céghez tartozó pozíciók lekérdezése (muszáj a ciklusmegban lekérdezni, mert az értékek a lenti while ciklussal csak egyszer olvashatók ki avagy tömb!)
 	$query = "SELECT * FROM companys 
@@ -61,41 +60,54 @@ $users_count = $result->num_rows;
 	$person_status = $row["name"];
 	$person_email = $row["email"];
 	$person_address = $row["address"];
-
-	echo '
+	
+	$people_array[] = array(
+		"id" => $person_id,
+		"firstname" => $person_firstname,
+		"lastname" => $person_lastname,
+		"username" => $person_username,
+		"status" => $person_status,
+		"email" => $person_email,
+		"address" => $person_address
+	);
+?>
 		  <tr>
-			<td data-label="'.$id.'">'.$person_id.'</td>
-			<td data-label="'.$vez_nev.'">'.$person_lastname.'</td>
-			<td data-label="'.$ker_nev.'">'.$person_firstname.'</td>
-			<td data-label="'.$felh_nev.'">'.$person_username.'</td>
-			<td data-label="'.$cim.'">'.$person_address.'</td>
-			<td data-label="'.$email.'">'.$person_email.'</td>
-			<td data-label="'.$gyerekek.'">5</td>
+			<td data-label="<?=$id;?>"><?=$person_id;?></td>
+			<td data-label="<?=$vez_nev;?>"><?=$person_lastname;?></td>
+			<td data-label="<?=$ker_nev;?>"><?=$person_firstname;?></td>
+			<td data-label="<?=$felh_nev;?>"><?=$person_username;?></td>
+			<td data-label="<?=$cim;?>"><?=$person_address;?></td>
+			<td data-label="<?=$email;?>"><?=$person_email;?></td>
+			<td data-label="<?=$gyerekek;?>">5</td>
 			<td>
-				<button id="openmodal_'.$person_id.'" class="button_table">Szerkesztés</button>
+				<button id="openmodal_<?=$person_id?>" class="button_table">Szerkesztés</button>
 			</td>
 		  </tr>
-		  
-		  <div id="editWindow_'.$person_id.'" class="modal">
+<?php } ?>
+		  </tbody>
+		</table>
+<?php 
+
+foreach ($people_array as $person){ ?>
+		  <div id="editWindow_<?=$person["id"];?>" class="modal">
 		  <div class="modal-content">
-			<span class="close_'.$person_id.' close">&times;</span>
-			<span class="navname">'.$person_lastname.' '.$person_firstname.'</span>
+			<span class="close_<?=$person["id"];?> close">&times;</span>
+			<span class="navname"><?=$person["lastname"];?> <?=$person["firstname"];?></span>
 			<div class="content_container">
 			  <div class="form_content">
-				<form id="form_'.$person_id.'" name="form_'.$person_id.'" action="" method="get" autocomplete="off">
-				  	<input hidden type="text" id="userid" name="userid" value="'.$person_id.'">
+				<form id="form_<?=$person["id"];?>" name="form_<?=$person["id"];?>" action="" method="get" autocomplete="off">
+				  	<input hidden type="text" id="userid" name="userid" value="<?=$person["id"];?>">
 					<label for="lastname">A dolgozó vezetékneve:</label><br>
-					<input type="text" id="lastname" name="lastname" value="'.$person_lastname.'" required placeholder="Vezetéknév"><br>
+					<input type="text" id="lastname" name="lastname" value="<?=$person["lastname"];?>" required placeholder="Vezetéknév"><br>
 					<label for="firstname">A dolgozó keresztneve:</label><br>
-					<input type="text" id="firstname" name="firstname" value="'.$person_firstname.'" required placeholder="Keresztnév"><br>
+					<input type="text" id="firstname" name="firstname" value="<?=$person["firstname"];?>" required placeholder="Keresztnév"><br>
 					<label for="address">A dolgozó  lakhely</label><br>
-					<input type="text" id="address" name="address" value="'.$person_address.'" required placeholder="Lakhely címe"><br>
+					<input type="text" id="address" name="address" value="<?=$person["address"];?>" required placeholder="Lakhely címe"><br>
 					<label for="username">A dolgozó felhasználóneve:</label><br>
-					<input type="text" id="username" name="username" value="'.$person_username.'" required placeholder="Felhasználónév"><br>
+					<input type="text" id="username" name="username" value="<?=$person["username"];?>" required placeholder="Felhasználónév"><br>
 					<label for="position">A dolgozó beosztása:</label><br>
 					<select id="position" name="position">
-					  ';
-
+					<?php
 					  while ($row2 = $result2->fetch_assoc()) {
 					  $pos_id = $row2["id"];
 					  $pos_name = $row2["name"];
@@ -107,22 +119,22 @@ $users_count = $result->num_rows;
 					  <option value="'.$pos_id.'">'.$pos_name.'</option>';
 					  }
 					}
-
-					echo'
+					?>
 					</select><br>
 					<label for="password">A dolgozó jelszava:</label><br>
 					<input type="password" id="password" name="password" placeholder="Jelszó"><br>
 					<label for="passwordc">Jelszó megerősítése:</label><br>
 					<input type="password" id="passwordc" name="passwordc" placeholder="Jelszó megerősítése"><br>
 					<label for="email">A dolgozó e-mail címe:</label><br>
-					<input type="email" id="email" name="email" value="'.$person_email.'" required placeholder="E-mail"><br>
+					<input type="email" id="email" name="email" value="<?=$person["email"];?>" required placeholder="E-mail"><br>
 					<label for="numbersOfChildren">Új gyermek felvitele:</label><br>
 					<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
-					  <option value="" selected disabled>Kérem válasszon...</option>';
+					  <option value="" selected disabled>Kérem válasszon...</option>
+					  <?php
 						for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
-					echo'
+					  ?>
 					</select><br>
-					<button type="submit" id="modifyPerson" name="modifyPerson" form="form_'.$person_id.'" class="button">Módosítás</button>
+					<button type="submit" id="modifyPerson" name="modifyPerson" form="form_<?=$person["id"];?>" class="button">Módosítás</button>
 				</form>
 			  </div>
 			</div>
@@ -130,26 +142,23 @@ $users_count = $result->num_rows;
 		</div>
 		
 		<script type="text/javascript">
-			document.getElementById("openmodal_'.$person_id.'").onclick = function() {
-			  document.getElementById("editWindow_'.$person_id.'").style.display = "block";
+		
+			document.getElementById('openmodal_<?=$person["id"];?>').onclick = function() {
+			  document.getElementById('editWindow_<?=$person["id"];?>').style.display = "block";
 			}
 
-			document.getElementsByClassName("close_'.$person_id.'")[0].onclick = function() {
-			  document.getElementById("editWindow_'.$person_id.'").style.display = "none";
+			document.getElementsByClassName('close_<?=$person["id"];?>')[0].onclick = function() {
+			  document.getElementById('editWindow_<?=$person["id"];?>').style.display = "none";
 			}
 
 			window.onclick = function(event) {
-			  if (event.target == document.getElementById("editWindow_'.$person_id.'")) {
-				document.getElementById("editWindow_'.$person_id.'").style.display = "none";
+			  if (event.target == document.getElementById('editWindow_<?=$person["id"];?>')) {
+				document.getElementById('editWindow_<?=$person["id"];?>').style.display = "none";
 			  }
 			}
+
 		</script>
-	';
-  } 
-?>     
-    </tbody>
-  </table>
+  <?php } ?>       
 </div>
 		
 <script type="text/javascript" src="js/editDataTable.js"></script>
-<script type="text/javascript" src="js/Modal.js"></script>
