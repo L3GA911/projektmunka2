@@ -16,6 +16,7 @@ WHERE companys.id = '$firm_id'";
 $result = mysqli_query($con, $query) or die(mysql_error());
 $users_count = $result->num_rows;
 
+
 ?>
 
 <span class="navname">Dolgozó listája</span>
@@ -46,12 +47,7 @@ $users_count = $result->num_rows;
     <tbody>
 <?php while ($row = $result->fetch_assoc()) { 
 
-	//Céghez tartozó pozíciók lekérdezése (muszáj a ciklusmegban lekérdezni, mert az értékek a lenti while ciklussal csak egyszer olvashatók ki avagy tömb!)
-	$query = "SELECT * FROM companys 
-	JOIN positions ON c_id = companys.id
-	WHERE companys.id = '$firm_id' AND positions.id <> -1";
-	$result2 = mysqli_query($con, $query) or die(mysql_error());
-	$pos_count = $result2->num_rows;
+
 
 	$person_id = $row["person_id"];
 	$person_firstname = $row["firstname"];
@@ -61,6 +57,21 @@ $users_count = $result->num_rows;
 	$person_email = $row["email"];
 	$person_address = $row["address"];
 	
+	//Gyerekek számának lekérdezése
+	$query = "SELECT *, COUNT(p_child.p_id) as gyerekekSzama FROM p_child
+	JOIN users ON users.id = p_child.p_id
+	WHERE users.id = '$person_id'
+	GROUP BY p_child.p_id";
+	$result2 = mysqli_query($con, $query) or die(mysql_error());
+	$row2 = mysqli_fetch_assoc($result2);
+	$row_count = $result2->num_rows;
+	
+	if ($row_count > 0) {
+	$person_kids_count = $row2['gyerekekSzama'];
+	} else {
+	$person_kids_count = 0;
+	}
+
 	$people_array[] = array(
 		"id" => $person_id,
 		"firstname" => $person_firstname,
@@ -78,7 +89,7 @@ $users_count = $result->num_rows;
 			<td data-label="<?=$felh_nev;?>"><?=$person_username;?></td>
 			<td data-label="<?=$cim;?>"><?=$person_address;?></td>
 			<td data-label="<?=$email;?>"><?=$person_email;?></td>
-			<td data-label="<?=$gyerekek;?>">5</td>
+			<td data-label="<?=$gyerekek;?>"><?=$person_kids_count;?></td>
 			<td>
 				<button id="openmodal_<?=$person_id?>" class="button_table">Szerkesztés</button>
 			</td>
@@ -95,8 +106,8 @@ foreach ($people_array as $person){ ?>
 			<span class="navname"><?=$person["lastname"];?> <?=$person["firstname"];?></span>
 			<div class="content_container">
 			  <div class="form_content">
-				<form id="form_<?=$person["id"];?>" name="form_<?=$person["id"];?>" action="" method="get" autocomplete="off">
-				  	<input hidden type="text" id="userid" name="userid" value="<?=$person["id"];?>">
+				<form id="form_<?=$person["id"];?>" name="form_<?=$person["id"];?>" action="" method="post" autocomplete="off">
+				  	<input hidden type="text" id="personid" name="personid" value="<?=$person["id"];?>">
 					<label for="lastname">A dolgozó vezetékneve:</label><br>
 					<input type="text" id="lastname" name="lastname" value="<?=$person["lastname"];?>" required placeholder="Vezetéknév"><br>
 					<label for="firstname">A dolgozó keresztneve:</label><br>
@@ -108,6 +119,13 @@ foreach ($people_array as $person){ ?>
 					<label for="position">A dolgozó beosztása:</label><br>
 					<select id="position" name="position">
 					<?php
+
+					$query = "SELECT * FROM companys 
+					JOIN positions ON c_id = companys.id
+					WHERE companys.id = '$firm_id' AND positions.id <> -1";
+					$result2 = mysqli_query($con, $query) or die(mysql_error());
+					$pos_count = $result2->num_rows;
+
 					  while ($row2 = $result2->fetch_assoc()) {
 					  $pos_id = $row2["id"];
 					  $pos_name = $row2["name"];
