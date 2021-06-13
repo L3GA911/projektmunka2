@@ -1,4 +1,39 @@
 //--------------------AJAX--------------------
+function form_ajax(form_id){
+	
+	$(form_id).on('submit', function(){
+		var that = $(this),
+			url = that.attr('action'),
+			type = that.attr('method'),
+			data = {};
+			
+		that.find('[name]').each(function(index, value){
+			var that = $(this),
+				name = that.attr('name'),
+				value = that.val();
+				
+			data[name] = value;
+		});
+		
+		$.ajax({
+			url: url,
+			type: type,
+			data: data,
+			success: function(response){
+				$("#modal").html(response);
+			}
+		});
+		
+		return false;
+	});
+}
+
+function freedays_delete(fd_id) {
+		   $.ajax({url:"wo_delete_query.php", type:"POST", data: ({fd_id: fd_id}), async:true, cache:false, success:function(result)
+		{	
+			$(".content_container").html(result);
+		}});
+}
 function firm_delete(firm_id) {
 		   $.ajax({url:"superadmin.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
 		{

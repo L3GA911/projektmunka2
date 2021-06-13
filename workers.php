@@ -16,7 +16,7 @@
         Ehhez kérem használja a bal oldali menüpontokat.
 </span>
 </div>
-
+			
 <script>
 	$(':root').css("--changeImage", "url('../svg/work_off_black_24dp.svg')");
 </script>
