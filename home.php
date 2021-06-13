@@ -8,7 +8,7 @@
 //Személy korának lekérdezése
 $query = "SELECT TRUNCATE(DATEDIFF(CURRENT_DATE, birthday)/365,0) as Age FROM users WHERE id='$userid'";
 $result = mysqli_query($con, $query) or die(mysql_error());
-$row = mysqli_fetch_assoc($result2);
+$row = mysqli_fetch_assoc($result);
 //Személy kiskorú gyermekeinek lekérdezése
 
 
