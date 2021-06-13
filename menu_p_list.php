@@ -140,9 +140,9 @@ foreach ($people_array as $person){ ?>
 					?>
 					</select><br>
 					<label for="password">A dolgozó jelszava:</label><br>
-					<input type="password" id="password" name="password" placeholder="Jelszó"><br>
+					<input type="password" id="password" name="password" value="" placeholder="Jelszó"><br>
 					<label for="passwordc">Jelszó megerősítése:</label><br>
-					<input type="password" id="passwordc" name="passwordc" placeholder="Jelszó megerősítése"><br>
+					<input type="password" id="passwordc" name="passwordc" value="" placeholder="Jelszó megerősítése"><br>
 					<label for="email">A dolgozó e-mail címe:</label><br>
 					<input type="email" id="email" name="email" value="<?=$person["email"];?>" required placeholder="E-mail"><br>
 					<label for="numbersOfChildren">Új gyermek felvitele:</label><br>

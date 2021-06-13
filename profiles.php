@@ -176,13 +176,16 @@ if (isset($_POST['modifyPerson'])) {
     (isset($_POST['numbersOfChildren'])) && 
 	(isset($_POST['email']))
 	) {
+
 			$personid = stripslashes($_REQUEST['personid']);
 			$personid = mysqli_real_escape_string($con, $personid);
+			//aktuális adatok lekérdezése az egyeztetés miatt (jelszó, felhasználónév)
 			$query = "SELECT * FROM users WHERE id='".$personid."'";
 			$result2 = mysqli_query($con, $query) or die(mysql_error());
 			$row = mysqli_fetch_assoc($result2);
 			$current_username = $row['username'];
-			$current_email = $row['email'];
+			$current_password = $row['password']; //ez md5 -ben van
+
 
 			//Ha minden ki van töltve
 			$username = stripslashes($_REQUEST['username']);
@@ -197,7 +200,6 @@ if (isset($_POST['modifyPerson'])) {
 			$rows = mysqli_num_rows($result);
 
 			if ($rows != 0 AND $current_username <> $username) {
-				echo "'$current_username' asd '$username'";
 				//Már létezik ilyen felhasználónév vagy e-mail
 				$hiba = 2;
 			} else {
@@ -225,8 +227,15 @@ if (isset($_POST['modifyPerson'])) {
 
                     // $query = "INSERT INTO users (username, password, firstname, lastname, address, role, email, status) 
                     //           VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$address', '0', '$email', $position)"; //új felhasználó
-
-					$query = "UPDATE users SET lastname='$lastname', firstname='$firstname', address='$address', email='$email', username='$username', status='$position'
+					echo "$password";
+					//ha a jelszó nincs kitöltve, akkor a régi kerül vissza
+					if ($password == "") {
+						$password = $current_password;
+					} else {
+						$password = md5($password);
+					}
+					echo "$password";
+					$query = "UPDATE users SET password='$password', lastname='$lastname', firstname='$firstname', address='$address', email='$email', username='$username', status='$position'
 							  WHERE id = '$personid'";
 
 							   
