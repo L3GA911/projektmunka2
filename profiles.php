@@ -163,7 +163,9 @@ if (isset($pos_id)) {
 if (isset($_POST['modifyPerson'])) {
 	//Adatok ellenőrzése
 	$hiba = 0;
-	if (($userinfo['role']==1) && 
+	if (
+	($userinfo['role']==1) && 
+	(isset($_POST['personid'])) && 
 	(isset($_POST['lastname'])) && 
 	(isset($_POST['firstname'])) && 
 	(isset($_POST['position'])) && 
@@ -172,16 +174,30 @@ if (isset($_POST['modifyPerson'])) {
 	(isset($_POST['password'])) && 
 	(isset($_POST['passwordc'])) && 
     (isset($_POST['numbersOfChildren'])) && 
-	(isset($_POST['email']))) {
+	(isset($_POST['email']))
+	) {
+			$personid = stripslashes($_REQUEST['personid']);
+			$personid = mysqli_real_escape_string($con, $personid);
+			$query = "SELECT * FROM users WHERE id='".$personid."'";
+			$result2 = mysqli_query($con, $query) or die(mysql_error());
+			$row = mysqli_fetch_assoc($result2);
+			$current_username = $row['username'];
+			$current_email = $row['email'];
+
 			//Ha minden ki van töltve
 			$username = stripslashes($_REQUEST['username']);
 			$username = mysqli_real_escape_string($con, $username);
 			$email = stripslashes($_REQUEST['email']);
 			$email = mysqli_real_escape_string($con, $email);
-			$query = "SELECT * FROM users WHERE username='".$username."' OR email='".$email."'";
+
+
+			$query = "SELECT * FROM users WHERE username='".$username."'";
 			$result = mysqli_query($con, $query) or die(mysql_error());
+			
 			$rows = mysqli_num_rows($result);
-			if ($rows != 0) {
+
+			if ($rows != 0 AND $current_username <> $username) {
+				echo "'$current_username' asd '$username'";
 				//Már létezik ilyen felhasználónév vagy e-mail
 				$hiba = 2;
 			} else {
@@ -207,32 +223,38 @@ if (isset($_POST['modifyPerson'])) {
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
-                    $query = "INSERT INTO users (username, password, firstname, lastname, address, role, email, status) 
-                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$address', '0', '$email', $position)"; //új felhasználó
+                    // $query = "INSERT INTO users (username, password, firstname, lastname, address, role, email, status) 
+                    //           VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$address', '0', '$email', $position)"; //új felhasználó
+
+					$query = "UPDATE users SET lastname='$lastname', firstname='$firstname', address='$address', email='$email', username='$username', status='$position'
+							  WHERE id = '$personid'";
+
+							   
+
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                     
-                    $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
-                    $result  = mysqli_query($con, $query);
-                    $getinfo = mysqli_fetch_assoc($result);
-                    $userid = $getinfo['id'];
-                    $companyid = $extendeduserinfo['id']; // cég id (a létrehozó felhasználó adatai alapján)
+                    // $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
+                    // $result  = mysqli_query($con, $query);
+                    // $getinfo = mysqli_fetch_assoc($result);
+                    // $userid = $getinfo['id'];
+                    // $companyid = $extendeduserinfo['id']; // cég id (a létrehozó felhasználó adatai alapján)
 
-                    $query = "INSERT INTO c_members (c_id, u_id)
-                    VALUES ('$companyid', '$userid')"; // új felhasználó kapcsolása a céghez (c_members)
-                    $execute = mysqli_query($con, $query) or die(mysql_error());
+                    // $query = "INSERT INTO c_members (c_id, u_id)
+                    // VALUES ('$companyid', '$userid')"; // új felhasználó kapcsolása a céghez (c_members)
+                    // $execute = mysqli_query($con, $query) or die(mysql_error());
 
 					
 
-                    //annyiszor fut le a kód, ahány gyermek van
-					if ($numbersOfChildren <> 0) { //ha egyáltalán van gyermek
-						for($i=1; $i<=$numbersOfChildren; $i++){ 
-							$birthday = stripslashes($_REQUEST['child'.$i]);
-							$birthday = mysqli_real_escape_string($con, $birthday);
-							$query = "INSERT INTO p_child (p_id, birthday)
-							VALUES ('$userid', '$birthday')"; // gyerekek születésének dátuma hozzáadása (p_child)
-							$execute = mysqli_query($con, $query) or die(mysql_error());
-						} 
-					}
+                    // //annyiszor fut le a kód, ahány gyermek van
+					// if ($numbersOfChildren <> 0) { //ha egyáltalán van gyermek
+					// 	for($i=1; $i<=$numbersOfChildren; $i++){ 
+					// 		$birthday = stripslashes($_REQUEST['child'.$i]);
+					// 		$birthday = mysqli_real_escape_string($con, $birthday);
+					// 		$query = "INSERT INTO p_child (p_id, birthday)
+					// 		VALUES ('$userid', '$birthday')"; // gyerekek születésének dátuma hozzáadása (p_child)
+					// 		$execute = mysqli_query($con, $query) or die(mysql_error());
+					// 	} 
+					// }
 
                 }
 			}
@@ -245,13 +267,13 @@ switch ($hiba) {
 	case 0:
 		echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
 			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
-				Sikeres regisztráció!
+				Sikeres módosítás!
 			  </div>';
 		break;
 	case 1:
 		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
-				Nincs kitöltve minden mező!
+				Nincs kitöltve minden mező! 
 			  </div>';
 		break;
 	case 2:
@@ -263,7 +285,7 @@ switch ($hiba) {
 	case 3:
 		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			  <button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>
-				A jelszók nem egyeznek!
+				A jelszavak nem egyeznek!
 			  </div>';
 		break;
 	case 4:

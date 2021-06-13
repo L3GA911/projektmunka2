@@ -2,10 +2,10 @@
 
 <div class="content_container">
     <div class="form_content">
-        <form id="date_picker" action="" method="" autocomplete="off">
+        <form id="date_picker" id="date_picker" action="" method="get" autocomplete="off">
 			<div id="datepicker"></div>
-			<input type="hidden" id="my_hidden_input">	
-				<button id="button" class="button" type="submit" form="date_picker">Mentés</button>
+			<input hidden type="text" name="my_hidden_input" id="my_hidden_input">
+			<button id="button" class="button" type="submit" form="date_picker">Mentés</button>
         </form>
     </div>
 </div>
