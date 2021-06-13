@@ -25,6 +25,7 @@ $users_count = $result->num_rows;
 	$id = "ID";
 	$vez_nev = "Vezetéknév";
 	$ker_nev = "Keresztnév";
+	$szul_ido = "Születési idő";
 	$felh_nev = "Felhasználónév";
 	$cim = "Cím";
 	$jelszo = "Jelszó";
@@ -37,6 +38,7 @@ $users_count = $result->num_rows;
         <th><?=$id;?></th>
         <th><?=$vez_nev;?></th>
         <th><?=$ker_nev;?></th>
+		<th><?=$szul_ido;?></th>
         <th><?=$felh_nev;?></th>
         <th><?=$cim;?></th>
         <th><?=$email;?></th>
@@ -52,6 +54,7 @@ $users_count = $result->num_rows;
 	$person_id = $row["person_id"];
 	$person_firstname = $row["firstname"];
 	$person_lastname = $row["lastname"];
+	$person_birthday = $row["birthday"];
 	$person_username = $row["username"];
 	$person_status = $row["name"];
 	$person_email = $row["email"];
@@ -86,6 +89,7 @@ $users_count = $result->num_rows;
 			<td data-label="<?=$id;?>"><?=$person_id;?></td>
 			<td data-label="<?=$vez_nev;?>"><?=$person_lastname;?></td>
 			<td data-label="<?=$ker_nev;?>"><?=$person_firstname;?></td>
+			<td data-label="<?=$szul_ido;?>"><?=$person_birthday;?></td>
 			<td data-label="<?=$felh_nev;?>"><?=$person_username;?></td>
 			<td data-label="<?=$cim;?>"><?=$person_address;?></td>
 			<td data-label="<?=$email;?>"><?=$person_email;?></td>

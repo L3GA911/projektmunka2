@@ -11,6 +11,7 @@ if (isset($_POST['newperson'])) {
 	if (($userinfo['role']==1) && 
 	(isset($_POST['lastname'])) && 
 	(isset($_POST['firstname'])) && 
+	(isset($_POST['birthday'])) && 
 	(isset($_POST['position'])) && 
 	(isset($_POST['address'])) && 
 	(isset($_POST['username'])) && 
@@ -42,6 +43,8 @@ if (isset($_POST['newperson'])) {
                     $lastname = mysqli_real_escape_string($con, $lastname);
                     $firstname = stripslashes($_REQUEST['firstname']);
                     $firstname = mysqli_real_escape_string($con, $firstname);
+					$birthday = stripslashes($_REQUEST['birthday']);
+                    $birthday = mysqli_real_escape_string($con, $birthday);
 					$position = stripslashes($_REQUEST['position']);
                     $position = mysqli_real_escape_string($con, $position);
                     $address = stripslashes($_REQUEST['address']);
@@ -52,8 +55,8 @@ if (isset($_POST['newperson'])) {
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
-                    $query = "INSERT INTO users (username, password, firstname, lastname, address, role, email, status) 
-                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$address', '0', '$email', $position)"; //új felhasználó
+                    $query = "INSERT INTO users (username, password, firstname, lastname, birthday, address, role, email, status) 
+                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$birthday', '$address', '0', '$email', $position)"; //új felhasználó
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                     
                     $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
@@ -71,10 +74,10 @@ if (isset($_POST['newperson'])) {
                     //annyiszor fut le a kód, ahány gyermek van
 					if ($numbersOfChildren <> 0) { //ha egyáltalán van gyermek
 						for($i=1; $i<=$numbersOfChildren; $i++){ 
-							$birthday = stripslashes($_REQUEST['child'.$i]);
-							$birthday = mysqli_real_escape_string($con, $birthday);
+							$birthday_kid = stripslashes($_REQUEST['child'.$i]);
+							$birthday_kid = mysqli_real_escape_string($con, $birthday_kid);
 							$query = "INSERT INTO p_child (p_id, birthday)
-							VALUES ('$userid', '$birthday')"; // gyerekek születésének dátuma hozzáadása (p_child)
+							VALUES ('$userid', '$birthday_kid')"; // gyerekek születésének dátuma hozzáadása (p_child)
 							$execute = mysqli_query($con, $query) or die(mysql_error());
 						} 
 					}

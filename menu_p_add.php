@@ -29,6 +29,8 @@ if ($pos_count == 0) {
 				<input type="text" id="lastname" name="lastname" required placeholder="Vezetéknév"><br>
 				<label for="firstname">A dolgozó keresztneve:</label><br>
 				<input type="text" id="firstname" name="firstname" required placeholder="Keresztnév"><br>
+                <label for="birthday">A dolgozó születési ideje:</label><br>
+				<input type="date" id="birthday" name="birthday" required placeholder="Születési idő"><br>
 				<label for="position">A dolgozó pozíciója</label><br>
                 <select id="position" name="position">
 
