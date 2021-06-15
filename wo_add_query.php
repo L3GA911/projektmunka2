@@ -2,7 +2,7 @@
 	require ('inc/auth_session.php');
 
 	//Jogosultság ellenőrzése
-	if ($userinfo['role'] == 2) {
+	if ($userinfo['role'] != 0) {
 		echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
 		exit();
 	}
@@ -14,7 +14,7 @@
 		
 			$query = "SELECT date FROM freedays WHERE user_id = '$userid'";
 			$result  = mysqli_query($con, $query);
-		
+			$reserved_date = 0; //alapérték
 			while ($date != false){
 				while ($row = $result->fetch_assoc()){
 					if($row['date'] != $date){
@@ -29,7 +29,7 @@
 				$date = strtok(",");
 			}
 		
-			if ($reserved_date === 0){
+			if ($reserved_date == 0){
 				for($i=0;$i<count($date_array);$i++){
 					$query_insert = "INSERT INTO freedays (date, user_id) VALUES ('$date_array[$i]', '$userid')";
 					$execute = mysqli_query($con, $query_insert) or die(mysql_error());

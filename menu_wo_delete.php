@@ -1,7 +1,7 @@
 <?php
 require ('inc/auth_session.php');
 //Jogosultság ellenőrzése
-if ($userinfo['role'] == 2) {
+if ($userinfo['role'] != 0) {
 	echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
 	exit();
 }

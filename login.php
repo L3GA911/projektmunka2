@@ -13,9 +13,24 @@
 </head>
 <body>
 <?php
+
 require('inc/db.php');
 session_start();
-$hiba = false; //hiba alapvetően hamis
+$hiba = 0; //hiba alapvetően nincs
+
+
+
+if (isset($_GET['changePassword'])) {
+	
+	}
+
+
+
+
+
+
+
+
 //Form elküldés után
 if (isset($_POST['username'])) {
 $username = stripslashes($_REQUEST['username']);
@@ -26,17 +41,30 @@ $password = mysqli_real_escape_string($con, $password);
 $query    = "SELECT * FROM `users` WHERE username='$username'
 			 AND password='" . md5($password) . "'";
 $result = mysqli_query($con, $query) or die(mysql_error());
+$row = mysqli_fetch_assoc($result);
 $rows = mysqli_num_rows($result);
+
+
+
 if ($rows != 0) {
-	$_SESSION['username'] = $username;
-	$_SESSION['logged_in'] = true;
-	header("Location: home.php");
-} else {
-	//Hibaüzenet
-	$hiba = true;
+
+	if ($row["firstlogin"] == 1) {
+		$hiba = 1;
+		//első bejelentkezés, jelszó változtatás szükséges
+	} else {
+			$_SESSION['username'] = $username;
+			$_SESSION['logged_in'] = true;
+			header("Location: home.php");
 		}
+
+} else {
+	$hiba = 2; //rossz felhasználónév/jelszó
+	}
 }
 ?>
+
+
+
 
 <div class="grid-container-login">
 		<main>
@@ -45,9 +73,18 @@ if ($rows != 0) {
 					<input type="text" id="username" name="username" placeholder="Felhasználónév">
 					<br>
 					<input type="password" id="password" name="password" placeholder="Jelszó"><br>
-					<button class="button">Bejelentkezés</button>
+					<button OnClick="ShowModal()" class="button">Bejelentkezés</button>
 					<?php 
-						if ($hiba) {
+						if ($hiba == 1) {
+							echo '<div class="alert alert-danger alert-dismissible">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								Jelszó módosítás szükséges!
+								<a href="login.php?changePassword=true">Megváltoztatom!</a>
+							</div>';
+						} 
+					?>
+					<?php 
+						if ($hiba == 2) {
 							echo '<div class="alert alert-danger alert-dismissible">
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
 								Hibás felhasználónév vagy jelszó!

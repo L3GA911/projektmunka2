@@ -11,7 +11,7 @@
 					<span class="tooltiptext">Kezdőlap</span>
 				</div>
 			</li>
-			<?php if ($userinfo['role'] == 2) { ?>
+			<?php if ($userinfo['role'] == 2) { ?> 
 			<li>
 				<div class="tooltip">
 					<a href="superadmin.php">
@@ -24,6 +24,7 @@
 				</div>
 			</li>
 			<?php } ?>
+			<?php if ($userinfo['role'] == 1) { ?> 
 			<li>
 				<div class="tooltip">
 					<a href="working_hours.php">
@@ -35,6 +36,8 @@
 					<span class="tooltiptext">Munkaidők szerkesztése</span>
 				</div>
 			</li>
+			<?php } ?>
+			<?php if ($userinfo['role'] == 1) { ?> 
 			<li>
 				<div class="tooltip">
 					<a href="profiles.php">
@@ -46,6 +49,8 @@
 					<span class="tooltiptext">Műveletek dolgozókkal</span>
 				</div>
 			</li>
+			<?php } ?>
+			<?php if ($userinfo['role'] == 1) { ?> 
 			<li>
 				<div class="tooltip">
 					<a href="stats.php">
@@ -56,6 +61,8 @@
 					<span class="tooltiptext">Statisztikák</span>
 				</div>
 			</li>
+			<?php } ?>
+			<?php if ($userinfo['role'] == 0) { ?> 
 			<li>
 				<div class="tooltip">
 					<a href="workers.php">
@@ -66,5 +73,6 @@
 					<span class="tooltiptext">Dolgozói felület szabadságok kezelésére</span>
 				</div>
 			</li>
+			<?php } ?>
 		</ul>
 	</div>
