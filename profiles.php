@@ -135,19 +135,24 @@ if (isset($user_id)) {
 
 //Pozíció létrehozása
 @$pos_name = $_REQUEST['pos_name'];
-if (isset($pos_name)) {
+@$posmaxfreedays = $_REQUEST['posmaxfreedays'];
+echo $posmaxfreedays;
+if ((isset($pos_name)) && (isset($posmaxfreedays))) {
+	echo 'asd';
 	$pos_name = stripslashes($pos_name); 
+	$posmaxfreedays = stripslashes($posmaxfreedays); 
 	//SQL kapcsolat létrehozása
 	$firm_id = $extendeduserinfo['firm_id'];
 	$pos_name = mysqli_real_escape_string($con, $pos_name);
+	$posmaxfreedays = mysqli_real_escape_string($con, $posmaxfreedays);
 	//Pozíció létezésének ellenőrzése
 	$query = "SELECT * FROM positions WHERE c_id = '$firm_id' AND name = '$pos_name'";
 	$result  = mysqli_query($con, $query);
 	$rows = mysqli_num_rows($result);
 	if ($rows == 0 && $pos_name != "") {
 		//Pozíció beírása az adatbázisba
-		$query = "INSERT INTO positions (name, c_id)
-		VALUES ('$pos_name',  '$firm_id')";
+		$query = "INSERT INTO positions (name, c_id, maxfreedays)
+		VALUES ('$pos_name',  '$firm_id', '$posmaxfreedays')";
 		$execute = mysqli_query($con, $query) or die(mysql_error());
 	} 
 }
