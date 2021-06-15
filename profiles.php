@@ -320,6 +320,7 @@ switch ($hiba) {
             <li onClick="pageLoad('p_delete')">Dolgozó törlése</li>
             <li onClick="pageLoad('p_list')">Dolgozók listája</li>
             <li onClick="pageLoad('p_positions')">Beosztások kezelése</li>
+            <li onClick="pageLoad('p_modify_datas')">Adatok módosítása</li>
         </ul>
 </div>
 <div id="content" class="content">

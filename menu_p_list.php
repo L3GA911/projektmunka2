@@ -111,16 +111,16 @@ foreach ($people_array as $person){ ?>
 			<div class="content_container">
 			  <div class="form_content">
 				<form id="form_<?=$person["id"];?>" name="form_<?=$person["id"];?>" action="" method="post" autocomplete="off">
-				  	<input hidden type="text" id="personid" name="personid" value="<?=$person["id"];?>">
-					<label for="lastname">A dolgozó vezetékneve:</label><br>
-					<input type="text" id="lastname" name="lastname" value="<?=$person["lastname"];?>" required placeholder="Vezetéknév"><br>
-					<label for="firstname">A dolgozó keresztneve:</label><br>
-					<input type="text" id="firstname" name="firstname" value="<?=$person["firstname"];?>" required placeholder="Keresztnév"><br>
-					<label for="address">A dolgozó  lakhely</label><br>
-					<input type="text" id="address" name="address" value="<?=$person["address"];?>" required placeholder="Lakhely címe"><br>
-					<label for="username">A dolgozó felhasználóneve:</label><br>
-					<input type="text" id="username" name="username" value="<?=$person["username"];?>" required placeholder="Felhasználónév"><br>
-					<label for="position">A dolgozó beosztása:</label><br>
+					<input hidden type="text" id="personid" name="personid" value="<?=$person["id"];?>">
+					<label for="lastname">A dolgozó vezetékneve:</label>
+					<input type="text" id="lastname" name="lastname" value="<?=$person["lastname"];?>" required placeholder="Vezetéknév">
+					<label for="firstname">A dolgozó keresztneve:</label>
+					<input type="text" id="firstname" name="firstname" value="<?=$person["firstname"];?>" required placeholder="Keresztnév">
+					<label for="address">A dolgozó  lakhely</label>
+					<input type="text" id="address" name="address" value="<?=$person["address"];?>" required placeholder="Lakhely címe">
+					<label for="username">A dolgozó felhasználóneve:</label>
+					<input type="text" id="username" name="username" value="<?=$person["username"];?>" required placeholder="Felhasználónév">
+					<label for="position">A dolgozó beosztása:</label>
 					<select id="position" name="position">
 					<?php
 
@@ -142,14 +142,14 @@ foreach ($people_array as $person){ ?>
 					  }
 					}
 					?>
-					</select><br>
-					<label for="password">A dolgozó jelszava:</label><br>
-					<input type="password" id="password" name="password" value="" placeholder="Jelszó"><br>
-					<label for="passwordc">Jelszó megerősítése:</label><br>
-					<input type="password" id="passwordc" name="passwordc" value="" placeholder="Jelszó megerősítése"><br>
-					<label for="email">A dolgozó e-mail címe:</label><br>
-					<input type="email" id="email" name="email" value="<?=$person["email"];?>" required placeholder="E-mail"><br>
-					<label for="numbersOfChildren">Új gyermek felvitele:</label><br>
+					</select>
+					<label for="password">A dolgozó jelszava:</label>
+					<input type="password" id="password" name="password" value="" placeholder="Jelszó">
+					<label for="passwordc">Jelszó megerősítése:</label>
+					<input type="password" id="passwordc" name="passwordc" value="" placeholder="Jelszó megerősítése">
+					<label for="email">A dolgozó e-mail címe:</label>
+					<input type="email" id="email" name="email" value="<?=$person["email"];?>" required placeholder="E-mail">
+					<label for="numbersOfChildren">Új gyermek felvitele:</label>
 					<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
 					  <option value="" selected disabled>Kérem válasszon...</option>
 					  <?php

@@ -98,7 +98,7 @@ function addInput() {
         x.setAttribute("id", i);
         x.setAttribute("name", "child"+i);
         x.setAttribute("class", "rem");
-        document.getElementById("form").insertBefore(x, document.getElementById("button"));
+        document.getElementById("form").insertBefore(x, document.getElementById("newperson"));
 
         let y = document.createElement("BR");
         y.setAttribute("class", "rem");
@@ -110,10 +110,6 @@ function addInput() {
         z.setAttribute("class", "rem");
         z.appendChild(t);
         document.getElementById("form").insertBefore(z, document.getElementById(i));
-
-        let w = document.createElement("BR");
-        w.setAttribute("class", "rem");
-        document.getElementById("form").insertBefore(w, document.getElementById(i));
 
     }
 }

@@ -25,7 +25,7 @@ if ($pos_count == 0) {
     <div class="form_content">
         <form id="form" action="" method="post" autocomplete="off">
 			<div>
-				<label for="lastname">A dolgozó vezetékneve:</label><br>
+				<label for="lastname" style="vertical-align: left;">A dolgozó vezetékneve:</label><br>
 				<input type="text" id="lastname" name="lastname" required placeholder="Vezetéknév"><br>
 				<label for="firstname">A dolgozó keresztneve:</label><br>
 				<input type="text" id="firstname" name="firstname" required placeholder="Keresztnév"><br>
@@ -65,7 +65,7 @@ if ($pos_count == 0) {
 					?>
 				</select><br>
 			</div>
-			<button type="submit" id="newperson" name="newperson" form="form" class="button">Rögzítés</button>
+			<button type="submit" id="newperson" name="newperson" form="form" class="button button_width">Rögzítés</button>
         </form>
     </div>
 </div>

@@ -303,6 +303,9 @@ select:hover{
     border-radius: 0.2rem;
 	position: relative;
   }
+ .button_width{
+	 width:100px;
+ }
 .button:hover {
     background-color: #fafafa;
     font-style: bold;
