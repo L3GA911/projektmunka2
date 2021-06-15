@@ -65,7 +65,8 @@ function user_delete_p(user_id) {
 
 function new_pos() {
   pos_name = $("#position").val();
-  $.ajax({url:"profiles.php", type:"POST", data: ({pos_name: pos_name}), async:true, cache:false, success:function(result)
+  posmaxfreedays = $("#posmaxfreedays").val();
+  $.ajax({url:"profiles.php", type:"POST", data: ({pos_name: pos_name, posmaxfreedays: posmaxfreedays}), async:true, cache:false, success:function(result)
 {		
    pageLoad('p_positions');
 }});

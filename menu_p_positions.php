@@ -22,7 +22,9 @@ $users_count = $result->num_rows;
 	<form>
 			<div>
 				<label for="position">Beosztás:</label><br>
-				<input type="text" id="position" name="position" required placeholder="Beosztás">
+				<input type="text" id="position" name="position" required placeholder="Beosztás"><br>
+				<label for="posmaxfreedays">Megengedett egyidejű távollétek száma:</label><br>
+				<input style="width:50px; padding: 2px;" min="1" type="number" value="1" id="posmaxfreedays" name="posmaxfreedays" required placeholder="">
 			</div>
 			<br>
 			<button type="button" onclick="new_pos()" id="button" value="newpos" name="newpos" class="button">Létrehozás</button>
@@ -32,6 +34,7 @@ $users_count = $result->num_rows;
 		<?php
 			$id = "ID";
 			$position = "Beosztás";
+			$maxfreedays = "Megengedett egyidejű távollét";
 		?>
 		<br>
 	    <table id="table" class="table table-striped table-bordered table2 p_positions">
@@ -39,6 +42,7 @@ $users_count = $result->num_rows;
 		    <tr>
 			  <th><?=$id;?></th>
 			  <th><?=$position;?></th>
+			  <th><?=$maxfreedays;?></th>
 			  <th></th>
 		    </tr>
 		  </thead>
@@ -47,10 +51,13 @@ $users_count = $result->num_rows;
 		while ($row = $result->fetch_assoc()) {
 		$pos_id = $row["id"];
 		$pos_name = $row["name"];
+		$pos_maxfreedays = $row["maxfreedays"];
+
 		echo'
 		<tr>
 			<td data-label="'.$id.'">'.$pos_id.'</td>
 			<td data-label="'.$position.'">'.$pos_name.'</td>
+			<td data-label="'.$maxfreedays.'">'.$pos_maxfreedays.'</td>
 			<td><button onclick="pos_delete_p('.$pos_id.')" class="button_table">Törlés</button></td>
 		</tr>';}  
 ?> 
