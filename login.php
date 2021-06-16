@@ -44,9 +44,23 @@ require('inc/db.php');
 session_start();
 $hiba = 0; //hiba alapvetően nincs
 
-if (isset($_GET['changePassword'])) {
-	
+if (isset($_POST['changePassword'])) {
+	$username = $_SESSION['username'];
+	$password = stripslashes($_REQUEST['password']);
+	$password = mysqli_real_escape_string($con, $password);
+	$passwordc = stripslashes($_REQUEST['passwordc']);
+	$passwordc = mysqli_real_escape_string($con, $passwordc);
+
+	if ($password == $passwordc && $password != "") {
+		$password = md5($password);
+		$query    = "UPDATE users SET password='$password', firstlogin='0' WHERE username='$username'";
+		$execute = mysqli_query($con, $query) or die(mysql_error());
+		$hiba = 4; //Ez valójában success
+	} else {
+		$hiba = 3; //A jelszó üres vagy nem egyezik meg a két bemenet
 	}
+
+}
 
 //Form elküldés után
 if (isset($_POST['username'])) {
@@ -65,6 +79,7 @@ if ($rows != 0) {
 
 	if ($row["firstlogin"] == 1) {
 		$hiba = 1;
+		$_SESSION['username'] = $username;
 		//első bejelentkezés, jelszó változtatás szükséges
 	} else {
 			$_SESSION['username'] = $username;
@@ -90,13 +105,28 @@ if ($rows != 0) {
 					<div class="alert alert-danger alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						Jelszó módosítás szükséges!
-						<a href="login.php?changePassword=true" data-target="#exampleModal" data-toggle="modal">Megváltoztatom!</a>
+						<a href="" data-target="#exampleModal" data-toggle="modal">Megváltoztatom!</a>
 					</div>
 			<?php }
 				if ($hiba == 2) {?>
 					<div class="alert alert-danger alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						Hibás felhasználónév vagy jelszó!
+					</div>
+			<?php } ?>
+			<?php
+			if ($hiba == 3) {?>
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						A két jelszó nem egyezik meg, vagy valamelyik mező üresen maradt!
+						<a href="" data-target="#exampleModal" data-toggle="modal">Újra!</a>
+					</div>
+			<?php } ?>
+			<?php
+			if ($hiba == 4) {?>
+					<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						A jelszó módosítás sikeres volt!
 					</div>
 			<?php } ?>
 		</form>
@@ -123,7 +153,7 @@ if ($rows != 0) {
 			</div>
 	  </div>
       <div class="modal-footer">
-	    <button type="submit" id="modifyPerson" name="modifyPerson" form="form" class="button2">Módosítás</button>
+	    <button type="submit" id="changePassword" name="changePassword" form="form" class="button2">Módosítás</button>
       </div>
     </div>
   </div>
