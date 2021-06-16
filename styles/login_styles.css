@@ -1,3 +1,9 @@
+:root{
+	/*színek*/
+	--purple-light: #A7A8BD;
+	--purple-dark: #595b83;
+}
+
 *{
 	box-sizing: border-box;
 	margin: 0;
@@ -102,3 +108,94 @@ main input:active {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: burlywood;
 opacity: 0.7; }
+
+.content_container{
+    width: 100%;
+    height: auto;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+	align-items: center;
+}
+.form_content{
+    height: auto;
+    width: auto;
+    position: relative;
+}
+.form_content form{
+	display:flex;
+	flex-direction: column;
+	align-items: left;
+}
+.form_content form label{
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+    color: var(--purple-dark);
+}
+.form_content form label{
+	margin-bottom: 0px;
+}
+.form_content form input[type=text], 
+.form_content form input[type=password] {
+    width: 15rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ced4da;
+	border-radius: 0.3rem;
+    color: var(--purple-dark);
+}
+.form_content form input[type=text]:focus, 
+.form_content form input[type=password]:focus{
+    border-left: 4px solid var(--purple-dark);
+    background: var(--purple-light);
+    outline: none;
+    color: #fff;
+}
+.form_content form input[type=password]{
+	margin-bottom: 1rem;
+}
+.form_content form input[type=text]:active, 
+.form_content form input[type=password]:active {
+    border-left: 4px solid var(--purple-dark);
+    background: var(--purple-light);
+    outline: none;
+    color: #fff;
+	margin-bottom: 5px;
+}
+::placeholder {
+    color: #ced4da;
+    opacity: 0.7; 
+  }
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #ced4da;
+   opacity: 0.7; 
+  }
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ced4da;
+  opacity: 0.7; 
+}
+.button2{
+    background-color: #fafafa;
+    -webkit-box-shadow: 0px 3px 7px 1px rgba(89,91,131,0.39); 
+    box-shadow: 0px 3px 7px 1px rgba(89,91,131,0.39);
+    color: var(--purple-dark);
+    padding: 0.5rem 0.8rem;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0.5rem 0.3rem;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border: transparent;
+    border-radius: 0.2rem;
+	position: relative;
+  }
+.button2:hover {
+    background-color: #fafafa;
+    font-style: bold;
+    -webkit-box-shadow: 0px 3px 7px 1px rgba(89,91,131,1); 
+    box-shadow: 0px 3px 7px 1px rgba(89,91,131,1);
+}
+.button2:active{
+	border:0px;
+}
