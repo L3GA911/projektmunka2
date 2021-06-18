@@ -41,6 +41,8 @@ if ($userinfo['role'] != 2) {
 				</img>
 				<br>
 				<input type="text" id="fadminfirstn" name="fadminfirstn" required placeholder="Keresztnév"><br>
+				<label for="address">Lakhely:</label><br>
+				<input type="text" id="address" name="address" required placeholder="Lakhely"><br>
 				<label for="username">Felhasználónév:</label><br>
 				<input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>
 			</div>

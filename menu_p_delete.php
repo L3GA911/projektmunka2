@@ -24,7 +24,7 @@ $users_count = $result->num_rows;
 <?php
 	$id = "ID";
 	$vez_nev = "Vezetéknév";
-	$ker_nev = "Keresztnév";
+	$ker_nev = "Keresztnév";  
   $pozicio = "Pozíció";
 	$felh_nev = "Felhasználónév";
 ?>

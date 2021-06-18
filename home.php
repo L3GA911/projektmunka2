@@ -3,10 +3,7 @@
     include_once ('menu.php');
 ?>
 
-<?php
 
-
-?>
 <div id="content" class="content">
     <span class="navname">Kezdőlap</span><br>
     <span>
@@ -31,5 +28,5 @@
 <?php
     include_once ('bottom.php');
 ?>
-
+ 
   
