@@ -31,21 +31,8 @@
 			$alert .='Sikertelen művelet!';
 		}
 		$execute = mysqli_query($con, $query) or die(mysql_error());
-		$query_dates = "SELECT id, date FROM freedays WHERE user_id = ".$userid." AND accepted = 0" ;
-		$result2  = mysqli_query($con, $query_dates);
-		if (mysqli_num_rows($result2) != 0){
-			while ($row2 = $result2->fetch_assoc()) { 
-			?>
-				<div class="panel_list">
-					<span><?=$row2['date'];?></span>
-					<button class="button_table" onClick="freedays_acc_dec(<?=$row2['id'];?>, <?=$userid;?>, 1)">Elfogadás</button>
-					<button class="button_table" onClick="freedays_acc_dec(<?=$row2['id'];?>, <?=$userid;?>, 2)">Elutasítás</button>
-				</div>
-		<?php 
-			}
-		}
-	else {echo 'Nincs szabadságkérvény.';}
+		require('inc/dayoff_acc_dec.php');
 	}
-else {echo 'hiba';}
+	else {echo 'Nincs szabadságkérvény.';}
 echo $alert;
 ?>

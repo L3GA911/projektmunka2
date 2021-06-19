@@ -23,34 +23,20 @@
 	<div class="content_container">
 		<div class="cc">
 		<?php
-			$result  = mysqli_query($con, $query);	
-			if (mysqli_num_rows($result) != 0){
-				while ($row = $result->fetch_assoc()) { 
-					$userid = $row['userid'];
-				?>
-				<button class="accordion"><?=$row['lastname'];?>&nbsp;<?=$row['firstname'];?> - <?=$row['username'];?> - <?=$row['posname'];?></button>
-				<div id="<?=$userid;?>" class="panel">
-					<?php
-					$query_dates = "SELECT id, date FROM freedays WHERE user_id = ".$row['userid']." AND accepted = 0" ;
-					$result2  = mysqli_query($con, $query_dates);
-					if (mysqli_num_rows($result2) != 0){
-						while ($row2 = $result2->fetch_assoc()) { 
-						?>
-							<div class="panel_list">
-								<span><?=$row2['date'];?></span>
-								<button class="button_table" onClick="freedays_modal(<?=$row2['id'];?>, <?=$userid;?>, 1)" data-bs-toggle="modal" data-bs-target="#Modal">Elfogadás</button>
-								<button class="button_table" onClick="freedays_modal(<?=$row2['id'];?>, <?=$userid;?>, 2)" data-bs-toggle="modal" data-bs-target="#Modal">Elutasítás</button>
-							</div>
-				<?php   }
-					}	
-					else {echo 'Nincs szabadságkérvény.';}?>
-				</div>
-		<?php 
-				}
+		$result  = mysqli_query($con, $query);	
+		if (mysqli_num_rows($result) != 0){
+			while ($row = $result->fetch_assoc()) { 
+				$userid = $row['userid'];
+			?>
+			<button class="accordion"><?=$row['lastname'];?>&nbsp;<?=$row['firstname'];?> - <?=$row['username'];?> - <?=$row['posname'];?></button>
+			<div id="<?=$userid;?>" class="panel">
+				<?php require('inc/dayoff_acc_dec.php');?>
+			</div>
+	<?php 
 			}
+		}
 	else {echo 'Nincsenek rekordok az adatbázisban.';}
-?>
-		</div>
+?>		</div>
 	</div>
 </div>
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
