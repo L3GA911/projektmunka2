@@ -1,14 +1,9 @@
 <?php
-require ('inc/auth_session.php');
-//Jogosultság ellenőrzése
-if ($userinfo['role'] != 1) {
-	echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
-	exit();
-}
-
+    include_once ('information.php');
+    include_once ('menu.php');
 ?>
-<span class="navname">Adatmódosítás</span>
-<div class="content_container">
+<div id="content" class="content">
+    <span class="navname">Profil módosítása</span><br>
     <div class="form_content">
         <form action="" method="post" autocomplete="off">
 			<div>
@@ -33,5 +28,11 @@ if ($userinfo['role'] != 1) {
         </form>
     </div>
 </div>
+<script>
+	$(':root').css("--changeImage", "url('../svg/group_black_24dp.svg')");
+</script>
 <script type="text/javascript" src="js/editDataTable.js"></script>
 <script type="text/javascript" src="js/Modal.js"></script>
+<?php
+    include_once ('bottom.php');
+?>

@@ -6,6 +6,7 @@
 		echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
 		exit();
 	}
+	
 ?>
 <span class="navname">Szabadság kérvényezése</span>
 

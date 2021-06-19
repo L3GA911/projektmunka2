@@ -28,10 +28,26 @@ function form_ajax(form_id){
 	});
 }
 
+function freedays_modal(date, userid, add_or_delete) {
+		   $.ajax({url:"w_dayoff_modal.php", type:"POST", data: ({date: date, userid: userid, aord: add_or_delete}), async:true, cache:false, success:function(result)
+		{	$(".modal-dialog").html(result);
+		}});
+}
+function wo_delete_modal(fd_id) {
+		   $.ajax({url:"wo_delete_modal.php", type:"POST", data: ({fd_id: fd_id}), async:true, cache:false, success:function(result)
+		{	$(".modal-dialog").html(result);
+		}});
+}
+function freedays_acc_dec(date, userid, add_or_delete) {
+		   $.ajax({url:"w_dayoff_acc_dec_query.php", type:"POST", data: ({date: date, userid: userid, aord: add_or_delete}), async:true, cache:false, success:function(result)
+		{
+			$('#'+userid).html(result);
+		}});
+}
 function freedays_delete(fd_id) {
 		   $.ajax({url:"wo_delete_query.php", type:"POST", data: ({fd_id: fd_id}), async:true, cache:false, success:function(result)
 		{	
-			$(".content_container").html(result);
+			$(".fillin").html(result);
 		}});
 }
 function firm_delete(firm_id) {

@@ -5119,19 +5119,20 @@ textarea.form-control-lg {
 }
 
 .modal-backdrop {
-  position: fixed;
+  display: none;	
+  /*position: fixed;
   top: 0;
   left: 0;
   z-index: 1040;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  background-color: #000;*/
 }
 .modal-backdrop.fade {
   opacity: 0;
 }
 .modal-backdrop.show {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .modal-header {
@@ -5185,7 +5186,6 @@ textarea.form-control-lg {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
     margin: 1.75rem auto;
   }
 

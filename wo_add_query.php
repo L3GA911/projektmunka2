@@ -1,6 +1,9 @@
 <?php	
 	require ('inc/auth_session.php');
-
+	
+	$position = $extendeduserinfo['pos_id'];
+	$worker_firm = $extendeduserinfo['firm_id'];
+	
 	//Jogosultság ellenőrzése
 	if ($userinfo['role'] != 0) {
 		echo "Az oldal megtekintéséhez nincs kellő jogosultságod!";
@@ -14,30 +17,62 @@
 		
 			$query = "SELECT date FROM freedays WHERE user_id = '$userid'";
 			$result  = mysqli_query($con, $query);
-			$reserved_date = 0; //alapérték
+			$reserved_date = 0;
+			$freedays_fault  = 0; //alapérték
+			
 			while ($date != false){
-				while ($row = $result->fetch_assoc()){
-					if($row['date'] != $date){
-						$reserved_date = 0;
+				if (mysqli_num_rows($result) != 0){
+					while ($row = $result->fetch_assoc()){
+						if ($row['date'] != $date){
+							$reserved_date = 0;
+						}
+						else if ($row['date'] == $date) {
+							$reserved_date = 1;
+							break 2;
+						}
 					}
-					else {
-						$reserved_date = 1;
-						break 2;
-					}
-				}	
-				$date_array[] = $date;
-				$date = strtok(",");
-			}
-		
-			if ($reserved_date == 0){
-				for($i=0;$i<count($date_array);$i++){
-					$query_insert = "INSERT INTO freedays (date, user_id) VALUES ('$date_array[$i]', '$userid')";
-					$execute = mysqli_query($con, $query_insert) or die(mysql_error());
+					$date_array[] = $date;
+					$date = strtok(",");
 				}
-				$alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">';
-				$alert .='<button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>';
-				$alert .='A kérelem beküldése sikeres volt.</div>';
-				echo $alert;
+				else {echo 'Nincs az adatbázisban rekord.';}
+			}					
+			if ($reserved_date == 0){
+				$query = "SELECT count(date) as date_nums, date, positions.maxfreedays as maxdays FROM freedays 
+						  INNER JOIN c_members ON freedays.user_id = c_members.u_id
+						  INNER JOIN companys ON c_members.c_id = companys.id
+						  INNER JOIN positions ON companys.id = positions.c_id
+						  GROUP BY date
+						  WHERE companys.id = ".$worker_firm;
+							  							  
+				$result  = mysqli_query($con, $query);
+				foreach ($date_array as $value) {
+					while ($row = $result->fetch_assoc()){
+						if ($row['date'] == $value && $row['date_nums'] < $row['maxdays']){
+							$freedays_fault = 0;		
+						}
+						else {
+							$freedays_fault = 1;		
+							break 2;
+						}
+					}
+				}
+				if ($freedays_fault == 0){
+					foreach ($date_array as $value){
+						$query_insert = "INSERT INTO freedays (date, user_id) 
+										 VALUES ('$value', '$userid')";
+						$execute = mysqli_query($con, $query_insert) or die(mysql_error());
+					}
+					$alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+					$alert .='<button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>';
+					$alert .='A kérelem beküldése sikeres volt.</div>';
+					echo $alert;
+				}
+				else if ($freedays_fault == 1){
+					$alert = '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+					$alert .='<button type="button" class="btn-close" data-dismiss="alert" data-bs-dismiss="alert">&times;</button>';
+					$alert .= 'Egy vagy több dátum esetében elérte a szabadság limitet.</div>';
+					echo $alert;
+				}
 			}	
 			else if($reserved_date == 1){
 				$alert = '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
@@ -61,3 +96,7 @@
 		echo $alert;
 	}
 ?>
+<script>
+	console.log(<?=$position;?>);
+	console.log(<?=$worker_firm;?>);
+</script>
