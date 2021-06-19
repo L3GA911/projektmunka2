@@ -30,10 +30,12 @@ session_start();
 
 
 		//Személy kiskorú gyermekeinek lekérdezése
-		$query = "SELECT * FROM users
-		JOIN p_child ON p_child.p_id = users.id
+		$query = "SELECT * FROM p_child
+		JOIN users ON users.id = p_child.p_id
 		WHERE users.id = '$userid' AND TRUNCATE(DATEDIFF(CURRENT_DATE, p_child.birthday)/365,0) < 16";
-		$row = mysqli_fetch_assoc($result);
+		$result = mysqli_query($con, $query) or die(mysql_error());
+		
+		//$row = mysqli_fetch_assoc($result);
 		$person_young_kids_count = mysqli_num_rows($result);
 
 		//Szabadság kiszámítása
@@ -52,8 +54,8 @@ session_start();
 
 		$person_kidsfreeday = 0;
 
-		if ($person_young_kids_count = 1) {$person_kidsfreeday = 2;}
-		if ($person_young_kids_count = 2) {$person_kidsfreeday = 4;}
+		if ($person_young_kids_count == 1) {$person_kidsfreeday = 2;}
+		if ($person_young_kids_count == 2) {$person_kidsfreeday = 4;}
 		if ($person_young_kids_count >= 3) {$person_kidsfreeday = 7;}
 
 
@@ -62,6 +64,7 @@ session_start();
 		//Felhasznált szabadságok
 		$query = "SELECT * FROM freedays
 		WHERE user_id = '$userid'";
+		$result = mysqli_query($con, $query) or die(mysql_error());
 		$person_used_freedays_count = mysqli_num_rows($result);
 
 		//Maradék

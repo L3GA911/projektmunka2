@@ -49,8 +49,8 @@ if (isset($_POST['newfirm'])) {
 						//Nem egyezik a két jelszó
 						$hiba = 3;
 					} else {
-						$headquarters = stripslashes($_REQUEST['headquarters']);
-						$headquarters = mysqli_real_escape_string($con, $headquarters);
+						$address = stripslashes($_REQUEST['address']);
+						$address = mysqli_real_escape_string($con, $address);
 						$fadminfirstn = stripslashes($_REQUEST['fadminfirstn']);
 						$fadminfirstn = mysqli_real_escape_string($con, $fadminfirstn);
 						$fadminlastn = stripslashes($_REQUEST['fadminlastn']);
@@ -66,7 +66,7 @@ if (isset($_POST['newfirm'])) {
 						$userid = $getinfo['id'];
 
 						$query = "INSERT INTO companys (name, address, owner_id, form_id)
-						VALUES ('$firmname', '$headquarters', '$userid', '$cform')"; // új cég
+						VALUES ('$firmname', '$address', '$userid', '$cform')"; // új cég
 						$execute = mysqli_query($con, $query) or die(mysql_error());
 
 						$query = "SELECT *, companys.id as firm_id FROM companys
@@ -136,7 +136,7 @@ switch ($hiba) {
 @$firm_id = $_REQUEST['firm_id']; //firm_delete
 if (isset($firm_id)) {
 	//SQL kapcsolat létrehozása
-	$query = "DELETE FROM companys WHERE id='$firm_id'";
+	$query = "CALL DeleteCompanyWithAllData ('$firm_id')"; //a cég és minden hozzátartozó adat törlése
 	$result = mysqli_query($con, $query) or die(mysql_error());
 }
 
@@ -144,7 +144,7 @@ if (isset($firm_id)) {
 @$user_id = $_REQUEST['user_id']; //user_delete
 if (isset($user_id)) {
 	//SQL kapcsolat létrehozása
-	$query = "DELETE FROM users WHERE id='$user_id'";
+	$query = "CALL DeleteUser ('$user_id')"; //
 	$result = mysqli_query($con, $query) or die(mysql_error());
 }
 
