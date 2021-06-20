@@ -34,7 +34,7 @@
 					$date_array[] = $date;
 					$date = strtok(",");
 				}
-				else {echo 'Nincs az adatbázisban rekord.';}
+				else {echo 'Nincs az adatbázisban rekord.'; break;}
 			}					
 			if ($reserved_date == 0){
 				$sub_query = "SELECT COUNT(date) as date_nums,
