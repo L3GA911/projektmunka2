@@ -526,6 +526,7 @@ table#dayofflist tr td {
 	flex-direction: row;
 	padding: 1rem 1rem;
 	align-items: center;
+	justify-content: flex-end;
 }
 .panel_list span{
 	padding-right: 1rem;
