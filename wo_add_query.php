@@ -37,17 +37,23 @@
 				else {echo 'Nincs az adatbázisban rekord.';}
 			}					
 			if ($reserved_date == 0){
-				$query = "SELECT count(date) as date_nums, date, positions.maxfreedays as maxdays FROM freedays 
-						  INNER JOIN c_members ON freedays.user_id = c_members.u_id
-						  INNER JOIN companys ON c_members.c_id = companys.id
-						  INNER JOIN positions ON companys.id = positions.c_id
-						  GROUP BY date
-						  WHERE companys.id = ".$worker_firm;
+				$sub_query = "SELECT COUNT(date) as date_nums,
+									 date, 
+									 positions.maxfreedays as maxdays
+							  FROM freedays
+							  WHERE companys.id = $worker_firm AND position.id = $position
+							  INNER JOIN c_members ON freedays.user_id = c_members.u_id
+							  INNER JOIN companys ON c_members.c_id = companys.id
+							  INNER JOIN positions ON companys.id = positions.c_id
+							  GROUP BY date";
 							  							  
-				$result  = mysqli_query($con, $query);
+				$sub_result = mysqli_query($con, $sub_query);
 				foreach ($date_array as $value) {
-					while ($row = $result->fetch_assoc()){
-						if ($row['date'] == $value && $row['date_nums'] < $row['maxdays']){
+					while ($sub_row = $sub_result->fetch_assoc()){
+						if($sub_row['date'] != $value){
+							$freedays_fault = 0;		
+						}
+						else if ($sub_row['date'] == $value && $sub_row['date_nums'] < $sub_row['maxdays']){
 							$freedays_fault = 0;		
 						}
 						else {

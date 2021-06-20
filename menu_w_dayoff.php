@@ -14,10 +14,10 @@
 				  users.id as userid,
 				  positions.name as posname
 			  FROM freedays 
-			  INNER JOIN c_members ON freedays.user_id = c_members.u_id
 			  INNER JOIN users ON freedays.user_id = users.id
-			  INNER JOIN positions ON c_members.c_id = positions.c_id
-			  WHERE c_members.c_id = '$worker_firm'";
+			  INNER JOIN positions ON users.status = positions.id
+			  INNER JOIN c_members ON users.id = c_members.u_id
+			  WHERE c_members.c_id = $worker_firm";
 ?>
 <span class="navname">Függőben lévő szabadságok</span>
 	<div class="content_container">
