@@ -35,7 +35,8 @@
 					$date = strtok(",");
 				}
 				else {echo 'Nincs az adatbázisban rekord.'; break;}
-			}					
+			}	
+			
 			if ($reserved_date == 0){
 				$sub_query = "SELECT COUNT(date) as date_nums,
 									 date, 
@@ -44,7 +45,9 @@
 							  INNER JOIN c_members ON freedays.user_id = c_members.u_id
 							  INNER JOIN companys ON c_members.c_id = companys.id
 							  INNER JOIN positions ON companys.id = positions.c_id
-							  WHERE companys.id = $worker_firm AND positions.id = $position
+							  WHERE companys.id = $worker_firm AND 
+									positions.id = $position AND
+									freedays.accepted = 1
 							  GROUP BY date";
 							  							  
 				$sub_result = mysqli_query($con, $sub_query);
