@@ -41,10 +41,10 @@
 									 date, 
 									 positions.maxfreedays as maxdays
 							  FROM freedays
-							  WHERE companys.id = $worker_firm AND position.id = $position
 							  INNER JOIN c_members ON freedays.user_id = c_members.u_id
 							  INNER JOIN companys ON c_members.c_id = companys.id
 							  INNER JOIN positions ON companys.id = positions.c_id
+							  WHERE companys.id = $worker_firm AND positions.id = $position
 							  GROUP BY date";
 							  							  
 				$sub_result = mysqli_query($con, $sub_query);
