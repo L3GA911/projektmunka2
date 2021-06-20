@@ -71,6 +71,16 @@ function user_delete_sa(user_id, firm_id) {
 			list_firm_users(firm_id); //a törlés után meghívjuk a függvényt
 		}});
 }
+function user_delete_p_modal(user_id_modal) {
+		   $.ajax({url:"p_delete_modal.php", type:"POST", data: ({user_id_modal: user_id_modal}), async:true, cache:false, success:function(result)
+		{	$(".modal-dialog").html(result);
+		}});
+}
+function delete_pos_modal(pos_id_modal) {
+		   $.ajax({url:"p_delete_pos_modal.php", type:"POST", data: ({pos_id_modal: pos_id_modal}), async:true, cache:false, success:function(result)
+		{	$(".modal-dialog").html(result);
+		}});
+}
 
 function user_delete_p(user_id) {
        $.ajax({url:"profiles.php", type:"POST", data: ({user_id: user_id}), async:true, cache:false, success:function(result)

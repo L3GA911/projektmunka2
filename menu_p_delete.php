@@ -58,12 +58,15 @@ $users_count = $result->num_rows;
         <td data-label="<?=$felh_nev;?>">'.$person_username.'</td>
         <td data-label="<?=$pozicio;?>">'.$person_status.'</td>
         <td>
-			<button onclick="user_delete_p('.$user_id.')" class="button_table">Törlés</button>
+			<button onclick="user_delete_p_modal('.$user_id.')" class="button_table" data-bs-toggle="modal" data-bs-target="#Modal">Törlés</button>
 		</td>
       </tr>';}   
 ?>
     </tbody>
   </table>
 </div>
-
-<script type="text/javascript" src="js/editDataTable.js"></script>
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  </div>
+</div>
+<script type="text/javascript" src="js/accordion.js"></script><script type="text/javascript" src="js/editDataTable.js"></script>

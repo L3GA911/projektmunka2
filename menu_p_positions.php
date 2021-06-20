@@ -58,14 +58,16 @@ $users_count = $result->num_rows;
 			<td data-label="'.$id.'">'.$pos_id.'</td>
 			<td data-label="'.$position.'">'.$pos_name.'</td>
 			<td data-label="'.$maxfreedays.'">'.$pos_maxfreedays.'</td>
-			<td><button onclick="pos_delete_p('.$pos_id.')" class="button_table">Törlés</button></td>
+			<td><button onclick="delete_pos_modal('.$pos_id.')" class="button_table" data-bs-toggle="modal" data-bs-target="#Modal">Törlés</button></td>
 		</tr>';}  
 ?> 
 		  </tbody>
 	    </table>
 	</div>  
 </div>
-
-
-<script type="text/javascript" src="js/editDataTable.js"></script>
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  </div>
+</div>
+<script type="text/javascript" src="js/accordion.js"></script><script type="text/javascript" src="js/editDataTable.js"></script>
 <script type="text/javascript" src="js/Modal.js"></script>
