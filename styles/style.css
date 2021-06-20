@@ -902,7 +902,6 @@ input#dropdown_search:active {
   }
   .information-right span:nth-child(4){
 	  display: block;
-	  position: absolute;
 	  right: 1rem;
 	  top: 0.8rem;
 	  color: var(--purple-light);
