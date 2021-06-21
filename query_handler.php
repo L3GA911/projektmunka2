@@ -32,15 +32,21 @@ JOIN users ON users.id = companys.owner_id
 WHERE companys.id = '$firm_id'";
 $result2 = mysqli_query($con, $query2) or die(mysql_error());
 
+$firmid = "ID";
+$lastname = "Vezetéknév";
+$firstname = "Keresztnév";
+$position = "Pozíció";
+$firm = "Cég";
+
 echo '
 <table id="table" class="table table-striped table-bordered table2 user_delete_size">
 <thead class="table-dark">
   <tr>
-	<th>ID</th>
-	<th>Vezetéknév</th>
-	<th>Keresztnév</th>
-	<th>Pozíció</th>
-	<th>Cég</th>
+	<th>'.$firmid.'</th>
+	<th>'.$lastname.'</th>
+	<th>'.$firstname.'</th>
+	<th>'.$position.'</th>
+	<th>'.$firm.'</th>
 	<th></th>
   </tr>
 </thead>
@@ -75,11 +81,11 @@ while ($row = $result2->fetch_assoc()) {
 	$person_firm = $row["name"]." ".$form_id_tostring;
 	echo '
 	<tr style="background-color: #ff9494;">
-		<td data-label="">'.$user_id.'</td>
-		<td data-label="">'.$person_lastname.'</td>
-		<td data-label="">'.$person_firstname.'</td>
-		<td data-label="">'.$person_status.'</td>
-		<td data-label="">'.$person_firm.'</td>
+		<td data-label="'.$firmid.'">'.$user_id.'</td>
+		<td data-label="'.$lastname.'">'.$person_lastname.'</td>
+		<td data-label="'.$firstname.'">'.$person_firstname.'</td>
+		<td data-label="'.$position.'">'.$person_status.'</td>
+		<td data-label="'.$firm.'">'.$person_firm.'</td>
 		<td>';
 		if ($users_count == 0) {echo '<button onclick="user_delete_sa('.$user_id.')" class="button_table">Törlés</button>';} else {echo '<button style="color: grey;" disabled class="button_table">Törlés</button>';}
 		echo'
@@ -115,11 +121,11 @@ switch ($firm_form) {
 $person_firm = $row["name"]." ".$form_id_tostring;
 echo '
 <tr>
-	<td data-label="">'.$user_id.'</td>
-	<td data-label="">'.$person_lastname.'</td>
-	<td data-label="">'.$person_firstname.'</td>
-	<td data-label="">'.$person_status.'</td>
-	<td data-label="">'.$person_firm.'</td>
+	<td data-label="'.$firmid.'">'.$user_id.'</td>
+	<td data-label="'.$lastname.'">'.$person_lastname.'</td>
+	<td data-label="'.$firstname.'">'.$person_firstname.'</td>
+	<td data-label="'.$position.'">'.$person_status.'</td>
+	<td data-label="'.$firm.'">'.$person_firm.'</td>
 	<td>
 	<button onclick="user_delete('.$user_id.",".$firm_id.')" class="button_table">Törlés</button>
 	</td>
