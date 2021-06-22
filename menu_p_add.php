@@ -44,6 +44,8 @@ if ($pos_count == 0) {
                     }?>
                 </select>
                 <br>
+                <label for="address">A dolgozó munkaideje</label><br>
+				<input type="time" id="starthour" value="08:00" name="starthour" required> - <input type="time" id="endhour" value="16:00" name="endhour" required><br>
 				<label for="address">A dolgozó  lakhelye</label><br>
 				<input type="text" id="address" name="address" required placeholder="Lakhely címe"><br>
 				<label for="username">A dolgozó felhasználóneve:</label><br>
@@ -58,7 +60,7 @@ if ($pos_count == 0) {
 				<label for="email">A dolgozó e-mail címe:</label><br>
 				<input type="email" id="email" name="email" required placeholder="E-mail"><br>
 				<label for="numbersOfChildren">Kiskorú gyermekek száma:</label><br>
-				<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
+				<select id="numbersOfChildren" required name="numbersOfChildren" onChange="addInput()">
 					<option value="" selected disabled>Kérem válasszon...</option>
 					<?php
 						for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 

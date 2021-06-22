@@ -16,6 +16,12 @@ WHERE companys.id = '$firm_id'";
 $result = mysqli_query($con, $query) or die(mysql_error());
 $users_count = $result->num_rows;
 
+if ($users_count == 0) {
+    echo"<script type='text/javascript'>alert('Jelenleg nincs felvéve munkavállaló a céghez!')</script>";
+    echo"<script type='text/javascript'>pageLoad('p_add')</script>";
+    exit();
+}
+
 
 ?>
 
@@ -57,6 +63,9 @@ $users_count = $result->num_rows;
 	$person_birthday = $row["birthday"];
 	$person_username = $row["username"];
 	$person_status = $row["name"];
+	$person_starthour = $row["starthour"];
+	$person_endhour = $row["endhour"];	
+	$person_status = $row["name"];
 	$person_email = $row["email"];
 	$person_address = $row["address"];
 	
@@ -81,6 +90,8 @@ $users_count = $result->num_rows;
 		"lastname" => $person_lastname,
 		"username" => $person_username,
 		"status" => $person_status,
+		"starthour" => $person_starthour,
+		"endhour" => $person_endhour,
 		"email" => $person_email,
 		"address" => $person_address
 	);
@@ -102,6 +113,8 @@ $users_count = $result->num_rows;
 		  </tbody>
 		</table>
 <?php 
+
+
 
 foreach ($people_array as $person){ ?>
 		  <div id="editWindow_<?=$person["id"];?>" class="modal">
@@ -131,34 +144,35 @@ foreach ($people_array as $person){ ?>
 							$result2 = mysqli_query($con, $query) or die(mysql_error());
 							$pos_count = $result2->num_rows;
 
-							  while ($row2 = $result2->fetch_assoc()) {
-							  $pos_id = $row2["id"];
-							  $pos_name = $row2["name"];
-							  if ($pos_name == $person_status) {
-								echo'
-								<option selected value="'.$pos_id.'">'.$pos_name.'</option>';
-							  } else {
-							  echo'
-							  <option value="'.$pos_id.'">'.$pos_name.'</option>';
-							  }
-							}
-							?>
-						</select><br>
-						<label for="password">A dolgozó jelszava:</label><br>
-						<input type="password" id="password" name="password" value="" placeholder="Jelszó"><br>
-						<label for="passwordc">Jelszó megerősítése:</label><br>
-						<input type="password" id="passwordc" name="passwordc" value="" placeholder="Jelszó megerősítése"><br>
-						<label for="email">A dolgozó e-mail címe:</label><br>
-						<input type="email" id="email" name="email" value="<?=$person["email"];?>" required placeholder="E-mail"><br>
-						<label for="numbersOfChildren">Új gyermek felvitele:</label><br>
-						<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
-						  <option value="" selected disabled>Kérem válasszon...</option>
-						  <?php
-							for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
-						  ?>
-						</select><br>
-					</div>
-					<button type="submit" id="modifyPerson" name="modifyPerson" form="form_<?=$person["id"];?>" class="button javasq_button">Módosítás</button>
+					  while ($row2 = $result2->fetch_assoc()) {
+					  $pos_id = $row2["id"];
+					  $pos_name = $row2["name"];
+					  if ($pos_name == $person_status) {
+						echo'
+						<option selected value="'.$pos_id.'">'.$pos_name.'</option>';
+					  } else {
+					  echo'
+					  <option value="'.$pos_id.'">'.$pos_name.'</option>';
+					  }
+					}
+					?>
+					</select>
+					<label for="address">A dolgozó munkaideje</label><br>
+					<input type="time" id="starthour" value="<?=$person["starthour"];?>" name="starthour" required> - <input type="time" id="endhour" value="<?=$person["endhour"];?>" name="endhour" required><br>
+					<label for="password">A dolgozó jelszava:</label>
+					<input type="password" id="password" name="password" value="" placeholder="Jelszó">
+					<label for="passwordc">Jelszó megerősítése:</label>
+					<input type="password" id="passwordc" name="passwordc" value="" placeholder="Jelszó megerősítése">
+					<label for="email">A dolgozó e-mail címe:</label>
+					<input type="email" id="email" name="email" value="<?=$person["email"];?>" required placeholder="E-mail">
+					<label for="numbersOfChildren">Új gyermek felvitele:</label>
+					<select id="numbersOfChildren" name="numbersOfChildren" onChange="addInput()">
+					  <option value="" selected disabled>Kérem válasszon...</option>
+					  <?php
+						for($i=0; $i<=10; $i++){ echo '<option value="'.$i.'">'.$i.'</option>';} 
+					  ?>
+					</select><br>
+					<button type="submit" id="modifyPerson" name="modifyPerson" form="form_<?=$person["id"];?>" class="button">Módosítás</button>
 				</form>
 			  </div>
 			</div>
