@@ -14,6 +14,8 @@ if (isset($_POST['newperson'])) {
 	(isset($_POST['birthday'])) && 
 	(isset($_POST['position'])) && 
 	(isset($_POST['address'])) && 
+	(isset($_POST['starthour'])) && 
+	(isset($_POST['endhour'])) && 
 	(isset($_POST['username'])) && 
 	(isset($_POST['password'])) && 
 	(isset($_POST['passwordc'])) && 
@@ -47,6 +49,10 @@ if (isset($_POST['newperson'])) {
                     $birthday = mysqli_real_escape_string($con, $birthday);
 					$position = stripslashes($_REQUEST['position']);
                     $position = mysqli_real_escape_string($con, $position);
+					$starthour = stripslashes($_REQUEST['starthour']);
+                    $starthour = mysqli_real_escape_string($con, $starthour);
+					$endhour = stripslashes($_REQUEST['endhour']);
+                    $endhour = mysqli_real_escape_string($con, $endhour);
                     $address = stripslashes($_REQUEST['address']);
                     $address = mysqli_real_escape_string($con, $address);
                     $username = stripslashes($_REQUEST['username']);
@@ -55,8 +61,8 @@ if (isset($_POST['newperson'])) {
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
-                    $query = "INSERT INTO users (username, password, firstname, lastname, birthday, address, role, email, status) 
-                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$birthday', '$address', '0', '$email', $position)"; //új felhasználó
+                    $query = "INSERT INTO users (username, password, firstname, lastname, birthday, address, role, email, status, starthour, endhour) 
+                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$birthday', '$address', '0', '$email', '$position', '$starthour', '$endhour')"; //új felhasználó
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                     
                     $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
@@ -186,7 +192,7 @@ if (isset($pos_id)) {
 	$execute = mysqli_query($con, $query) or die(mysql_error());
 }
 
-//Felhasználó szerkesztése -----EZ MÉG BEFEJEZETLEN----------
+//Felhasználó szerkesztése
 if (isset($_POST['modifyPerson'])) {
 	//Adatok ellenőrzése
 	$hiba = 0;
@@ -244,6 +250,10 @@ if (isset($_POST['modifyPerson'])) {
                     $firstname = mysqli_real_escape_string($con, $firstname);
 					$position = stripslashes($_REQUEST['position']);
                     $position = mysqli_real_escape_string($con, $position);
+					$starthour = stripslashes($_REQUEST['starthour']);
+                    $starthour = mysqli_real_escape_string($con, $starthour);
+					$endhour = stripslashes($_REQUEST['endhour']);
+                    $endhour = mysqli_real_escape_string($con, $endhour);
                     $address = stripslashes($_REQUEST['address']);
                     $address = mysqli_real_escape_string($con, $address);
                     $username = stripslashes($_REQUEST['username']);
@@ -252,45 +262,19 @@ if (isset($_POST['modifyPerson'])) {
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
-                    // $query = "INSERT INTO users (username, password, firstname, lastname, address, role, email, status) 
-                    //           VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$address', '0', '$email', $position)"; //új felhasználó
-					echo "$password";
 					//ha a jelszó nincs kitöltve, akkor a régi kerül vissza
 					if ($password == "") {
 						$password = $current_password;
 					} else {
 						$password = md5($password);
 					}
-					echo "$password";
-					$query = "UPDATE users SET password='$password', lastname='$lastname', firstname='$firstname', address='$address', email='$email', username='$username', status='$position'
+					$query = "UPDATE users SET password='$password', lastname='$lastname', firstname='$firstname', address='$address', email='$email', username='$username', status='$position', starthour='$starthour', endhour='$endhour' 
 							  WHERE id = '$personid'";
 
 							   
 
                     $execute = mysqli_query($con, $query) or die(mysql_error());
-                    
-                    // $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz
-                    // $result  = mysqli_query($con, $query);
-                    // $getinfo = mysqli_fetch_assoc($result);
-                    // $userid = $getinfo['id'];
-                    // $companyid = $extendeduserinfo['id']; // cég id (a létrehozó felhasználó adatai alapján)
-
-                    // $query = "INSERT INTO c_members (c_id, u_id)
-                    // VALUES ('$companyid', '$userid')"; // új felhasználó kapcsolása a céghez (c_members)
-                    // $execute = mysqli_query($con, $query) or die(mysql_error());
-
-					
-
-                    // //annyiszor fut le a kód, ahány gyermek van
-					// if ($numbersOfChildren <> 0) { //ha egyáltalán van gyermek
-					// 	for($i=1; $i<=$numbersOfChildren; $i++){ 
-					// 		$birthday = stripslashes($_REQUEST['child'.$i]);
-					// 		$birthday = mysqli_real_escape_string($con, $birthday);
-					// 		$query = "INSERT INTO p_child (p_id, birthday)
-					// 		VALUES ('$userid', '$birthday')"; // gyerekek születésének dátuma hozzáadása (p_child)
-					// 		$execute = mysqli_query($con, $query) or die(mysql_error());
-					// 	} 
-					// }
+                
 
                 }
 			}
@@ -332,8 +316,6 @@ switch ($hiba) {
 		break;
 	}
 }
-
-
 
 ?>
 

@@ -16,6 +16,12 @@ WHERE companys.id = '$firm_id'";
 $result = mysqli_query($con, $query) or die(mysql_error());
 $users_count = $result->num_rows;
 
+if ($users_count == 0) {
+    echo"<script type='text/javascript'>alert('Jelenleg nincs felvéve munkavállaló a céghez!')</script>";
+    echo"<script type='text/javascript'>pageLoad('p_add')</script>";
+    exit();
+}
+
 
 ?>
 
@@ -57,6 +63,9 @@ $users_count = $result->num_rows;
 	$person_birthday = $row["birthday"];
 	$person_username = $row["username"];
 	$person_status = $row["name"];
+	$person_starthour = $row["starthour"];
+	$person_endhour = $row["endhour"];	
+	$person_status = $row["name"];
 	$person_email = $row["email"];
 	$person_address = $row["address"];
 	
@@ -81,6 +90,8 @@ $users_count = $result->num_rows;
 		"lastname" => $person_lastname,
 		"username" => $person_username,
 		"status" => $person_status,
+		"starthour" => $person_starthour,
+		"endhour" => $person_endhour,
 		"email" => $person_email,
 		"address" => $person_address
 	);
@@ -102,6 +113,8 @@ $users_count = $result->num_rows;
 		  </tbody>
 		</table>
 <?php 
+
+
 
 foreach ($people_array as $person){ ?>
 		  <div id="editWindow_<?=$person["id"];?>" class="modal">
@@ -143,6 +156,8 @@ foreach ($people_array as $person){ ?>
 					}
 					?>
 					</select>
+					<label for="address">A dolgozó munkaideje</label><br>
+					<input type="time" id="starthour" value="<?=$person["starthour"];?>" name="starthour" required> - <input type="time" id="endhour" value="<?=$person["endhour"];?>" name="endhour" required><br>
 					<label for="password">A dolgozó jelszava:</label>
 					<input type="password" id="password" name="password" value="" placeholder="Jelszó">
 					<label for="passwordc">Jelszó megerősítése:</label>
