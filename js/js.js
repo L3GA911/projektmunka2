@@ -65,10 +65,10 @@ function list_firm_users(firm_id) {
 		}});
 }
 
-function user_delete_sa(user_id, firm_id) {
-		   $.ajax({url:"superadmin.php", type:"POST", data: ({user_id: user_id}), async:true, cache:false, success:function(result)
+function user_delete_sa(user_id, firm, owner) {
+		   $.ajax({url:"superadmin.php", type:"POST", data: ({user_id: user_id, firm: firm, owner: owner}), async:true, cache:false, success:function(result)
 		{
-			list_firm_users(firm_id); //a törlés után meghívjuk a függvényt
+			list_firm_users(firm); //a törlés után meghívjuk a függvényt
 		}});
 }
 function user_delete_p_modal(user_id_modal) {

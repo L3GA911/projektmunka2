@@ -57,7 +57,7 @@
                     <span> - </span>
                     <span>
                     <?php 
-                    if (($userinfo['role'] == 0) || ($userinfo['role'] == 1)) { echo $extendeduserinfo['name']; } else echo 'Nincs cég';
+                    if (($userinfo['role'] == 0) || ($userinfo['role'] == 1)) { echo $extendeduserinfo['firmname']; } else echo 'Nincs cég';
 					?>
                     </span>
                     <span>

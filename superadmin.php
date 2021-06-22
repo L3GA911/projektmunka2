@@ -142,10 +142,19 @@ if (isset($firm_id)) {
 
 //Felhasználó törlése
 @$user_id = $_REQUEST['user_id']; //user_delete
+@$firm = $_REQUEST['firm'];
+@$owner = $_REQUEST['owner'];
 if (isset($user_id)) {
+	echo $firm; echo $owner;
 	//SQL kapcsolat létrehozása
-	$query = "CALL DeleteUser ('$user_id')"; //
-	$result = mysqli_query($con, $query) or die(mysql_error());
+	if ($owner == '1') {	
+		$query = "CALL DeleteCompanyWithAllData ('$firm')"; //a vezető törlésével minden törlésre kerül
+		$result = mysqli_query($con, $query) or die(mysql_error());
+	} else {
+		$query = "CALL DeleteUser ('$user_id')";
+		$result = mysqli_query($con, $query) or die(mysql_error());	
+	}
+
 }
 
 
