@@ -23,7 +23,7 @@ if ($pos_count == 0) {
 <span class="navname">Dolgozó felvétele</span>
 <div class="content_container">
     <div class="form_content">
-        <form id="form" action="" method="post" autocomplete="off">
+        <form id="form" action="" method="post" autocomplete="off" class="child_selector">
 			<div>
 				<label for="lastname" style="vertical-align: left;">A dolgozó vezetékneve:</label><br>
 				<input type="text" id="lastname" name="lastname" required placeholder="Vezetéknév"><br>
@@ -47,7 +47,7 @@ if ($pos_count == 0) {
 				<label for="address">A dolgozó  lakhelye</label><br>
 				<input type="text" id="address" name="address" required placeholder="Lakhely címe"><br>
 				<label for="username">A dolgozó felhasználóneve:</label><br>
-            <input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>
+				<input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>
 			</div>
             <button class="button btnmod" type="button" onclick="getPW()">Véletlenszerű jelszó generálás</button>
 			<div>
@@ -65,7 +65,7 @@ if ($pos_count == 0) {
 					?>
 				</select><br>
 			</div>
-			<button type="submit" id="newperson" name="newperson" form="form" class="button button_width">Rögzítés</button>
+			<button type="submit" id="newperson" name="newperson" form="form" class="button button_width javasq_button">Rögzítés</button>
         </form>
     </div>
 </div>

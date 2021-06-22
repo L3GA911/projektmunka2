@@ -125,18 +125,14 @@ function addInput() {
         x.setAttribute("id", i);
         x.setAttribute("name", "child"+i);
         x.setAttribute("class", "rem");
-        document.getElementById("form").insertBefore(x, document.getElementById("newperson"));
-
-        let y = document.createElement("BR");
-        y.setAttribute("class", "rem");
-        document.getElementById("form").insertBefore(y, document.getElementById(i));
+        document.getElementsByClassName("child_selector")[0].insertBefore(x, document.getElementsByClassName("javasq_button")[0]);
 
         let z = document.createElement("LABEL");
         let t = document.createTextNode(i + ". gyermek születési ideje");
         z.setAttribute("for", i);
         z.setAttribute("class", "rem");
         z.appendChild(t);
-        document.getElementById("form").insertBefore(z, document.getElementById(i));
+        document.getElementsByClassName("child_selector")[0].insertBefore(z, document.getElementById(i));
 
     }
 }
