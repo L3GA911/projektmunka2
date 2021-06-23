@@ -75,7 +75,6 @@ if (isset($_POST['newperson'])) {
                     VALUES ('$companyid', '$userid')"; // új felhasználó kapcsolása a céghez (c_members)
                     $execute = mysqli_query($con, $query) or die(mysql_error());
 
-					
 
                     //annyiszor fut le a kód, ahány gyermek van
 					if ($numbersOfChildren <> 0) { //ha egyáltalán van gyermek
@@ -270,12 +269,18 @@ if (isset($_POST['modifyPerson'])) {
 					}
 					$query = "UPDATE users SET password='$password', lastname='$lastname', firstname='$firstname', address='$address', email='$email', username='$username', status='$position', starthour='$starthour', endhour='$endhour' 
 							  WHERE id = '$personid'";
-
-							   
-
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                 
-
+                    //annyiszor fut le a kód, ahány gyermek van
+					if ($numbersOfChildren <> 0) { //ha egyáltalán van gyermek
+						for($i=1; $i<=$numbersOfChildren; $i++){ 
+							$birthday_kid = stripslashes($_REQUEST['child'.$i]);
+							$birthday_kid = mysqli_real_escape_string($con, $birthday_kid);
+							$query = "INSERT INTO p_child (p_id, birthday)
+							VALUES ('$personid', '$birthday_kid')"; // gyerekek születésének dátuma hozzáadása (p_child)
+							$execute = mysqli_query($con, $query) or die(mysql_error());
+						} 
+					}
                 }
 			}
 		} else {

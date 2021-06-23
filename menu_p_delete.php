@@ -53,8 +53,8 @@ $users_count = $result->num_rows;
   echo'
   <tr>
         <td data-label="<?=$id;?>">'.$user_id.'</td>
-        <td data-label="<?=$vez_nev;?>">'.$person_firstname.'</td>
-        <td data-label="<?=$ker_nev;?>">'.$person_lastname.'</td>
+        <td data-label="<?=$vez_nev;?>">'.$person_lastname.'</td>
+        <td data-label="<?=$ker_nev;?>">'.$person_firstname.'</td>
         <td data-label="<?=$felh_nev;?>">'.$person_username.'</td>
         <td data-label="<?=$pozicio;?>">'.$person_status.'</td>
         <td>

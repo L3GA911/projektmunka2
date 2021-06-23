@@ -21,7 +21,7 @@ if ($userinfo['role'] != 2) {
 <?php
 	$firmid = "ID";
 	$firmname = "Cégnév";
-	$firmowner = "Vezető";
+	$firmowner = "Cégfelelős";
 echo '
     <div class="table-responsive">
     <table id="table" class="table table-striped table-bordered table2 firm_delete_size">
