@@ -31,7 +31,7 @@ if ($pos_count == 0) {
 				<input type="text" id="firstname" name="firstname" required placeholder="Keresztnév"><br>
                 <label for="birthday">A dolgozó születési ideje:</label><br>
 				<input type="date" id="birthday" name="birthday" required placeholder="Születési idő"><br>
-				<label for="position">A dolgozó pozíciója</label><br>
+				<label for="position">A dolgozó pozíciója:</label><br>
                 <select id="position" name="position">
 
                     <option selected disabled value="">Kérem válasszon...</option>
@@ -44,9 +44,11 @@ if ($pos_count == 0) {
                     }?>
                 </select>
                 <br>
+                <label for="w_begindate">Munkaviszonyának kezdete:</label><br>
+				<input type="month" id="w_begindate" name="w_begindate" required placeholder="Munkakezdés ideje"><br>
                 <label for="address">A dolgozó munkaideje</label><br>
 				<input type="time" id="starthour" value="08:00" name="starthour" required> - <input type="time" id="endhour" value="16:00" name="endhour" required><br>
-				<label for="address">A dolgozó  lakhelye</label><br>
+				<label for="address">A dolgozó  lakhelye:</label><br>
 				<input type="text" id="address" name="address" required placeholder="Lakhely címe"><br>
 				<label for="username">A dolgozó felhasználóneve:</label><br>
 				<input type="text" id="username" name="username" required placeholder="Felhasználónév"><br>
@@ -59,7 +61,7 @@ if ($pos_count == 0) {
 				<input type="password" id="passwordc" name="passwordc" required placeholder="Jelszó megerősítése"><br>
 				<label for="email">A dolgozó e-mail címe:</label><br>
 				<input type="email" id="email" name="email" required placeholder="E-mail"><br>
-				<label for="numbersOfChildren">Kiskorú gyermekek száma:</label><br>
+				<label for="numbersOfChildren">Gyermekek száma:</label><br>
 				<select id="numbersOfChildren" required name="numbersOfChildren" onChange="addInput()">
 					<option value="" selected disabled>Kérem válasszon...</option>
 					<?php

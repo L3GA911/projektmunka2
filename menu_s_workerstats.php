@@ -19,18 +19,32 @@ $users_count = $result->num_rows;
 
 
 ?>
+<?php
+$firm_id = $extendeduserinfo['firm_id'];
+$query = "SELECT * FROM users
+JOIN c_members ON users.id = c_members.u_id
+WHERE c_members.c_id = '$firm_id'";
+$result = mysqli_query($con, $query) or die(mysql_error());
+?>
+
+
 <span class="navname">Dolgozói statisztikák</span>
 <div class="content_container">
-	<div class="dropdown">
-		<button onclick="open_list()" class="dropbtn">Dolgozó kiválasztása</button>
-		<div id="dropdown_list" class="dropdown-content">
+<div class="dropdown">
+		  <button onclick="open_list()" class="dropbtn">Dolgozó kiválasztása</button>
+		  <div id="dropdown_list" class="dropdown-content">
 			<input type="text" placeholder="Keresés..." id="dropdown_search" onkeyup="filterFunction()">
-			<a href="">Lengyel Gábor</a>
-			<a href="">Ihász Viktor</a>
-			<a href="">Valaki Vagyok</a>
-		</div>
-	</div><br>
-	<span>Dolgozó: XY</span>
-	<div id="chart_div"></div>
-</div>
+			<?php
+			while ($row = $result->fetch_assoc()) { //Cégnevek betöltése
+				$person_id = $row['u_id'];
+				$person_name = $row['firstname']." ".$row['lastname']."(".$person_id.")";
+				echo'
+				<a href="#" onclick="list_user_stats('.$person_id.');open_list()">'.$person_name.'</a>
+				';
+			}
+			echo '
+		  </div>
+		</div><br>
+		<div id="list"></div>
+</div>';?>
 <script type="text/javascript" src="js/editDataTable.js"></script>

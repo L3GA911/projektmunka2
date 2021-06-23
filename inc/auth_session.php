@@ -63,7 +63,7 @@ session_start();
 
 		//Felhasznált szabadságok
 		$query = "SELECT * FROM freedays
-		WHERE user_id = '$userid'";
+		WHERE user_id = '$userid' AND accepted=1";
 		$result = mysqli_query($con, $query) or die(mysql_error());
 		$person_used_freedays_count = mysqli_num_rows($result);
 

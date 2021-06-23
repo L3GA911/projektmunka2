@@ -16,6 +16,7 @@ if (isset($_POST['newperson'])) {
 	(isset($_POST['address'])) && 
 	(isset($_POST['starthour'])) && 
 	(isset($_POST['endhour'])) && 
+	(isset($_POST['w_begindate'])) && 
 	(isset($_POST['username'])) && 
 	(isset($_POST['password'])) && 
 	(isset($_POST['passwordc'])) && 
@@ -53,6 +54,9 @@ if (isset($_POST['newperson'])) {
                     $starthour = mysqli_real_escape_string($con, $starthour);
 					$endhour = stripslashes($_REQUEST['endhour']);
                     $endhour = mysqli_real_escape_string($con, $endhour);
+					$w_begindate = stripslashes($_REQUEST['w_begindate']);
+                    $w_begindate = mysqli_real_escape_string($con, $w_begindate);
+					$w_begindate = $w_begindate."-01";
                     $address = stripslashes($_REQUEST['address']);
                     $address = mysqli_real_escape_string($con, $address);
                     $username = stripslashes($_REQUEST['username']);
@@ -61,8 +65,8 @@ if (isset($_POST['newperson'])) {
                     $numbersOfChildren = mysqli_real_escape_string($con, $numbersOfChildren);
                     //Mehetnek az értékek az adatbázisba
 
-                    $query = "INSERT INTO users (username, password, firstname, lastname, birthday, address, role, email, status, starthour, endhour) 
-                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$birthday', '$address', '0', '$email', '$position', '$starthour', '$endhour')"; //új felhasználó
+                    $query = "INSERT INTO users (username, password, firstname, lastname, birthday, address, role, email, status, starthour, endhour, w_begindate) 
+                              VALUES ('$username', '".md5($password)."', '$firstname', '$lastname', '$birthday', '$address', '0', '$email', '$position', '$starthour', '$endhour', '$w_begindate')"; //új felhasználó
                     $execute = mysqli_query($con, $query) or die(mysql_error());
                     
                     $query = "SELECT id FROM users WHERE username='$username'"; //user id lekérdezése a céghez kapcsoláshoz

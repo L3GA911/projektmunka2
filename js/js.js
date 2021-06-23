@@ -65,6 +65,13 @@ function list_firm_users(firm_id) {
 		}});
 }
 
+function list_user_stats(user_id) {
+	$.ajax({url:"query_handler.php", type:"POST", data: ({user_id_stats: user_id}), async:true, cache:false, success:function(result)
+ {
+	 $("#list").html(result);
+ }});
+}
+
 function user_delete_sa(user_id, firm, owner) {
 		   $.ajax({url:"superadmin.php", type:"POST", data: ({user_id: user_id, firm: firm, owner: owner}), async:true, cache:false, success:function(result)
 		{
