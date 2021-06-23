@@ -208,7 +208,7 @@ echo'
     <thead class="table-dark">
       <tr>
         <th>'.$honap.'</th>
-        <th>'.$munkaora.'></th>
+        <th>'.$munkaora.'</th>
         <th>'.$tulora.'</th>
         <th>'.$munkasz_nap.'</th>
         <th>'.$szabadsag.'</th>
