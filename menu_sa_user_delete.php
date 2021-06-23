@@ -56,5 +56,8 @@ echo '
 		<div id="list"></div>
 </div>';
 ?>
-
+<div class="alert_box"></div>
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog"></div>
+</div>
 <script type="text/javascript" src="js/editDataTable.js"></script>	

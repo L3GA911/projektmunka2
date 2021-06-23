@@ -6,7 +6,6 @@
 <div class="navigation2">
     <span class="navname">Lehetőségek</span>
         <ul>
-            <li onClick="pageLoad('s_freedays')">Szabadságok</li>
             <li onClick="pageLoad('s_workerstats')">Dolgozói statisztikák</li>
         </ul>
 </div>

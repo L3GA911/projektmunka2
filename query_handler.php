@@ -89,7 +89,7 @@ while ($row = $result2->fetch_assoc()) {
 		<td data-label="'.$position.'">'.$person_status.'</td>
 		<td data-label="'.$firm.'">'.$person_firm.'</td>
 		<td>';
-		if ($users_count == 0) {echo '<button onclick="user_delete_sa('.$user_id.",".$firm_id.',1)" class="button_table">Törlés</button>';} else {echo '<button style="color: grey;" disabled class="button_table">Törlés</button>';}
+		if ($users_count == 0) {echo '<button onclick="sa_user_delete_modal('.$user_id.",".$firm_id.',1)" class="button_table"  data-bs-toggle="modal" data-bs-target="#Modal">Törlés</button>';} else {echo '<button style="color: grey;" disabled class="button_table">Törlés</button>';}
 		echo'
 		</td>
 	</tr>';}
@@ -130,13 +130,12 @@ echo '
 	<td data-label="'.$position.'">'.$person_status.'</td>
 	<td data-label="'.$firm.'">'.$person_firm.'</td>
 	<td>
-	<button onclick="user_delete_sa('.$user_id.",".$firm_id.',-1)" class="button_table">Törlés</button>
+	<button onclick="sa_user_delete_modal('.$user_id.",".$firm_id.',-1)" class="button_table" data-bs-toggle="modal" data-bs-target="#Modal">Törlés</button>
 	</td>
 </tr>';}
 	echo '
 </tbody>
 </table>';
-
 }
 
 @$user_id_stats = $_REQUEST['user_id_stats']; 
@@ -203,6 +202,7 @@ if (isset($user_id_stats)) {
 	$munkasz_nap = "Munkaszüneti nap";  
     $szabadsag = "Szabadság";
 	$fizetetlen_sz = "Fizetetlen szabadság";
+	
 echo'
 	<table id="table" class="table table-striped table-bordered table2 profiles_delete">
     <thead class="table-dark">
@@ -283,12 +283,12 @@ echo'
         $person_workhour = $person_workhour * $worktime + $offset;
         echo'
         <tr>
-            <td data-label="<?=$honap;?>">'.$i.'</td>
-            <td data-label="<?=$munkaora;?>">'.$person_workhour.'</td>
-            <td data-label="<?=$tulora;?>">'.$offset.'</td>
-            <td data-label="<?=$munkasz_nap;?>">'.$wfreeday.'</td>
-            <td data-label="<?=$szabadsag;?>">'.$freeday.'</th>
-            <td data-label="<?=$fizetetlen_sz;?>">'.$nopayday.'</td>
+            <td data-label="'.$honap.'">'.$i.'</td>
+            <td data-label="'.$munkaora.'">'.$person_workhour.'</td>
+            <td data-label="'.$tulora.'">'.$offset.'</td>
+            <td data-label="'.$munkasz_nap.'">'.$wfreeday.'</td>
+            <td data-label="'.$szabadsag.'">'.$freeday.'</th>
+            <td data-label="'.$fizetetlen_sz.'">'.$nopayday.'</td>
         </tr>';} 
 		echo' 
         </tbody>
@@ -297,3 +297,4 @@ echo'
 
 }
 ?>
+<script type="text/javascript" src="js/editDataTable.js"></script>	

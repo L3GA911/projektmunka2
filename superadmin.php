@@ -154,12 +154,7 @@ if (isset($user_id)) {
 		$query = "CALL DeleteUser ('$user_id')";
 		$result = mysqli_query($con, $query) or die(mysql_error());	
 	}
-
 }
-
-
-
-
 ?>
 
 <div class="navigation2">

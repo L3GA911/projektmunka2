@@ -65,7 +65,7 @@ echo '
               <td data-label="'.$firmname.'">'.$firm_name.'</td>
               <td data-label="'.$firmowner.'">'.$firm_owner.'</td>
               <td>
-              <button onclick="firm_delete('.$firm_id.')" class="button_table">Törlés</button>
+              <button onclick="firm_delete_modal('.$firm_id.')" class="button_table" data-bs-toggle="modal" data-bs-target="#Modal">Törlés</button>
               </td>
           </tr>
       ';
@@ -77,7 +77,10 @@ echo '
 ?>
 </div>
 </div>
-
+<div class="alert_box"></div>
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog"></div>
+</div>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#table').DataTable({

@@ -227,7 +227,9 @@ label{
 }
 input[type=text], 
 input[type=password], 
+input[type=month], 
 input[type=email], 
+input[type=number], 
 input[type=time], 
 input[type=date]{
     width: 15rem;
@@ -241,7 +243,9 @@ input[type=date]{
  }
 input[type=text]:focus, 
 input[type=password]:focus, 
+input[type=month]:focus, 
 input[type=email]:focus, 
+input[type=number]:focus, 
 input[type=time]:focus, 
 input[type=date]:focus {
     border-left: 4px solid var(--purple-dark);
@@ -251,14 +255,20 @@ input[type=date]:focus {
   }
 input[type=text]:active, 
 input[type=password]:active, 
+input[type=month]:active, 
 input[type=email]:active, 
+input[type=number]:active,
 input[type=date]:active,
 input[type=time]:active {
     border-left: 4px solid var(--purple-dark);
     background: var(--purple-light);
     outline: none;
     color: #fff;
-  }
+}
+input[type=number]{
+	width: 6rem;
+}
+
 select{
     width: 10rem;
     padding: 0.4rem 0.8rem;

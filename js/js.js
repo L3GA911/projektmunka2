@@ -50,10 +50,14 @@ function freedays_delete(fd_id) {
 			$(".fillin").html(result);
 		}});
 }
+function firm_delete_modal(fd_id) {
+		   $.ajax({url:"sa_firm_delete_modal.php", type:"POST", data: ({fd_id: fd_id}), async:true, cache:false, success:function(result)
+		{	$(".modal-dialog").html(result);
+		}});
+}
 function firm_delete(firm_id) {
 		   $.ajax({url:"superadmin.php", type:"POST", data: ({firm_id: firm_id}), async:true, cache:false, success:function(result)
 		{
-			// $("#content").html(result);
 			pageLoad('sa_firm_delete');
 		}});
 }
@@ -80,6 +84,11 @@ function user_delete_sa(user_id, firm, owner) {
 }
 function user_delete_p_modal(user_id_modal) {
 		   $.ajax({url:"p_delete_modal.php", type:"POST", data: ({user_id_modal: user_id_modal}), async:true, cache:false, success:function(result)
+		{	$(".modal-dialog").html(result);
+		}});
+}
+function sa_user_delete_modal(user_id, firm_id, pos) {
+		   $.ajax({url:"sa_user_delete_modal.php", type:"POST", data: ({user_id: user_id, firm_id:firm_id, pos:pos}), async:true, cache:false, success:function(result)
 		{	$(".modal-dialog").html(result);
 		}});
 }
