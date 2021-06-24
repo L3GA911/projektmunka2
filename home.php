@@ -82,7 +82,8 @@ switch ($hiba) {
 <div id="content" class="content">
     <span class="navname">Kezdőlap</span><br>
     <span>
-        Tisztelt <strong><?= $userinfo['lastname'];?> <?= $userinfo['firstname'];?></strong>!</br></br>
+        Tisztelt <strong><?= $userinfo['lastname'];?> <?= $userinfo['firstname'];?></strong>!</br>
+        (Azonosító: <strong><?= $userinfo['id'];?></strong>)</br></br>
 
         Üdvözöli Önt a kisvállalatok számára létrehozott online munkaidő nyilvántartó rendszer.</br>
        

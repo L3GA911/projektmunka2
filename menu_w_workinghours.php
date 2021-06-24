@@ -38,16 +38,31 @@ $result = mysqli_query($con, $query) or die(mysql_error());
 				<label for="date">Válasszon dátumot:</label><br>
 				<input type="date" id="date" name="date" required placeholder="Dátum"><br>
 				<label for="type">Típus:</label><br>
-				<select required id="type" name="type">
+				<select OnClick="HideOffset();" id ="type_menu" required id="type" name="type">
 					<option value="" selected disabled>Kérem válasszon...</option>
 					<option value="1">Munkaszüneti nap</option><!--Munkaszüneti nap-->
 					<option value="2">Fizetetlen szabadság</option><!--Fizetetlen-->
-					<option value="3">Munkaóra változás</option><!--Túlóra-->
+					<option id="tulora" value="3">Munkaóra változás</option><!--Túlóra-->
 				</select><br>
-				<label for="offset">Eltérés:</label><br>
-				<input type="number" step="0.5" id="offset" value="0" name="offset" required placeholder="Túlórák"><br>
+				<div style="display: none;" id="offset_div">
+				<label for="offset">Eltérés (óra):</label><br>
+				<input type="number" step="0.5" id="offset" value="0" name="offset" required placeholder="Túlórák">
+				</div><br>
 			</div>
             <button id="button" value="workingHours" name="workingHours" class="button">Mentés</button>
         </form>
     </div>
 </div>
+
+<script>
+	function HideOffset() {
+		var kivalasztott = $('#type_menu').find(":selected").text();
+		if (kivalasztott == "Munkaóra változás") {
+			$("#offset_div").css("display", "contents");
+		} else {
+			$("#offset_div").css("display", "none");
+			$("#offset").val("0");
+		}
+		
+	}
+</script>

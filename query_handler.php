@@ -14,17 +14,16 @@ if (isset($firm_id)) {
 
 //Normál felhasználók lekérdezése
 $query = "SELECT *, companys.name as firm_name, positions.name as pname, companys.id as firm_id FROM companys 
-JOIN c_members ON c_id = companys.id
-JOIN users ON u_id = users.id
-LEFT JOIN positions ON companys.id=positions.c_id
+LEFT JOIN c_members ON c_members.c_id = companys.id
+INNER JOIN users ON c_members.u_id = users.id
+RIGHT JOIN positions ON positions.id = users.status
 WHERE companys.id = '$firm_id'";
 $result = mysqli_query($con, $query) or die(mysql_error());
 $users_count = $result->num_rows;
 
 //Cégfelelős felhasználók lekérdezése
-$query2 = "SELECT *, companys.name as firm_name, positions.name as pname, companys.id as firm_id FROM companys 
-JOIN users ON users.id = companys.owner_id
-LEFT JOIN positions ON companys.id=positions.c_id
+$query2 = "SELECT *, companys.name as firm_name, companys.id as firm_id FROM companys 
+INNER JOIN users ON users.id = companys.owner_id
 WHERE companys.id = '$firm_id'";
 $result2 = mysqli_query($con, $query2) or die(mysql_error());
 
@@ -146,19 +145,18 @@ if (isset($user_id_stats)) {
 		$begin = strtotime($startDate);
 		$end   = strtotime($endDate);
 		if ($begin > $end) {
-			echo "startdate is in the future! <br />";
 	
 			return 0;
 		} else {
 			$no_days  = 0;
 			$weekends = 0;
 			while ($begin <= $end) {
-				$no_days++; // no of days in the given interval
+				$no_days++;
 				$what_day = date("N", $begin);
-				if ($what_day > 5) { // 6 and 7 are weekend days
+				if ($what_day > 5) { 
 					$weekends++;
 				};
-				$begin += 86400; // +1 day
+				$begin += 86400;
 			};
 			$working_days = $no_days - $weekends;
 	
@@ -197,11 +195,11 @@ if (isset($user_id_stats)) {
 	}
 
 	$honap = "Hónap";
-	$munkaora = "Összes munkaóra";
+	$munkaora = "Ledolgozott munkaóra";
     $tulora = "Túlóra";
 	$munkasz_nap = "Munkaszüneti nap";  
-    $szabadsag = "Szabadság";
-	$fizetetlen_sz = "Fizetetlen szabadság";
+    $szabadsag = "Szabadnap";
+	$fizetetlen_sz = "Fizetetlen szabadnap";
 	
 echo'
 	<table id="table" class="table table-striped table-bordered table2 profiles_delete">
@@ -280,7 +278,7 @@ echo'
 
 
 
-        $person_workhour = $person_workhour * $worktime + $offset;
+        $person_workhour = $person_workhour * $worktime + $offset - ($freeday*$worktime) - ($nopayday*$worktime) - ($wfreeday*$worktime);
         echo'
         <tr>
             <td data-label="'.$honap.'">'.$i.'</td>

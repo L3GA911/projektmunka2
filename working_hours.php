@@ -86,6 +86,8 @@ switch ($hiba) {
 </div>
 <script>
 	$(':root').css("--changeImage", "url('../svg/hourglass_top_black_24dp.svg')");
+
+
 </script>
 <?php
     include_once ('bottom.php');

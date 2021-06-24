@@ -56,8 +56,35 @@
 					</span>
                     <span> - </span>
                     <span>
-                    <?php 
-                    if (($userinfo['role'] == 0) || ($userinfo['role'] == 1)) { echo $extendeduserinfo['firmname']; } else echo 'Nincs cég';
+                    <?php
+
+
+
+                    if (($userinfo['role'] == 0) || ($userinfo['role'] == 1)) { 
+
+                        $firm_form = $extendeduserinfo['form_id'];
+                        switch ($firm_form) {
+                            case 1:
+                                $form_id_tostring = "Kft.";
+                                break;
+                            case 2:
+                                $form_id_tostring = "Bt.";
+                                break;	
+                            case 3:
+                                $form_id_tostring = "Nyrt.";
+                                break;
+                            case 4:
+                                $form_id_tostring = "Zrt.";
+                                break;	
+                            case 5:
+                                $form_id_tostring = "Kkt.";
+                                break;
+                            case 6:
+                                $form_id_tostring = "EV.";
+                                break;	
+                            }
+                        echo $extendeduserinfo['firmname'].' '.$form_id_tostring; } 
+                        else echo 'Nincs cég';
 					?>
                     </span>
                     <span>
